@@ -16,7 +16,9 @@ import { connect } from "react-redux";
 import Auth from "@aws-amplify/auth";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
+import AppDescription from "Components/AppDescription.jsx";
 import AppEntrance from "Components/AppEntrance.jsx";
+import RoomEntrance from "Components/RoomEntrance.jsx";
 import { setUser } from "States/session-actions.js";
 
 import "./Main.css";
@@ -40,6 +42,18 @@ class Main extends React.Component {
               <NavbarBrand className="text-info" href="/">
                 Wishing-Well-Dev
               </NavbarBrand>
+              <Nav>
+                <NavItem>
+                  <NavLink tag={Link} to="/login">
+                    LogIn
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} to="/room">
+                    Room
+                  </NavLink>
+                </NavItem>
+              </Nav>
               {this.props.logged && (
                 <div className="row">
                   <div className="col-auto">
@@ -54,7 +68,9 @@ class Main extends React.Component {
               )}
             </Navbar>
           </div>
-          <AppEntrance />
+          <Route exact path="/" render={() => <AppDescription />} />
+          <Route exact path="/login" render={() => <AppEntrance />} />
+          <Route exact path="/room" render={() => <RoomEntrance />} />
         </div>
       </Router>
     );
