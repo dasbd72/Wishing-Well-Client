@@ -1,81 +1,76 @@
 import React from "react";
-import { AvForm, AvField } from "availity-reactstrap-validation";
+import { connect } from "react-redux";
+import Auth, { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { Button, Row, Col } from "reactstrap";
+import {
+  AmplifyAuthenticator,
+  AmplifySignUp,
+  AmplifySignIn,
+  AmplifyGoogleButton,
+  AmplifyAuthContainer,
+} from "@aws-amplify/ui-react";
 
-export default class Example extends React.Component {
+import { setUser } from "States/session-actions.js";
+import "./LoginForm.css";
+
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: false };
   }
-
   render() {
-    const modalError = this.state.error ? "not" : ""; // This is just for the modal
     return (
-      <div>
-        <AvForm
-          onValidSubmit={this.handleValidSubmit}
-          onInvalidSubmit={this.handleInvalidSubmit}
-        >
-          <Row>
-            <Col xs="12">
-              <AvField
-                name="email"
-                label="Email Address"
-                type="email"
-                validate={{
-                  required: true,
-                  email: true,
-                }}
-              />
-            </Col>
-            <Col xs="12">
-              <AvField
-                name="password"
-                label="Password"
-                type="password"
-                validate={{
-                  required: {
-                    value: true,
-                    errorMassage: "Please enter your password",
-                  },
-                  pattern: {
-                    value: "^[A-Za-z0-9]+$",
-                    errorMassage:
-                      "Your password must be composed only with letter and number",
-                  },
-                  minLength: {
-                    value: 6,
-                    errorMessage:
-                      "Your password must be between 6 and 16 characters",
-                  },
-                }}
-              />
-            </Col>
-            <Col xs="12" className="text-center">
-              No account yet ? <a href="">Register</a>
-            </Col>
-            <Col xs={{ size: 6, offset: 3 }} md={{ size: 4, offset: 4 }}>
-              <Button color="primary" id="submit" className="">
-                Submit
-              </Button>
-            </Col>
-          </Row>
-        </AvForm>
+      <div className="LoginForm">
+        <AmplifyAuthContainer>
+          <AmplifyAuthenticator
+            federated={{
+              googleClientId: this.props.federated.googleClientId,
+            }}
+            handleAuthStateChange={(nextAuthState, user) => {
+              console.log(user);
+              this.props.dispatch(setUser(user));
+            }}
+          >
+            <AmplifySignUp
+              slot="sign-up"
+              formFields={[
+                {
+                  type: "username",
+                  label: "Username",
+                  placeholder: "Username",
+                  inputProps: { required: true },
+                },
+                {
+                  type: "email",
+                  label: "Email",
+                  placeholder: "example@email.com",
+                  inputProps: { required: true, autocomplete: "email" },
+                },
+                {
+                  type: "password",
+                  label: "Password",
+                  placeholder: "Passwd1223",
+                  inputProps: { required: true, autocomplete: "new-password" },
+                },
+              ]}
+            ></AmplifySignUp>
+            <AmplifyGoogleButton
+              slot="sign-up"
+              id={this.props.federated.googleClientId}
+            />
+            <AmplifySignIn
+              slot="sign-in"
+              usernameAlias="email"
+              federated={{
+                googleClientId: this.props.federated.googleClientId,
+              }}
+            />
+          </AmplifyAuthenticator>
+        </AmplifyAuthContainer>
       </div>
     );
   }
-
-  handleValidSubmit = (e, values) => {
-    this.setState({ email: values.email });
-    console.log(`Login Successful`);
-  };
-
-  handleInvalidSubmit = (event, errors, values) => {
-    this.setState({ email: values.email, error: true });
-    console.log(`Login failed`);
-  };
-
-  closeModal = () => {
-    this.setState({ email: false, error: false });
-  };
 }
+export default connect((state) => ({
+  ...state.session,
+  federated: state.federated,
+}))(LoginForm);

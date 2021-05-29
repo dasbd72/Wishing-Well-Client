@@ -5,18 +5,26 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const distPath = path.resolve(__dirname, "dist");
 const srcPath = path.resolve(__dirname, "src");
 
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: "./index.html",
+  filename: "./index.html",
+});
+
 module.exports = {
   context: srcPath,
-  entry: {
-    index: ["./index.jsx"],
-  },
   resolve: {
     alias: {
-      states: path.resolve(srcPath, "states"),
+      States: path.resolve(srcPath, "states"),
       Utilities: path.resolve(srcPath, "utilities"),
       Components: path.resolve(srcPath, "components"),
       Api: path.resolve(srcPath, "api"),
     },
+    // fallback: {
+    //   crypto: false,
+    // },
+  },
+  entry: {
+    index: ["./index.jsx"],
   },
   output: {
     path: distPath,
@@ -49,6 +57,12 @@ module.exports = {
         ],
       },
       {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.css$/,
         use: [
           "style-loader",
@@ -67,12 +81,7 @@ module.exports = {
       chunks: "all",
     },
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./index.html",
-      filename: "./index.html",
-    }),
-  ],
+  plugins: [htmlPlugin],
   devServer: {
     contentBase: distPath,
     compress: true,
