@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "msjsdiag.vscode-react-native",
+    "esbenp.prettier-vscode",
+    "christian-kohler.npm-intellisense",
+    "eg2.vscode-npm-script",
+    "yzhang.markdown-all-in-one",
+    "vincaslt.highlight-matching-tag",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "donjayamanne.githistory",
+    "mhutchie.git-graph",
+    "mkxml.vscode-filesize",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "cschlosser.doxdocgen",
+    "wmaurer.change-case",
+    "coenraads.bracket-pair-colorizer-2"
+  ]
+}
