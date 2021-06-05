@@ -10,6 +10,8 @@
 - react-dom
 - react-redux
   - state reduce
+- [react-icons](https://react-icons.github.io/react-icons/)
+
 - availity-reactstrap-validation
   - Login validate
 - [amplify-js](https://aws-amplify.github.io/amplify-js/api/index.html)

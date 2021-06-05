@@ -1,3 +1,16 @@
-const initMainState = {};
+const initialState = {
+  isOpen: false,
+};
 
-export function main(state = initMainState, action) {}
+export const main = (state = initialState, action) => {
+  switch (action.type) {
+    case "@MAIN/TOGGLE_OPEN":
+      return {
+        ...state,
+        isOpen: !state.isOpen,
+      };
+
+    default:
+      return state;
+  }
+};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getImgPath } from "Utilities/utility.js";
@@ -7,15 +7,12 @@ import LoginForm from "Components/LoginForm.jsx";
 
 import "./AppEntrance.css";
 
-class AppEntrance extends React.Component {
+export class AppEntrance extends Component {
   static propTypes = {
-    language: PropTypes,
+    language: PropTypes.string,
   };
   constructor(props) {
     super(props);
-    this.state = {
-      page: "login",
-    };
   }
 
   render() {
@@ -37,6 +34,11 @@ class AppEntrance extends React.Component {
     );
   }
 }
-export default connect((state) => ({
+
+const mapStateToProps = (state) => ({
   ...state.session,
-}))(AppEntrance);
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppEntrance);

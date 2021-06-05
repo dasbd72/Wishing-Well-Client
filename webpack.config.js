@@ -19,9 +19,9 @@ module.exports = {
       Components: path.resolve(srcPath, "components"),
       Api: path.resolve(srcPath, "api"),
     },
-    // fallback: {
-    //   crypto: false,
-    // },
+    fallback: {
+      crypto: false,
+    },
   },
   entry: {
     index: ["./index.jsx"],
@@ -29,6 +29,7 @@ module.exports = {
   output: {
     path: distPath,
     filename: "[name].bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -83,8 +84,8 @@ module.exports = {
   },
   plugins: [htmlPlugin],
   devServer: {
-    contentBase: distPath,
-    compress: true,
+    // contentBase: distPath,
+    // compress: true,
     port: 8080,
     historyApiFallback: true,
   },

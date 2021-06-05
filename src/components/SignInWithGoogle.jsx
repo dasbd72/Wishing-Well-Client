@@ -1,10 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Auth from "@aws-amplify/auth";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 
 // To federated sign in from Google
 class SignInWithGoogle extends React.Component {
+  static propTypes = {};
   constructor(props) {
     super(props);
   }
