@@ -79,6 +79,11 @@ class SignInWithGoogle extends React.Component {
   }
 }
 
-export default connect((state) => ({
+const mapStateToProps = (state) => ({
   ...state.federated,
-}))(SignInWithGoogle);
+  federated: state.federated,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInWithGoogle);

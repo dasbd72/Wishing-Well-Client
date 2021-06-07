@@ -8,6 +8,13 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import {
+  AmplifyAuthenticator,
+  AmplifySignUp,
+  AmplifySignIn,
+  AmplifyGoogleButton,
+  AmplifyAuthContainer,
+} from "@aws-amplify/ui-react";
 
 import Auth from "@aws-amplify/auth";
 
@@ -28,7 +35,7 @@ export class Main extends Component {
     });
     return (
       <Router>
-        <div className="main">
+        <div className="Main">
           <Switch>
             <Route exact path="/">
               <AppDescription />

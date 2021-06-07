@@ -9,6 +9,9 @@ import {
   AmplifyAuthContainer,
 } from "@aws-amplify/ui-react";
 
+import SignInWithGoogle from "Components/SignInWithGoogle.jsx";
+import { AmplifyGoogleLogin } from "Components/AmplifyGoogleLogin.jsx";
+
 import { setUser } from "States/session-actions.js";
 import "./LoginForm.css";
 
@@ -18,52 +21,49 @@ export class LoginForm extends Component {
   render() {
     return (
       <div className="LoginForm">
-        <AmplifyAuthContainer>
-          <AmplifyAuthenticator
+        {/* <SignInWithGoogle />*/}
+        {/* <AmplifyGoogleLogin /> */}
+        <AmplifyAuthenticator
+          federated={{
+            googleClientId: this.props.googleClientId,
+          }}
+          handleAuthStateChange={(nextAuthState, user) => {
+            console.log(user);
+            setUser(user);
+          }}
+        >
+          <AmplifySignUp
+            slot="sign-up"
+            formFields={[
+              {
+                type: "username",
+                label: "Username",
+                placeholder: "Username",
+                inputProps: { required: true },
+              },
+              {
+                type: "email",
+                label: "Email",
+                placeholder: "example@email.com",
+                inputProps: { required: true, autocomplete: "email" },
+              },
+              {
+                type: "password",
+                label: "Password",
+                placeholder: "Passwd1223",
+                inputProps: { required: true, autocomplete: "new-password" },
+              },
+            ]}
+          ></AmplifySignUp>
+          <AmplifyGoogleButton slot="sign-up" id={this.props.googleClientId} />
+          <AmplifySignIn
+            slot="sign-in"
+            usernameAlias="email"
             federated={{
-              googleClientId: this.props.federated.googleClientId,
+              googleClientId: this.props.googleClientId,
             }}
-            handleAuthStateChange={(nextAuthState, user) => {
-              console.log(user);
-              this.props.dispatch(setUser(user));
-            }}
-          >
-            <AmplifySignUp
-              slot="sign-up"
-              formFields={[
-                {
-                  type: "username",
-                  label: "Username",
-                  placeholder: "Username",
-                  inputProps: { required: true },
-                },
-                {
-                  type: "email",
-                  label: "Email",
-                  placeholder: "example@email.com",
-                  inputProps: { required: true, autocomplete: "email" },
-                },
-                {
-                  type: "password",
-                  label: "Password",
-                  placeholder: "Passwd1223",
-                  inputProps: { required: true, autocomplete: "new-password" },
-                },
-              ]}
-            ></AmplifySignUp>
-            <AmplifyGoogleButton
-              slot="sign-up"
-              id={this.props.federated.googleClientId}
-            />
-            <AmplifySignIn
-              slot="sign-in"
-              usernameAlias="email"
-              federated={{
-                googleClientId: this.props.federated.googleClientId,
-              }}
-            />
-          </AmplifyAuthenticator>
-        </AmplifyAuthContainer>
+          />
+        </AmplifyAuthenticator>
       </div>
     );
   }
@@ -71,9 +71,11 @@ export class LoginForm extends Component {
 
 const mapStateToProps = (state) => ({
   ...state.session,
-  federated: state.federated,
+  ...state.federated,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  setUser,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

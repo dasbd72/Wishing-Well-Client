@@ -11,6 +11,7 @@ import config from "./aws-exports.js";
 import Main from "Components/Main.jsx";
 import { session, federated } from "States/session-reducers.js";
 import { main } from "States/main-reducers.js";
+import { room } from "States/room-reducers.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,6 +25,7 @@ window.onload = function () {
       session,
       federated,
       main,
+      room,
     }),
     composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
   );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getImgPath } from "Utilities/utility.js";
+import { DiJqueryUiLogo } from "react-icons/di";
 
 import LoginForm from "Components/LoginForm.jsx";
 
@@ -18,15 +19,16 @@ export class AppEntrance extends Component {
   render() {
     return (
       <div className="AppEntrance container ">
-        <div className="d-md-flex row h-50">
-          <div className="col">
-            <img
+        <div className="d-flex h-100">
+          <div className="display-1">
+            {/* <img
               src={getImgPath("wishing-well-logo")}
               alt="logo"
               className="rounded  img-fluid my-auto"
-            />
+            /> */}
+            <DiJqueryUiLogo />
           </div>
-          <div className="col">
+          <div className="">
             <LoginForm />
           </div>
         </div>

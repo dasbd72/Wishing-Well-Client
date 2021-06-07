@@ -1,0 +1,20 @@
+.TaskGroup {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+
+  font-size: 1.2rem;
+}
+
+.TaskItem {
+  min-width: 460px;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  margin: 1rem;
+}
+.TaskItem:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.TaskItem .form-check-input:hover {
+  cursor: pointer;
+}

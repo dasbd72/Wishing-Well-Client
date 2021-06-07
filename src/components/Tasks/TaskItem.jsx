@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Input, InputGroup } from "reactstrap";
-
-import "./TaskItem.css";
+import moment from "moment";
 
 export class TaskItem extends Component {
   static propTypes = {
@@ -17,15 +16,15 @@ export class TaskItem extends Component {
     super(props);
   }
   render() {
-    const { id, text, points, accepted } = this.props;
-
+    const { id, text, points, accepted, deadline } = this.props;
+    console.log(deadline);
     return (
-      <div className="task-item container justify-content-center d-flex row">
-        <div className="col-5"> {text} </div>
-        <div className="col-3"> {points} </div>
-        <div className="col-3">
+      <div className="TaskItem d-flex flex-row justify-content-center">
+        <div className="flex-grow-1 p-2"> {text} </div>
+        <div className="p-2"> {points} </div>
+        <div className="p-2">
           {accepted ? (
-            deadline
+            moment(deadline).format("MM/DD").toString()
           ) : (
             <InputGroup>
               <Input type="checkbox" />

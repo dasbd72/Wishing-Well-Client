@@ -1,31 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-  Switch,
-  withRouter,
-  Redirect,
-} from "react-router-dom";
+import { Route, Link, Switch, withRouter } from "react-router-dom";
 import {
   Button,
-  Row,
   Col,
   Form,
-  FormText,
   Input,
-  Label,
   FormGroup,
-  InputGroup,
   Card,
   CardBody,
   CardImg,
   CardTitle,
-  CardSubtitle,
   CardText,
 } from "reactstrap";
 
@@ -43,13 +29,7 @@ class RoomEntrance extends React.Component {
     super(props);
   }
   render() {
-    const { match, location, history } = this.props;
-    console.log("location => ");
-    console.log(location);
-    console.log("match => ");
-    console.log(match);
-    console.log("history => ");
-    console.log(history);
+    const { match } = this.props;
     return (
       <Switch>
         <Route exact path={`${match.url}/`}>
@@ -108,6 +88,13 @@ class RoomEntrance extends React.Component {
   }
 }
 
-export default connect((state) => ({
+const mapStateToProps = (state) => ({
   ...state.session,
-}))(withRouter(RoomEntrance));
+});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(RoomEntrance));

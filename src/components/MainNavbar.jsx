@@ -22,7 +22,7 @@ export class MainNavbar extends Component {
 
   render() {
     return (
-      <div className="fixed-top px-5 bg-light text-dark">
+      <div className="MainNavbar fixed-top px-5 bg-light text-dark">
         <Navbar color="faded" light expand="md">
           <NavbarBrand className="text-info" href="/">
             Wishing-Well-Dev

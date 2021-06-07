@@ -1,0 +1,19 @@
+/*
+@media only screen and (max-width: 600px) {
+} */
+.RoomSidebar {
+  height: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+.RoomSidebar .sidebar {
+  min-width: 2rem;
+  max-width: 320px;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+}
+.RoomSidebar .sidebar svg {
+  font-size: 2.5rem;
+}
+.RoomSidebar .sidebar .nav-link {
+  cursor: pointer;
+}
