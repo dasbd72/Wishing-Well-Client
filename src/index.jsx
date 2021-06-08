@@ -5,13 +5,13 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import loggerMiddleware from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { Provider } from "react-redux";
-import Amplify from "@aws-amplify/core";
-import config from "./aws-exports.js";
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
 
-import Main from "Components/Main.jsx";
-import { session, federated } from "States/session-reducers.js";
-import { main } from "States/main-reducers.js";
-import { room } from "States/room-reducers.js";
+import Main from "Components/Main";
+import { session, federated } from "States/session-reducers";
+import { main } from "States/main-reducers";
+import { room } from "States/room-reducers";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 

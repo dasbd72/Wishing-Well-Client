@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import RoomSidebar from "Components/Room/RoomSidebar.jsx";
-import ChildrenMenu from "Components/Room/Children/ChildrenMenu.jsx";
+import RoomSidebar from "Components/Room/RoomSidebar";
+import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 
 import "./ChildrenPage.css";
 

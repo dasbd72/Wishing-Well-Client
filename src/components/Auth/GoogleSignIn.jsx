@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Button } from "reactstrap";
-import Auth from "@aws-amplify/auth";
+import { GoogleButton } from "aws-amplify-react";
 
-export class AmplifyGoogleLogin extends Component {
+export class CustomGoogleSignIn extends Component {
   static propTypes = {
-    prop: PropTypes,
+    googleClientId: PropTypes.string,
   };
 
   render() {
+    const style = {};
     const { googleClientId } = this.props;
     return (
-      <Button onClick={() => Auth.federatedSignIn()}>SignIn With Google</Button>
+      <div>
+        <GoogleButton clientId={googleClientId} />
+      </div>
     );
   }
 }
@@ -23,4 +25,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AmplifyGoogleLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomGoogleSignIn);

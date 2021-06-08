@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { List } from "reactstrap";
 
-import TaskItem from "Components/Tasks/TaskItem.jsx";
+import TaskItem from "Components/Tasks/TaskItem";
 
 import "./Tasks.css";
 

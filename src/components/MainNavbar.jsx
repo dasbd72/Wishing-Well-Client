@@ -10,19 +10,32 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Input,
   Button,
 } from "reactstrap";
-import Auth from "@aws-amplify/auth";
+import classNames from "classnames";
 
-import { toggleOpen } from "States/main-actions";
+import AuthSignOut from "Components/Auth/SignOut";
+import { toggleOpen, setNavHeight } from "States/main-actions";
+
+import "./MainNavbar.css";
 
 export class MainNavbar extends Component {
-  static propTypes = {};
-
+  static propTypes = {
+    fixedTop: PropTypes.bool,
+  };
+  componentDidMount() {
+    this.props.setNavHeight(
+      document.getElementsByClassName("MainNavbar")[0].clientHeight
+    );
+  }
   render() {
     return (
-      <div className="MainNavbar fixed-top px-5 bg-light text-dark">
+      <div
+        className={classNames(
+          "MainNavbar container-fluid px-5 bg-light text-dark",
+          { "fixed-top": !(this.props.fixedTop === false) }
+        )}
+      >
         <Navbar color="faded" light expand="md">
           <NavbarBrand className="text-info" href="/">
             Wishing-Well-Dev
@@ -43,7 +56,7 @@ export class MainNavbar extends Component {
               {this.props.logged && (
                 <NavItem>
                   <NavLink>
-                    <Button onClick={this.signOut}>Sign Out</Button>
+                    <AuthSignOut />
                   </NavLink>
                 </NavItem>
               )}
@@ -62,21 +75,16 @@ export class MainNavbar extends Component {
       </div>
     );
   }
-
-  signOut = () => {
-    Auth.signOut();
-    window.location.reload();
-  };
 }
 
 const mapStateToProps = (state) => ({
   ...state.session,
   ...state.main,
-  federated: state.federated,
 });
 
 const mapDispatchToProps = {
   toggleOpen,
+  setNavHeight,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);

@@ -15,7 +15,7 @@ import {
   CardText,
 } from "reactstrap";
 
-import ChildrenPage from "Components/Room/Children/ChildrenPage.jsx";
+import ChildrenPage from "Components/Room/Children/ChildrenPage";
 
 import "./RoomEntrance.css";
 

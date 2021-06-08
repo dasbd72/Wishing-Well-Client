@@ -1,3 +1,6 @@
+const SWITCH_USER = "@SESSION/SWITCH_USER";
+const SIGN_OUT = "@SESSION/SIGN_OUT";
+
 export const setUser = (user) => {
   var userName = user
     ? user.username || user.name
@@ -6,15 +9,16 @@ export const setUser = (user) => {
         : user.name
       : ""
     : "";
-  var logged = userName === "" ? false : true;
   return {
-    type: "@SESSION/SET_USER",
-    userName,
-    logged,
+    type: SWITCH_USER,
+    userName: userName,
+    logged: user ? true : false,
+    cognitoUser: user,
   };
 };
 
-export const setLogged = (logged) => ({
-  type: "@SESSION/SET_LOGGED",
-  logged,
-});
+export const setSignOut = () => {
+  return { type: SIGN_OUT };
+};
+
+export { SWITCH_USER, SIGN_OUT };

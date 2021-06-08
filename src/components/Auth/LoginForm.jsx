@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  AmplifyAuthenticator,
-  AmplifySignUp,
-  AmplifySignIn,
-  AmplifyGoogleButton,
-  AmplifyAuthContainer,
-} from "@aws-amplify/ui-react";
+import { Authenticator, SignIn } from "aws-amplify-react";
 
-import SignInWithGoogle from "Components/SignInWithGoogle.jsx";
-import { AmplifyGoogleLogin } from "Components/AmplifyGoogleLogin.jsx";
+import AmplifyGoogleSignIn from "Components/Auth/GoogleSignIn";
+import SignInWithGoogle from "Components/Auth/SignInWithGoogle";
+import AwsConfig from "Components/../aws-exports.js";
 
-import { setUser } from "States/session-actions.js";
-import "./LoginForm.css";
+import { setUser } from "States/session-actions";
 
 export class LoginForm extends Component {
   static propTypes = {};
@@ -21,9 +15,18 @@ export class LoginForm extends Component {
   render() {
     return (
       <div className="LoginForm">
-        {/* <SignInWithGoogle />*/}
-        {/* <AmplifyGoogleLogin /> */}
-        <AmplifyAuthenticator
+        {/* <AmplifyGoogleSignIn /> */}
+        {/* <SignInWithGoogle /> */}
+        <Authenticator
+          authState="signIn"
+          federated={this.props.federated}
+          hide={[SignIn]}
+          hideDefault={true}
+          amplifyConfig={AwsConfig}
+        >
+          <SignIn federated={this.props.federated} />
+        </Authenticator>
+        {/* <AmplifyAuthenticator
           federated={{
             googleClientId: this.props.googleClientId,
           }}
@@ -55,7 +58,6 @@ export class LoginForm extends Component {
               },
             ]}
           ></AmplifySignUp>
-          <AmplifyGoogleButton slot="sign-up" id={this.props.googleClientId} />
           <AmplifySignIn
             slot="sign-in"
             usernameAlias="email"
@@ -63,7 +65,7 @@ export class LoginForm extends Component {
               googleClientId: this.props.googleClientId,
             }}
           />
-        </AmplifyAuthenticator>
+        </AmplifyAuthenticator>*/}
       </div>
     );
   }
@@ -71,7 +73,7 @@ export class LoginForm extends Component {
 
 const mapStateToProps = (state) => ({
   ...state.session,
-  ...state.federated,
+  federated: state.federated,
 });
 
 const mapDispatchToProps = {

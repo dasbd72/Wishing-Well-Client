@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import { ListGroup, ListGroupItem, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import UUID from "uuid";
 import moment from "moment";
 
-import TaskGroup from "Components/Tasks/TaskGroup.jsx";
+import TaskGroup from "Components/Tasks/TaskGroup";
 
 export class ChildrenMenu extends Component {
   static propTypes = {
