@@ -1,3 +1,18 @@
 .CreateTask {
   height: 100%;
 }
+
+.CreateTaskForm {
+  background-color: white;
+  padding: 0.5rem;
+  width: 80%;
+  margin: auto;
+  border-radius: 0.5rem;
+}
+
+.CreateButton {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 1rem;
+}

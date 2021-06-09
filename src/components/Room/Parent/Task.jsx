@@ -27,18 +27,20 @@ export default class Task extends React.Component {
 
   render() {
     return (
-      <div className="Task">
-        <div className="userdisplay">
+      <div className="Task d-flex flex-row">
+        <div className="UserDisplay col-3">
           <UserDisplay/>
         </div>
-        <div className="rejecttask">
-          <RejectedTask/>
-        </div>
-        <div className="todotask">
-          <TodoTask/>
-        </div>
-        <div className="progressbar">
-          <ProgressBar/>
+        <div className="col-9">
+          <div className="TodoTask">
+            <TodoTask/>
+          </div>
+          <div className="RejectedTask">
+            <RejectedTask/>
+          </div>
+          <div className="ProgressBar">
+            <ProgressBar/>
+          </div>
         </div>
       </div>
     );

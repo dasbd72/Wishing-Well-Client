@@ -14,23 +14,24 @@ import {
 } from "reactstrap";
 
 import UserDisplay from "Components/Room/Parent/UserDisplay.jsx";
-import TaskForm from "Components/Room/Parent/TaskForm.jsx";
+import CreateTask from "Components/Room/Parent/CreateTask.jsx";
 
-import "./Menu.css";
+import "./ParentMenu.css";
 
-export default class Menu extends React.Component {
+export default class ParentMenu extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="menu">
-        <div className="userdisplay">
-          <UserDisplay/>
+      <div className="ParentMenu d-flex flex-row">
+        <div className="UserDisplay col-3">
+          <UserDisplay />
         </div>
-        <div className="taskform">
-          <TaskForm/>
+        <div className="TaskForm col-9">
+          <h1>Create a New Task</h1>
+          <CreateTask />
         </div>
       </div>
     );

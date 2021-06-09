@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    // "target": "esnext",
+    // "module": "commonjs",
+    "paths": {
+      "States/*": ["states/*"],
+      "Utilities/*": ["utilities/*"],
+      "Components/*": ["components/*"],
+      "Api/*": ["api/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

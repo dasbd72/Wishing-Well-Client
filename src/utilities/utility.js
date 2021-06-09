@@ -1,4 +1,5 @@
 var imgDistPath = "img";
+
 export function getImgPath(img) {
   var ret = "";
   switch (img) {

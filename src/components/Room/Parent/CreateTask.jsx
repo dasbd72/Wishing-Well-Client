@@ -15,6 +15,11 @@ import {
   Label,
   Button,
   ButtonGroup,
+  Card, 
+  CardImg,
+  CardText, 
+  CardBody,
+  CardTitle, 
 } from "reactstrap";
 
 import "./CreateTask.css";
@@ -27,33 +32,37 @@ export default class CreateTask extends React.Component {
   render() {
     return (
       <div className="CreateTask">
-        <Form>
-          <Label for="createtaskform">Create Task</Label>
-          <FormGroup>
-            <Label for="tasktype">Type</Label>
-              <ButtonGroup>
-                <Button>Normal</Button>
-                <Button>Forced</Button>
-              </ButtonGroup>
-          </FormGroup>
-          <FormGroup>
-            <Label for="taskname">Task Name</Label>
-            <Input/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="taskdeadline">Dead Line</Label>
-            <Input/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="taskpoints">Points</Label>
-            <Input/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="tasktarget">Target</Label>
-            <Input/>
-          </FormGroup>
-          <Button>Create</Button>
-        </Form>
+        <div className="CreateTaskForm">
+          <Form>
+            <Label>Create Task</Label>
+            <FormGroup className="TaskForm row">
+              <Label for="tasktype">Type</Label>
+                <ButtonGroup className="col-3" size="sm">
+                  <Button>Normal</Button>
+                  <Button>Forced</Button>
+                </ButtonGroup>
+            </FormGroup>
+            <FormGroup className="TaskForm">
+              <Label for="taskname">Task Name</Label>
+              <Input/>
+            </FormGroup>
+            <FormGroup>
+              <Label for="taskdeadline">Dead Line</Label>
+              <Input/>
+            </FormGroup>
+            <FormGroup className="TaskForm">
+              <Label for="taskpoints">Points</Label>
+              <Input/>
+            </FormGroup>
+            <FormGroup className="TaskForm">
+              <Label for="tasktarget">Target</Label>
+              <Input/>
+            </FormGroup>
+            <div className="CreateButton">
+              <Button>Create</Button>
+            </div>
+          </Form>
+        </div>
       </div>
     );
   }

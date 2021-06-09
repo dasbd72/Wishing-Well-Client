@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Auth, { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
-import { Button, Row, Col } from "reactstrap";
 import {
   AmplifyAuthenticator,
   AmplifySignUp,
@@ -13,10 +12,9 @@ import {
 import { setUser } from "States/session-actions.js";
 import "./LoginForm.css";
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export class LoginForm extends Component {
+  static propTypes = {};
+
   render() {
     return (
       <div className="LoginForm">
@@ -70,7 +68,12 @@ class LoginForm extends React.Component {
     );
   }
 }
-export default connect((state) => ({
+
+const mapStateToProps = (state) => ({
   ...state.session,
   federated: state.federated,
-}))(LoginForm);
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

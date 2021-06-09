@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import TaskItem from "Components/room/TaskItem.jsx"
+
+import "./RejectedTask.css"
+
 export default class RejectedTask extends React.Component {
   static propTypes = {
 
@@ -8,9 +12,13 @@ export default class RejectedTask extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>RejectTask</h1>
-      </div>
+      <>
+        <h1>RejectedTask</h1>
+        <div className="RejectedTaskForm">
+          <TaskItem/>
+          <TaskItem/>
+        </div>
+      </>
     )
   }
 }

@@ -13,7 +13,7 @@ export default class ProgressBar extends React.Component {
 
   render() {
     return (
-      <div className="progressbar">
+      <div className="progressbarForm">
         <Progress value="25"></Progress>
       </div>
     );
