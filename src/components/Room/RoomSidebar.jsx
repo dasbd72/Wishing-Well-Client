@@ -14,6 +14,8 @@ import { Link, withRouter } from "react-router-dom";
 import classNames from "classnames";
 import * as IconAi from "react-icons/ai";
 import * as IconFi from "react-icons/fi";
+import * as IconGo from "react-icons/go";
+import { FuncSignOut } from "Components/Auth/SignOut";
 
 import { sidebarToggle } from "States/room-actions";
 
@@ -31,11 +33,11 @@ export class RoomSidebar extends Component {
     return (
       <div className="RoomSidebar">
         <div
-          className={classNames("sidebar", "bg-info", "h-100", {
+          className={classNames("sidebar bg-info h-100 d-flex flex-column", {
             "is-open": isSidebarOpen,
           })}
         >
-          <Nav vertical className="list-unstyled pb-3">
+          <Nav vertical className="list-unstyled flex-column mb-auto">
             <NavItem>
               <NavLink onClick={sidebarToggle}>
                 <div className={classNames(tagClass)}>
@@ -66,6 +68,28 @@ export class RoomSidebar extends Component {
                     <IconFi.FiUmbrella />
                   </Col>
                   <Col hidden={!isSidebarOpen}>Wish</Col>
+                </div>
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <Nav vertical className="list-unstyled flex-column">
+            <NavItem>
+              <NavLink tag={Link} to={`/room`}>
+                <div className={classNames(tagClass)}>
+                  <Col>
+                    <IconGo.GoSignOut />
+                  </Col>
+                  <Col hidden={!isSidebarOpen}>Leave Room</Col>
+                </div>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink onClick={FuncSignOut}>
+                <div className={classNames(tagClass)}>
+                  <Col>
+                    <IconFi.FiLogOut />
+                  </Col>
+                  <Col hidden={!isSidebarOpen}>SignOut</Col>
                 </div>
               </NavLink>
             </NavItem>

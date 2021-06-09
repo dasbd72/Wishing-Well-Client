@@ -2,21 +2,71 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Auth } from "aws-amplify";
-import { Authenticator, SignIn } from "aws-amplify-react";
-import { Button } from "reactstrap";
-import { AvForm, AvField } from "availity-reactstrap-validation";
+import {
+  AmplifyAuthenticator,
+  AmplifySignUp,
+  AmplifySignIn,
+} from "@aws-amplify/ui-react";
+// import { Authenticator, SignIn } from "aws-amplify-react";
+// import { Button } from "reactstrap";
+// import { AvForm, AvField } from "availity-reactstrap-validation";
 
-import { setUser } from "States/session-actions";
+import { setUser, setErrSignIn } from "States/session-actions";
 
 export class CustomSignIn extends Component {
   static propTypes = {
     prop: PropTypes,
   };
-
+  handleAuthStateChange = (state) => {
+    console.log(state);
+    if (state === "signedin" || state === "signedout") {
+      Auth.currentAuthenticatedUser().then((user) => {
+        this.props.setUser(user);
+      });
+    }
+  };
   render() {
     return (
       <React.Fragment>
-        <Authenticator hide={[SignIn]}>
+        <AmplifyAuthenticator
+          federated={{
+            googleClientId: this.props.googleClientId,
+          }}
+          handleAuthStateChange={this.handleAuthStateChange}
+          style={{ "--container-height": "auto" }}
+        >
+          <AmplifySignUp
+            slot="sign-up"
+            formFields={[
+              {
+                type: "username",
+                label: "Username",
+                placeholder: "Username",
+                inputProps: { required: true },
+              },
+              {
+                type: "email",
+                label: "Email",
+                placeholder: "example@email.com",
+                inputProps: { required: true, autocomplete: "email" },
+              },
+              {
+                type: "password",
+                label: "Password",
+                placeholder: "Passwd1223",
+                inputProps: { required: true, autocomplete: "new-password" },
+              },
+            ]}
+          ></AmplifySignUp>
+          <AmplifySignIn
+            slot="sign-in"
+            usernameAlias="email"
+            federated={{
+              googleClientId: this.props.googleClientId,
+            }}
+          />
+        </AmplifyAuthenticator>
+        {/* <Authenticator hide={[SignIn]}>
           <AvForm onValidSubmit={this.signIn}>
             <AvField
               name="email"
@@ -55,7 +105,7 @@ export class CustomSignIn extends Component {
             />
             <Button id="submit">Submit</Button>
           </AvForm>
-        </Authenticator>
+        </Authenticator> */}
       </React.Fragment>
     );
   }
@@ -63,14 +113,20 @@ export class CustomSignIn extends Component {
   signIn = (event, values) => {
     Auth.signIn(values.email, values.password)
       .then((user) => this.props.setUser(user))
-      .catch((err) => {});
+      .catch((err) => {
+        this.props.setErrSignIn(err.message);
+      });
   };
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  session: state.session,
+  ...state.federated,
+});
 
 const mapDispatchToProps = {
   setUser,
+  setErrSignIn,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomSignIn);

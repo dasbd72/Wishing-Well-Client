@@ -6,6 +6,11 @@ import { Auth } from "aws-amplify";
 
 import { setSignOut } from "States/session-actions";
 
+export const FuncSignOut = () => {
+  Auth.signOut();
+  this.props.setSignOut();
+};
+
 export class CustomSignOut extends Component {
   static propTypes = {
     prop: PropTypes,
@@ -13,16 +18,11 @@ export class CustomSignOut extends Component {
 
   render() {
     return (
-      <Button light outline sm border="0" onClick={this.signOut}>
+      <Button light outline sm border="0" onClick={FuncSignOut}>
         Sign Out
       </Button>
     );
   }
-
-  signOut = () => {
-    Auth.signOut();
-    this.props.setSignOut();
-  };
 }
 
 const mapStateToProps = (state) => ({});

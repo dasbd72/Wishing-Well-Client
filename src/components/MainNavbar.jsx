@@ -42,16 +42,20 @@ export class MainNavbar extends Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.props.toggleOpen} />
           <Collapse isOpen={!this.props.isOpen} navbar>
-            <Nav className="me-auto">
+            <Nav navbar className="me-auto">
               <NavItem>
                 <NavLink tag={Link} to="/room">
                   Room
                 </NavLink>
               </NavItem>
             </Nav>
-            <Nav>
+            <Nav navbar>
               {this.props.logged && (
-                <NavItem>Hello, {this.props.userName}</NavItem>
+                <NavItem>
+                  <NavLink style={{ fontSize: "0.8em" }} className="my-auto">
+                    Hello, {this.props.userName}
+                  </NavLink>
+                </NavItem>
               )}
               {this.props.logged && (
                 <NavItem>

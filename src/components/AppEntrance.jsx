@@ -22,11 +22,11 @@ export class AppEntrance extends Component {
         <MainNavbar fixedTop={false} />
         <Container fluid>
           <div
-            className="d-flex row align-items-center justify-content-center"
+            className="d-flex row align-items-center justify-content-center "
             style={{ height: `calc(100vh - ${this.props.navHeight}px)` }}
           >
-            <div className="col-5 display-1">
-              <DiJqueryUiLogo />
+            <div className="col-5 d-flex justify-content-center">
+              <DiJqueryUiLogo size={240} />
             </div>
             <div className="col-5">
               <SignIn />

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "wishingwellclient005e11d3_identitypool_005e11d3",
+    "identityPoolName": "wishingwellclientf4026d89_identitypool_f4026d89",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "wishin005e11d3",
-    "userPoolName": "wishingwellclient005e11d3_userpool_005e11d3",
+    "resourceNameTruncated": "wishinf4026d89",
+    "userPoolName": "wishingwellclientf4026d89_userpool_f4026d89",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -14,13 +14,9 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": true,
+    "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
-    "passwordPolicyCharacters": [
-        "Requires Lowercase",
-        "Requires Uppercase",
-        "Requires Numbers"
-    ],
+    "passwordPolicyCharacters": [],
     "requiredAttributes": [
         "email"
     ],
@@ -32,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "wishin005e11d3_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "wishinf4026d89_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "005e11d3",
-    "resourceName": "wishingwellclient005e11d3",
+    "sharedId": "f4026d89",
+    "resourceName": "wishingwellclientf4026d89",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -50,21 +46,24 @@
         ]
     },
     "useDefault": "manual",
+    "hostedUI": false,
+    "usernameAttributes": [
+        "email"
+    ],
+    "triggers": "{}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "breakCircularDependency": true,
+    "permissions": [],
     "dependsOn": [],
     "thirdPartyAuth": true,
     "authProviders": [
         "accounts.google.com"
     ],
     "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": "{}",
-    "hostedUI": false,
-    "parentStack": {
-        "Ref": "AWS::StackId"
-    },
-    "breakCircularDependency": true,
-    "permissions": []
+    "adminQueries": false
 }
