@@ -1,6 +1,6 @@
 {
   "auth": {
-    "wishingwellclient005e11d3": {
+    "wishingwellclientf4026d89": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

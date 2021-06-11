@@ -11,6 +11,7 @@
   "author": "Team08",
   "license": "MIT",
   "dependencies": {
+    "@aws-amplify/ui-react": "^1.2.1",
     "@babel/polyfill": "^7.12.1",
     "@types/react-transition-group": "^4.4.1",
     "availity-reactstrap-validation": "^2.7.1",
