@@ -17,7 +17,6 @@ export class TaskItem extends Component {
   }
   render() {
     const { id, text, points, accepted, deadline } = this.props;
-    console.log(deadline);
     return (
       <div className="TaskItem d-flex flex-row justify-content-center">
         <div className="flex-grow-1 p-2"> {text} </div>

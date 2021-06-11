@@ -39,7 +39,6 @@ class ParentPage extends Component {
 
   render() {
     const { match } = this.props;
-    console.log(match.url);
     return (
       <div className="ParentPage d-flex">
         <ParentSidebar />

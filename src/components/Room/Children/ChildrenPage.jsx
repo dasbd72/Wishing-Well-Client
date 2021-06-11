@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import RoomSidebar from "Components/Room/RoomSidebar";
+import * as IconAi from "react-icons/ai";
+import * as IconFi from "react-icons/fi";
+import * as IconGo from "react-icons/go";
+import { FuncSignOut } from "Components/Auth/SignOut";
+
+import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
+import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
@@ -17,11 +23,33 @@ class ChildrenPage extends Component {
     super(props);
   }
   render() {
-    console.log(this.props);
     const { match } = this.props;
     return (
       <div className="ChildrenPage d-flex">
-        <RoomSidebar />
+        <SidebarContainer>
+          <SidebarItem
+            icon={<IconAi.AiOutlineHome />}
+            destination={`${match.url}`}
+            label="Menu"
+          />
+          <SidebarItem
+            icon={<IconAi.AiOutlineStar />}
+            destination={`${match.url}/wish`}
+            label="Wish"
+          />
+          <SidebarItem
+            icon={<IconGo.GoSignOut />}
+            destination="/room"
+            label="Leave"
+            bottom
+          />
+          <SidebarItem
+            icon={<IconFi.FiLogOut />}
+            clickFunc={FuncSignOut}
+            label="SignOut"
+            bottom
+          />
+        </SidebarContainer>
         <RoomUserDisplay />
         <Switch>
           <Route exact path={`${match.url}/`}>

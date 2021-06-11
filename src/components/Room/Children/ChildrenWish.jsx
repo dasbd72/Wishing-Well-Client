@@ -20,6 +20,7 @@ export class ChildrenWish extends Component {
   };
 
   render() {
+    console.log(String(this.props.children));
     return (
       <Container className="ChildrenWish d-flex align-items-center justify-content-center ">
         <Form className="font-monospace">

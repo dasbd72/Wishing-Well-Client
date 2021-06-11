@@ -18,7 +18,6 @@ export class CustomSignIn extends Component {
     prop: PropTypes,
   };
   handleAuthStateChange = (state) => {
-    console.log(state);
     if (state === "signedin" || state === "signedout") {
       Auth.currentAuthenticatedUser().then((user) => {
         this.props.setUser(user);

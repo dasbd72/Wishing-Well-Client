@@ -26,7 +26,6 @@ export class ParentSidebar extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { isSidebarOpen, sidebarToggle, match } = this.props;
     const tagClass =
       "d-flex flex-row align-items-center justify-content-between";
