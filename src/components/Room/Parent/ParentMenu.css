@@ -1,0 +1,26 @@
+.ParentMenu {
+  height: 100%;
+  width: 100%;
+}
+
+.UserDisplay {
+  border-color: black;
+  border: solid 0.1rem;
+  height: 100%;
+  background-color: white;;
+}
+
+.TaskForm {
+  justify-content: center;
+  align-items: center; 
+  margin: auto;
+  height: 100%;
+}
+
+.ClickToCreate {
+  user-select: none;
+}
+
+.ClickToCreate:hover {
+  cursor: pointer;
+}

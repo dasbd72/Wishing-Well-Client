@@ -15,19 +15,18 @@ import classNames from "classnames";
 import * as IconAi from "react-icons/ai";
 import * as IconFi from "react-icons/fi";
 import * as IconGo from "react-icons/go";
-import { FuncSignOut } from "Components/Auth/SignOut";
 
 import { sidebarToggle } from "States/room-actions";
 
-import "./RoomSidebar.css";
+import "./ParentSidebar.css";
 
-export class RoomSidebar extends Component {
+export class ParentSidebar extends Component {
   static propTypes = {
     prop: PropTypes,
   };
 
   render() {
-    console.log(this.props.match);
+    console.log(this.props);
     const { isSidebarOpen, sidebarToggle, match } = this.props;
     const tagClass =
       "d-flex flex-row align-items-center justify-content-between";
@@ -63,12 +62,22 @@ export class RoomSidebar extends Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={`${match.url}/wish`}>
+              <NavLink tag={Link} to={`${match.url}/task`}>
                 <div className={classNames(tagClass)}>
                   <Col>
                     <IconAi.AiOutlineStar />
                   </Col>
-                  <Col hidden={!isSidebarOpen}>Wish</Col>
+                  <Col hidden={!isSidebarOpen}>Task</Col>
+                </div>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to={`${match.url}/request`}>
+                <div className={classNames(tagClass)}>
+                  <Col>
+                    <IconAi.AiOutlineContainer />
+                  </Col>
+                  <Col hidden={!isSidebarOpen}>Request</Col>
                 </div>
               </NavLink>
             </NavItem>
@@ -84,7 +93,7 @@ export class RoomSidebar extends Component {
                 </div>
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink onClick={FuncSignOut}>
                 <div className={classNames(tagClass)}>
                   <Col>
@@ -93,7 +102,7 @@ export class RoomSidebar extends Component {
                   <Col hidden={!isSidebarOpen}>SignOut</Col>
                 </div>
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </div>
       </div>
@@ -112,6 +121,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(RoomSidebar));
-
-// https://codesandbox.io/s/5ku6t?file=/src/components/sidebar/SideBar.js
+)(withRouter(ParentSidebar));

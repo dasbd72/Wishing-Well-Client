@@ -9,6 +9,7 @@ import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
 
 import "./ChildrenPage.css";
+import { ListGroupItemText } from "reactstrap";
 
 class ChildrenPage extends Component {
   static propTypes = {};
@@ -16,6 +17,7 @@ class ChildrenPage extends Component {
     super(props);
   }
   render() {
+    console.log(this.props);
     const { match } = this.props;
     return (
       <div className="ChildrenPage d-flex">

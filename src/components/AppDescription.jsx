@@ -16,7 +16,7 @@ export class AppDescription extends Component {
     return (
       <div className="AppDescription bg-dark text-light text-center d-flex flex-row align-items-center justify-content-center">
         <MainNavbar />
-        <div className="col fs-1">Welcome To Wishing Well.</div>
+        <div className="col fs-1"><h1>Welcome To Wishing Well.</h1></div>
       </div>
     );
   }

@@ -1,7 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+// import { BrowserRouter as Router, Route, Link, withRouter, Switch } from "react-router-dom";
+// import {
+//   Collapse,
+//   Navbar,
+//   NavbarToggler,
+//   NavbarBrand,
+//   Nav,
+//   NavItem,
+//   NavLink,
+//   Input,
+//   Button,
+// } from "reactstrap";
 import { connect } from "react-redux";
+// <<<<<<< HEAD
+// <<<<<<< HEAD
+import { AvForm, AvField } from "availity-reactstrap-validation";
+
+// =======
+// =======
 import { Route, Link, Switch, withRouter } from "react-router-dom";
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94
 import {
   Button,
   Col,
@@ -15,7 +34,13 @@ import {
   CardText,
 } from "reactstrap";
 
-import ChildrenPage from "Components/Room/Children/ChildrenPage";
+// <<<<<<< HEAD
+import ParentPage from "Components/Room/Parent/ParentPage.jsx";
+import ChildrenPage from "Components/Room/Children/ChildrenPage.jsx";
+// >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
+// =======
+// import ChildrenPage from "Components/Room/Children/ChildrenPage";
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94
 
 import "./RoomEntrance.css";
 
@@ -28,6 +53,23 @@ class RoomEntrance extends React.Component {
   constructor(props) {
     super(props);
   }
+// <<<<<<< HEAD
+
+//   render() {
+//     return (
+//       <Router>
+//         <div className="RoomEntrance">
+//           <Navbar>
+//             <Nav>
+//               <NavLink tag={Link} to="/room/parent">
+//                 Parent
+//               </NavLink>
+//             </Nav>
+//           </Navbar>
+//         </div>
+//         <Route exact path="/room/parent" render={() => <MasterRoom/>} />
+//       </Router>
+// =======
   render() {
     const { match } = this.props;
     return (
@@ -50,7 +92,9 @@ class RoomEntrance extends React.Component {
                 <CardBody>
                   <CardTitle>Room A</CardTitle>
                   <CardText>This is the room.</CardText>
-                  <Button>Parent</Button>
+                  <Button tag={Link} to={`${match.url}/parent`}>
+                    Parent
+                  </Button>
                 </CardBody>
               </Card>
             </div>
@@ -83,13 +127,24 @@ class RoomEntrance extends React.Component {
         <Route path={`${match.url}/children`}>
           <ChildrenPage />
         </Route>
+        <Route path={`${match.url}/parent`}>
+          <ParentPage />
+        </Route>
       </Switch>
+// >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   ...state.session,
+// <<<<<<< HEAD
+// // <<<<<<< HEAD
+// // }))(RoomEntrance);
+// // =======
+// }))(withRouter(RoomEntrance));
+// // >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
+// =======
 });
 
 const mapDispatchToProps = {};
@@ -98,3 +153,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(RoomEntrance));
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94
