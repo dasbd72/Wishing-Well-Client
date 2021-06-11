@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Auth from "@aws-amplify/auth";
+import { Auth } from "aws-amplify";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 
@@ -79,6 +79,11 @@ class SignInWithGoogle extends React.Component {
   }
 }
 
-export default connect((state) => ({
+const mapStateToProps = (state) => ({
   ...state.federated,
-}))(SignInWithGoogle);
+  federated: state.federated,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInWithGoogle);

@@ -29,40 +29,42 @@ export default class CreateTask extends React.Component {
     super(props);
   }
 
+  handleClick = () => {
+    this.props.toggle();
+   };
+
   render() {
     return (
-      <div className="CreateTask">
-        <div className="CreateTaskForm">
-          <Form>
-            <Label>Create Task</Label>
-            <FormGroup className="TaskForm row">
-              <Label for="tasktype">Type</Label>
-                <ButtonGroup className="col-3" size="sm">
-                  <Button>Normal</Button>
-                  <Button>Forced</Button>
-                </ButtonGroup>
-            </FormGroup>
-            <FormGroup className="TaskForm">
-              <Label for="taskname">Task Name</Label>
-              <Input/>
-            </FormGroup>
-            <FormGroup>
-              <Label for="taskdeadline">Dead Line</Label>
-              <Input/>
-            </FormGroup>
-            <FormGroup className="TaskForm">
-              <Label for="taskpoints">Points</Label>
-              <Input/>
-            </FormGroup>
-            <FormGroup className="TaskForm">
-              <Label for="tasktarget">Target</Label>
-              <Input/>
-            </FormGroup>
-            <div className="CreateButton">
-              <Button>Create</Button>
-            </div>
-          </Form>
-        </div>
+      <div className="CreateTaskForm">
+        <Form>
+        <span className="close" onClick={this.handleClick}>&times;</span>
+          <FormGroup className="TaskForm">
+            <Label for="tasktype">Type</Label>
+              <ButtonGroup className="col-3" size="sm">
+                <Button>Normal</Button>
+                <Button>Forced</Button>
+              </ButtonGroup>
+          </FormGroup>
+          <FormGroup className="TaskForm">
+            <Label for="taskname">Task Name</Label>
+            <Input/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="taskdeadline">Dead Line</Label>
+            <Input/>
+          </FormGroup>
+          <FormGroup className="TaskForm">
+            <Label for="taskpoints">Points</Label>
+            <Input/>
+          </FormGroup>
+          <FormGroup className="TaskForm">
+            <Label for="tasktarget">Target</Label>
+            <Input/>
+          </FormGroup>
+          <div className="CreateButton">
+            <Button>Create</Button>
+          </div>
+        </Form>
       </div>
     );
   }

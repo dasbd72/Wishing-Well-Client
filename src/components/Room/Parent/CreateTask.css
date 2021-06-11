@@ -1,13 +1,16 @@
-.CreateTask {
-  height: 100%;
+.CreateTaskForm {
+  position: fixed;
+  margin: auto;
+  border: black solid;
+  padding: 1rem;
+  /* background-color: white;
+  width: 80%;
+  border-radius: 0.5rem; */
 }
 
-.CreateTaskForm {
-  background-color: white;
-  padding: 0.5rem;
-  width: 80%;
-  margin: auto;
-  border-radius: 0.5rem;
+.close {
+  cursor: pointer;
+  float: right;
 }
 
 .CreateButton {

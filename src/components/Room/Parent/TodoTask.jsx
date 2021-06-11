@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import TaskItem from "Components/room/TaskItem.jsx"
-
 import "./TodoTask.css"
 
 export class TodoTask extends Component {
@@ -15,8 +13,6 @@ export class TodoTask extends Component {
       <>
           <h1>TodoTask</h1>
           <div className="TodoTaskForm">
-            <TaskItem/>
-            <TaskItem/>
           </div>
       </>
     )

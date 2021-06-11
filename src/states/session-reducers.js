@@ -3,6 +3,7 @@ const initialState = {
   userId: "",
   userName: "",
   userGroup: "",
+  cognitoUser: null,
 };
 
 const initFederated = {
@@ -10,24 +11,24 @@ const initFederated = {
     "200959026416-psvbb7e09g5e74noktdvdd9sq0js8um1.apps.googleusercontent.com",
 };
 
+import { SWITCH_USER, SIGN_OUT } from "./session-actions";
+
 export const session = (state = initialState, action) => {
   switch (action.type) {
-    case "@SESSION/SET_USER":
+    case SWITCH_USER:
       return {
         ...state,
         userName: action.userName,
         logged: action.logged,
+        cognitoUser: action.cognitoUser,
       };
-    case "@SESSION/SET_LOGGED":
-      return {
-        ...state,
-        logged: action.logged,
-      };
+    case SIGN_OUT:
+      return initialState;
     default:
       return state;
   }
 };
 
-export var federated = (state = initFederated, action) => {
+export const federated = (state = initFederated, action) => {
   return state;
 };

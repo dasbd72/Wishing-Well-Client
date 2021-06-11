@@ -8,27 +8,35 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import { Auth } from "aws-amplify";
 
-import Auth from "@aws-amplify/auth";
-
-import AppDescription from "Components/AppDescription.jsx";
-import AppEntrance from "Components/AppEntrance.jsx";
-import RoomEntrance from "Components/RoomEntrance.jsx";
-import { setUser } from "States/session-actions.js";
+import AppDescription from "Components/AppDescription";
+import AppEntrance from "Components/AppEntrance";
+import RoomEntrance from "Components/RoomEntrance";
+import { setUser } from "States/session-actions";
 
 import "./Main.css";
 
 export class Main extends Component {
   static propTypes = {};
 
-  render() {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
     Auth.currentAuthenticatedUser().then((user) => {
-      console.log(user);
       this.props.setUser(user);
     });
+  }
+
+  render() {
     return (
       <Router>
-        <div className="main">
+        <div
+          className="Main"
+          //style={{ overflow: "hidden" }}
+        >
           <Switch>
             <Route exact path="/">
               <AppDescription />

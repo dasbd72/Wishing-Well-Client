@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Link, withRouter, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link, withRouter, Switch } from "react-router-dom";
 // import {
 //   Collapse,
 //   Navbar,
@@ -14,30 +14,33 @@ import { BrowserRouter as Router, Route, Link, withRouter, Switch } from "react-
 // } from "reactstrap";
 import { connect } from "react-redux";
 // <<<<<<< HEAD
+// <<<<<<< HEAD
 import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // =======
+// =======
+import { Route, Link, Switch, withRouter } from "react-router-dom";
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94
 import {
   Button,
-  Row,
   Col,
   Form,
-  FormText,
   Input,
-  Label,
   FormGroup,
-  InputGroup,
   Card,
   CardBody,
   CardImg,
   CardTitle,
-  CardSubtitle,
   CardText,
 } from "reactstrap";
 
+// <<<<<<< HEAD
 import ParentPage from "Components/Room/Parent/ParentPage.jsx";
 import ChildrenPage from "Components/Room/Children/ChildrenPage.jsx";
 // >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
+// =======
+// import ChildrenPage from "Components/Room/Children/ChildrenPage";
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94
 
 import "./RoomEntrance.css";
 
@@ -68,13 +71,7 @@ class RoomEntrance extends React.Component {
 //       </Router>
 // =======
   render() {
-    const { match, location, history } = this.props;
-    console.log("location => ");
-    console.log(location);
-    console.log("match => ");
-    console.log(match);
-    console.log("history => ");
-    console.log(history);
+    const { match } = this.props;
     return (
       <Switch>
         <Route exact path={`${match.url}/`}>
@@ -139,10 +136,21 @@ class RoomEntrance extends React.Component {
   }
 }
 
-export default connect((state) => ({
+const mapStateToProps = (state) => ({
   ...state.session,
 // <<<<<<< HEAD
-// }))(RoomEntrance);
+// // <<<<<<< HEAD
+// // }))(RoomEntrance);
+// // =======
+// }))(withRouter(RoomEntrance));
+// // >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
 // =======
-}))(withRouter(RoomEntrance));
-// >>>>>>> 2dcdee7a6a6e8dcc2a2e9edf941ae7f3438aef03
+});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(RoomEntrance));
+// >>>>>>> 2ebc7934c5603ecc847500fb3db9086acc18cd94

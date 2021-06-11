@@ -1,11 +1,16 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import PropTypes from 'prop-types'
-
-import TaskItem from "Components/room/TaskItem.jsx"
 
 import "./Request.css"
 
-export default class Request extends React.Component {
+export class Request extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,10 +20,10 @@ export default class Request extends React.Component {
       <div className="Request">
         <h1>New Request</h1>
         <div className="RequestForm">   
-          <TaskItem/>   
-          <TaskItem/>
         </div>
       </div>
     );
   }
 }
+
+export default (withRouter(Request));

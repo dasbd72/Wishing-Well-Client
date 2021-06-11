@@ -1,6 +1,12 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -20,7 +26,7 @@ import ProgressBar from "Components/Room/Parent/ProgressBar.jsx";
 
 import "./Task.css";
 
-export default class Task extends React.Component {
+export class Task extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -46,3 +52,5 @@ export default class Task extends React.Component {
     );
   }
 }
+
+export default (withRouter(Task));

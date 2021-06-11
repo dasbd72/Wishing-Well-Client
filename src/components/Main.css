@@ -1,4 +1,9 @@
-.main {
+body {
+  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+.Main {
   height: 100%;
   height: 100vh;
   width: 100vw;

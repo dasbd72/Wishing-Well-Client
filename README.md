@@ -12,10 +12,8 @@
   - state reduce
 - [react-icons](https://react-icons.github.io/react-icons/)
 
-- availity-reactstrap-validation
-  - Login validate
 - [amplify-js](https://aws-amplify.github.io/amplify-js/api/index.html)
-- [aws-amplify @aws-amplify/ui-react](https://docs.amplify.aws/ui/auth/authenticator/q/framework/react)
+- [aws-amplify aws-amplify-react](https://docs.amplify.aws/ui-legacy/api/connect/q/framework/react)
 - babel-loader
   - understand file
   - PS:presets module false(dont care import/export, cuz require is syncronize)
@@ -33,3 +31,6 @@
   - [webpack.config.js](https://webpack.js.org/configuration/)
 - webpack-cli
 - webpack-dev-server
+- [moment](https://momentjs.com/)
+- popper.js
+  - Tooltip box

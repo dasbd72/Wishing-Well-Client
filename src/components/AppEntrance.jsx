@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getImgPath } from "Utilities/utility.js";
+import { DiJqueryUiLogo } from "react-icons/di";
+import { Container } from "reactstrap";
 
-import LoginForm from "Components/LoginForm.jsx";
-
-import "./AppEntrance.css";
+import SignIn from "Components/Auth/SignIn";
+import MainNavbar from "Components/MainNavbar";
 
 export class AppEntrance extends Component {
   static propTypes = {
     language: PropTypes.string,
+    navHeight: PropTypes.number,
   };
   constructor(props) {
     super(props);
@@ -17,19 +18,21 @@ export class AppEntrance extends Component {
 
   render() {
     return (
-      <div className="AppEntrance container ">
-        <div className="d-md-flex row h-50">
-          <div className="col">
-            <img
-              src={getImgPath("wishing-well-logo")}
-              alt="logo"
-              className="rounded  img-fluid my-auto"
-            />
+      <div className="AppEntrance">
+        <MainNavbar fixedTop={false} />
+        <Container fluid>
+          <div
+            className="d-flex row align-items-center justify-content-center"
+            style={{ height: `calc(100vh - ${this.props.navHeight}px)` }}
+          >
+            <div className="col-5 display-1">
+              <DiJqueryUiLogo />
+            </div>
+            <div className="col-5">
+              <SignIn />
+            </div>
           </div>
-          <div className="col">
-            <LoginForm />
-          </div>
-        </div>
+        </Container>
       </div>
     );
   }
@@ -37,6 +40,7 @@ export class AppEntrance extends Component {
 
 const mapStateToProps = (state) => ({
   ...state.session,
+  navHeight: state.main.navHeight,
 });
 
 const mapDispatchToProps = {};

@@ -1,6 +1,6 @@
 .ParentMenu {
   height: 100%;
-  background-color: rgb(0, 255, 255);
+  width: 100%;
 }
 
 .UserDisplay {
@@ -11,9 +11,16 @@
 }
 
 .TaskForm {
-  /* justify-content: center;  */
+  justify-content: center;
   align-items: center; 
   margin: auto;
   height: 100%;
-  font-size: 1.25rem;
+}
+
+.ClickToCreate {
+  user-select: none;
+}
+
+.ClickToCreate:hover {
+  cursor: pointer;
 }
