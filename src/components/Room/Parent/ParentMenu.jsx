@@ -26,7 +26,7 @@ import "./ParentMenu.css";
 
 export class ParentMenu extends React.Component {
   state = {
-    seen: false
+    seen: false,
   };
 
   constructor(props) {
@@ -35,7 +35,7 @@ export class ParentMenu extends React.Component {
 
   togglePop = () => {
     this.setState({
-      seen: !this.state.seen
+      seen: !this.state.seen,
     });
   };
 
@@ -46,7 +46,11 @@ export class ParentMenu extends React.Component {
           <UserDisplay />
         </div>
         <div className="TaskForm d-flex col-9">
-          <h1><span className="ClickToCreate" onClick={this.togglePop}>Create a New Task</span></h1>
+          <h1>
+            <span className="ClickToCreate" onClick={this.togglePop}>
+              Create a New Task
+            </span>
+          </h1>
           {this.state.seen ? <CreateTask toggle={this.togglePop} /> : null}
         </div>
       </div>
@@ -54,4 +58,4 @@ export class ParentMenu extends React.Component {
   }
 }
 
-export default (withRouter(ParentMenu));
+export default withRouter(ParentMenu);

@@ -38,13 +38,13 @@ class ParentPage extends Component {
   }
 
   render() {
-    const { match } = this.props; 
+    const { match } = this.props;
     console.log(match.url);
     return (
-        <div className="ParentPage d-flex">
-          <ParentSidebar />
-          <Switch>
-            {/* <ul className="ParentNavbar col-1">
+      <div className="ParentPage d-flex">
+        <ParentSidebar />
+        <Switch>
+          {/* <ul className="ParentNavbar col-1">
               <li>
                 <Link to={`${match.url}/`}>Menu</Link>
               </li>
@@ -55,19 +55,19 @@ class ParentPage extends Component {
                 <Link to={`${match.url}/parent/request`}>Request</Link>
               </li>
             </ul> */}
-            <div className="ParentRoom">
-              <Route exact path={`${match.path}/task`}>
-                <Task />
-              </Route>
-              <Route exact path={`${match.path}/request`}>
+          <div className="ParentRoom">
+            <Route exact path={`${match.path}/task`}>
+              <Task />
+            </Route>
+            <Route exact path={`${match.path}/request`}>
               <Request />
-              </Route>
-              <Route exact path={`${match.path}/`}>
-                <ParentMenu />
-              </Route>
-            </div>
-          </Switch>
-        </div>
+            </Route>
+            <Route exact path={`${match.path}/`}>
+              <ParentMenu />
+            </Route>
+          </div>
+        </Switch>
+      </div>
     );
   }
 }

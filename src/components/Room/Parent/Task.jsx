@@ -35,17 +35,17 @@ export class Task extends React.Component {
     return (
       <div className="Task d-flex flex-row">
         <div className="UserDisplay col-3">
-          <UserDisplay/>
+          <UserDisplay />
         </div>
         <div className="col-9">
           <div className="TodoTask">
-            <TodoTask/>
+            <TodoTask />
           </div>
           <div className="RejectedTask">
-            <RejectedTask/>
+            <RejectedTask />
           </div>
           <div className="ProgressBar">
-            <ProgressBar/>
+            <ProgressBar />
           </div>
         </div>
       </div>
@@ -53,4 +53,4 @@ export class Task extends React.Component {
   }
 }
 
-export default (withRouter(Task));
+export default withRouter(Task);

@@ -1,22 +1,19 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import "./TodoTask.css"
+import "./TodoTask.css";
 
 export class TodoTask extends Component {
-  static propTypes = {
-
-  }
+  static propTypes = {};
 
   render() {
     return (
       <>
-          <h1>TodoTask</h1>
-          <div className="TodoTaskForm">
-          </div>
+        <h1>TodoTask</h1>
+        <div className="TodoTaskForm"></div>
       </>
-    )
+    );
   }
 }
 
-export default TodoTask
+export default TodoTask;

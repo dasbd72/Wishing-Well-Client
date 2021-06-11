@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,9 +6,9 @@ import {
   Switch,
   withRouter,
 } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import "./Request.css"
+import "./Request.css";
 
 export class Request extends React.Component {
   constructor(props) {
@@ -19,11 +19,10 @@ export class Request extends React.Component {
     return (
       <div className="Request">
         <h1>New Request</h1>
-        <div className="RequestForm">   
-        </div>
+        <div className="RequestForm"></div>
       </div>
     );
   }
 }
 
-export default (withRouter(Request));
+export default withRouter(Request);

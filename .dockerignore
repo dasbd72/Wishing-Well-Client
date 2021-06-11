@@ -1,8 +1,6 @@
 node_modules
+package-lock.json
 .env
-.vscode
-jsconfig.json
-README.md
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

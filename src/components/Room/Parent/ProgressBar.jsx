@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Progress,
-} from "reactstrap";
+import { Progress } from "reactstrap";
 
 import "./ProgressBar.css";
 

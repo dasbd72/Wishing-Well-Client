@@ -1,5 +1,5 @@
 {
-  "name": "wishing well",
+  "name": "wishing-well",
   "version": "1.0.0",
   "description": "wishing well.",
   "main": "src/server.js",
