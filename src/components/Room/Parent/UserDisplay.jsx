@@ -24,7 +24,6 @@ export default class UserDisplay extends React.Component {
             <img className="Image" src="" alt="Avatar"></img>
           </div>
           <div className="ChildDisplay">
-
           </div>
       </div>
     )

@@ -1,10 +1,11 @@
 .CreateTaskForm {
   position: fixed;
   margin: auto;
-  border: black solid;
   padding: 1rem;
-  /* background-color: white;
-  width: 80%;
+  background-color: white;
+  width: 50%;
+  border: black solid;
+  /*width: 80%;
   border-radius: 0.5rem; */
 }
 
