@@ -7,11 +7,7 @@ import {
   AmplifySignUp,
   AmplifySignIn,
 } from "@aws-amplify/ui-react";
-// import { Authenticator, SignIn } from "aws-amplify-react";
-// import { Button } from "reactstrap";
-// import { AvForm, AvField } from "availity-reactstrap-validation";
-
-import { setUser, setErrSignIn } from "States/session-actions";
+import { setUser } from "States/session-actions";
 
 export class CustomSignIn extends Component {
   static propTypes = {
@@ -66,7 +62,11 @@ export class CustomSignIn extends Component {
           />
         </AmplifyAuthenticator>
         {/* <Authenticator hide={[SignIn]}>
-          <AvForm onValidSubmit={this.signIn}>
+          <AvForm
+            onValidSubmit={(event, values) => {
+              signIn(values.email, values.password);
+            }}
+          >
             <AvField
               name="email"
               label="Email"
@@ -108,14 +108,6 @@ export class CustomSignIn extends Component {
       </React.Fragment>
     );
   }
-
-  signIn = (event, values) => {
-    Auth.signIn(values.email, values.password)
-      .then((user) => this.props.setUser(user))
-      .catch((err) => {
-        this.props.setErrSignIn(err.message);
-      });
-  };
 }
 
 const mapStateToProps = (state) => ({
@@ -125,7 +117,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setUser,
-  setErrSignIn,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomSignIn);

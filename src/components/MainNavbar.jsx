@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import classNames from "classnames";
 
-import AuthSignOut from "Components/Auth/SignOut";
+import { signOut } from "Api/amplify";
 import { toggleOpen, setNavHeight } from "States/main-actions";
 
 import "./MainNavbar.css";
@@ -60,7 +60,7 @@ export class MainNavbar extends Component {
               {this.props.logged && (
                 <NavItem>
                   <NavLink>
-                    <AuthSignOut />
+                    <Button onClick={signOut}>SignOut</Button>
                   </NavLink>
                 </NavItem>
               )}

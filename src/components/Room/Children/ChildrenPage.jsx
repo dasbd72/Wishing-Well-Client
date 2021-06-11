@@ -6,7 +6,8 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import * as IconAi from "react-icons/ai";
 import * as IconFi from "react-icons/fi";
 import * as IconGo from "react-icons/go";
-import { FuncSignOut } from "Components/Auth/SignOut";
+// import { FuncSignOut } from "Components/Auth/SignOut";
+import { signOut } from "Api/amplify";
 
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
@@ -45,7 +46,7 @@ class ChildrenPage extends Component {
           />
           <SidebarItem
             icon={<IconFi.FiLogOut />}
-            clickFunc={FuncSignOut}
+            clickFunc={signOut}
             label="SignOut"
             bottom
           />
