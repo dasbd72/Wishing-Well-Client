@@ -6,7 +6,8 @@
 }
 
 .TaskItem {
-  min-width: 460px;
+  max-width: 500px;
+  width: 460px;
   padding: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 15px;

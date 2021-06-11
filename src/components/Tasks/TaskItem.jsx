@@ -21,7 +21,7 @@ export class TaskItem extends Component {
     return (
       <div className="TaskItem d-flex flex-row justify-content-center">
         <div className="flex-grow-1 p-2"> {text} </div>
-        <div className="p-2"> {points} </div>
+        <div className="p-2"> {points} pt </div>
         <div className="p-2">
           {accepted ? (
             moment(deadline).format("MM/DD").toString()
