@@ -8,7 +8,7 @@ WORKDIR /app
 # Bundle app source
 COPY . /app
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Bind app to the specified port to be mapped by the Docker daemon.
 EXPOSE 8080
