@@ -87,8 +87,8 @@ module.exports = {
   },
   plugins: [htmlPlugin],
   devServer: {
-    // contentBase: distPath,
-    // compress: true,
+    contentBase: distPath,
+    compress: true,
     port: 8080,
     historyApiFallback: true,
   },
