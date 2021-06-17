@@ -23,11 +23,27 @@ export class MainNavbar extends Component {
   static propTypes = {
     fixedTop: PropTypes.bool,
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
   componentDidMount() {
     this.props.setNavHeight(
       document.getElementsByClassName("MainNavbar")[0].clientHeight
     );
   }
+  componentDidUpdate() {
+    this.props.setNavHeight(
+      document.getElementsByClassName("MainNavbar")[0].clientHeight
+    );
+  }
+  toggle = () => {
+    this.setState((state) => ({
+      isOpen: !state.isOpen,
+    }));
+  };
   render() {
     return (
       <div
@@ -40,8 +56,8 @@ export class MainNavbar extends Component {
           <NavbarBrand className="text-info" href="/">
             Wishing-Well-Dev
           </NavbarBrand>
-          <NavbarToggler onClick={this.props.toggleOpen} />
-          <Collapse isOpen={!this.props.isOpen} navbar>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={!this.state.isOpen} navbar>
             <Nav navbar className="me-auto">
               <NavItem>
                 <NavLink tag={Link} to="/room">
@@ -87,7 +103,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  toggleOpen,
   setNavHeight,
 };
 
