@@ -11,9 +11,9 @@
 - react-redux
   - state reduce
 - [react-icons](https://react-icons.github.io/react-icons/)
-
 - [amplify-js](https://aws-amplify.github.io/amplify-js/api/index.html)
-- [aws-amplify aws-amplify-react](https://docs.amplify.aws/ui-legacy/api/connect/q/framework/react)
+- [aws-amplify](https://docs.amplify.aws/ui-legacy/api/connect/q/framework/react)
+- [@aws-amplify/ui](https://docs.amplify.aws/ui/auth/authenticator/q/framework/react#sign-up)
 - babel-loader
   - understand file
   - PS:presets module false(dont care import/export, cuz require is syncronize)

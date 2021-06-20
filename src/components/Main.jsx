@@ -9,7 +9,6 @@ import {
   Switch,
 } from "react-router-dom";
 import { Auth } from "aws-amplify";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 
 import AppDescription from "Components/AppDescription";
 import AppEntrance from "Components/AppEntrance";

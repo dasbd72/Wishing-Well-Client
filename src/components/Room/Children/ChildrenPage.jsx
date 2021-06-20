@@ -54,10 +54,10 @@ class ChildrenPage extends Component {
         </SidebarContainer>
         <RoomUserDisplay />
         <Switch>
-          <Route exact path={`${match.url}/`}>
+          <Route exact path={`${match.path}/`}>
             <ChildrenMenu />
           </Route>
-          <Route path={`${match.url}/wish`}>
+          <Route path={`${match.path}/wish`}>
             <ChildrenWish />
           </Route>
         </Switch>

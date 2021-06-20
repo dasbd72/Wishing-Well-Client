@@ -20,17 +20,16 @@ export class AppEntrance extends Component {
     return (
       <div className="AppEntrance">
         <MainNavbar fixedTop={false} />
-        <Container fluid>
-          <div
-            className="d-flex row align-items-center justify-content-center "
-            style={{ height: `calc(100vh - ${this.props.navHeight}px)` }}
-          >
-            <div className="col-5 d-flex justify-content-center">
-              <DiJqueryUiLogo size={240} />
-            </div>
-            <div className="col-5">
-              <SignIn />
-            </div>
+        <Container
+          fluid
+          className="d-flex row align-items-center justify-content-center "
+          style={{ height: `calc(100vh - ${this.props.navHeight}px)` }}
+        >
+          <div className="col-5 d-flex justify-content-center">
+            <DiJqueryUiLogo size={240} />
+          </div>
+          <div className="col-5">
+            <SignIn />
           </div>
         </Container>
       </div>

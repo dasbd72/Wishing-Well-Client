@@ -28,7 +28,9 @@ export class CustomSignIn extends Component {
             googleClientId: this.props.googleClientId,
           }}
           handleAuthStateChange={this.handleAuthStateChange}
-          style={{ "--container-height": "auto" }}
+          style={{
+            "--container-height": `75vh`,
+          }}
         >
           <AmplifySignUp
             slot="sign-up"
@@ -61,50 +63,6 @@ export class CustomSignIn extends Component {
             }}
           />
         </AmplifyAuthenticator>
-        {/* <Authenticator hide={[SignIn]}>
-          <AvForm
-            onValidSubmit={(event, values) => {
-              signIn(values.email, values.password);
-            }}
-          >
-            <AvField
-              name="email"
-              label="Email"
-              type="text"
-              validate={{
-                required: true,
-                email: true,
-              }}
-            />
-            <AvField
-              name="password"
-              label="Password"
-              type="password"
-              validate={{
-                required: {
-                  value: true,
-                  errorMessage: "Please enter your password",
-                },
-                pattern: {
-                  value: "^[A-Za-z0-9]+$",
-                  errorMessage:
-                    "Your password must be composed only with letter and numbers",
-                },
-                minLength: {
-                  value: 6,
-                  errorMessage:
-                    "Your password must be between 6 and 16 characters",
-                },
-                maxLength: {
-                  value: 16,
-                  errorMessage:
-                    "Your password must be between 6 and 16 characters",
-                },
-              }}
-            />
-            <Button id="submit">Submit</Button>
-          </AvForm>
-        </Authenticator> */}
       </React.Fragment>
     );
   }
@@ -113,6 +71,7 @@ export class CustomSignIn extends Component {
 const mapStateToProps = (state) => ({
   session: state.session,
   ...state.federated,
+  navHeight: state.main.navHeight,
 });
 
 const mapDispatchToProps = {
