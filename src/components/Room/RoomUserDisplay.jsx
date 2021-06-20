@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Clock from "react-live-clock";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
@@ -16,10 +17,11 @@ export class RoomUserDisplay extends Component {
       <div className="RoomUserDisplay">
         <div
           className={classNames(
-            "h-100 d-flex align-items-center justify-content-center"
+            "d-flex d-col align-items-center justify-content-center"
           )}
         >
           <BiUserCircle size={200} className="align-self-start mt-3" />
+          <Clock format="HH:mm:ss dddd" interval={1000} ticking={true} />
         </div>
       </div>
     );

@@ -75,6 +75,7 @@ class RoomEntrance extends React.Component {
     return (
       <Switch>
         <Route exact path={`${match.url}/`}>
+          <div className="RoomEntrance-bg"></div>
           <div className="RoomEntrance d-flex flex-row align-items-center justify-content-center">
             <div className="col-4 d-flex flex-row justify-content-evenly">
               <Card className="col-5">

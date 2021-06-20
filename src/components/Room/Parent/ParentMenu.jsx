@@ -41,18 +41,13 @@ export class ParentMenu extends React.Component {
 
   render() {
     return (
-      <div className="ParentMenu d-flex d-row">
-        <div className="UserDisplay col-3">
-          <UserDisplay />
-        </div>
-        <div className="TaskForm d-flex col-9">
-          <h1>
-            <span className="ClickToCreate" onClick={this.togglePop}>
-              Create a New Task
-            </span>
-          </h1>
-          {this.state.seen ? <CreateTask toggle={this.togglePop} /> : null}
-        </div>
+      <div className="ParentMenu d-flex">
+        <h1>
+          <span className="ClickToCreate" onClick={this.togglePop}>
+            Create a New Task
+          </span>
+        </h1>
+        {this.state.seen ? <CreateTask toggle={this.togglePop} /> : null}
       </div>
     );
   }

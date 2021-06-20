@@ -1,11 +1,11 @@
 .Request {
-  background-color: rgb(0, 255, 255);
   height: 100%;
+  width: 100%;
 }
 
 .RequestForm {
-  /* border: solid black 0.1rem; */
   border-radius: 0.5rem;
+  border: solid black 1px;
   background-color: white;
   width: 60%;
   height: 60%;

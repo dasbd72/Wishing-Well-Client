@@ -36,7 +36,7 @@ export default class SidebarContainer extends Component {
       <div className="SidebarContainer">
         <div
           className={classNames(
-            "sidebar bg-dark text-light h-100 d-flex flex-column",
+            "sidebar bg-light text-light h-100 d-flex flex-column",
             {
               "is-open": this.state.isOpen,
             }
