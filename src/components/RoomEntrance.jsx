@@ -52,7 +52,45 @@ class RoomEntrance extends React.Component {
     console.log(match);
     return (
       <Switch>
+{/* <<<<<<< HEAD
+        <Route exact path={`${match.url}/`}>
+          <div className="RoomEntrance-bg"></div>
+          <div className="RoomEntrance d-flex flex-row align-items-center justify-content-center">
+            <div className="col-4 d-flex flex-row justify-content-evenly">
+              <Card className="col-5">
+                <CardImg top src="" width="100%" alt="Room img" />
+                <CardBody>
+                  <CardTitle>Room A</CardTitle>
+                  <CardText>This is the room.</CardText>
+                  <Button tag={Link} to={`${match.url}/children`}>
+                    Children
+                  </Button>
+                </CardBody>
+              </Card>
+              <Card className="col-5">
+                <CardImg top src="" width="100%" alt="Room img" />
+                <CardBody>
+                  <CardTitle>Room A</CardTitle>
+                  <CardText>This is the room.</CardText>
+                  <Button tag={Link} to={`${match.url}/parent`}>
+                    Parent
+                  </Button>
+                </CardBody>
+              </Card>
+            </div>
+            <div className="col-8">
+              <Form>
+                <FormGroup className="container gy-5" row>
+                  <Col xs="12">
+                    <Input
+                      type="text"
+                      name="roomName"
+                      id="roomName"
+                      placeholder="Create Room Name"
+                      className="py-3"
+======= */}
         <Route exact path={`${match.path}/`}>
+          <div className="RoomEntrance-bg"></div>
           <div className="RoomEntrance">
             <MainNavbar fixedTop={false} />
             <Container
@@ -70,6 +108,7 @@ class RoomEntrance extends React.Component {
                       size={50}
                       className="mx-auto"
                       style={{ margin: 75 }}
+// >>>>>>> 6affa2ffda5cd723e57a11ac36ece42e708bae25
                     />
                     <CardBody>
                       <CardTitle>Create or Join</CardTitle>

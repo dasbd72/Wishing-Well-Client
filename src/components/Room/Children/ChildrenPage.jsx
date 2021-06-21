@@ -47,6 +47,7 @@ class ChildrenPage extends Component {
           <SidebarItem
             icon={<IconFi.FiLogOut />}
             clickFunc={signOut}
+            destination="/"
             label="SignOut"
             bottom
           />

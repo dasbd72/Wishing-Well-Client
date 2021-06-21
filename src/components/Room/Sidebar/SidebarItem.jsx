@@ -27,7 +27,7 @@ export default class SidebarItem extends Component {
     return (
       <NavItem className="SidebarItem">
         {this.props.clickFunc ? (
-          <NavLink onClick={this.props.clickFunc}>{newDiv}</NavLink>
+          <NavLink onClick={this.props.clickFunc} tag={Link} to={this.props.destination}>{newDiv}</NavLink>
         ) : (
           <NavLink tag={Link} to={this.props.destination}>
             {newDiv}

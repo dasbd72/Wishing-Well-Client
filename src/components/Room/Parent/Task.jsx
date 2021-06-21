@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,22 +7,14 @@ import {
   withRouter,
 } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Input,
-  Button,
-} from "reactstrap";
+import { connect } from "react-redux";
+import classNames from "classnames";
+import { Container } from "reactstrap";
+import UUID from "uuid";
+import moment from "moment";
+import { Progress } from "reactstrap";
 
-import UserDisplay from "Components/Room/Parent/UserDisplay.jsx";
-import RejectedTask from "Components/Room/Parent/RejectedTask.jsx";
-import TodoTask from "Components/Room/Parent/TodoTask.jsx";
-import ProgressBar from "Components/Room/Parent/ProgressBar.jsx";
+import TaskGroup from "Components/Tasks/TaskGroup";
 
 import "./Task.css";
 
@@ -32,23 +24,38 @@ export class Task extends React.Component {
   }
 
   render() {
+    var rejected = [
+      {
+        id: "1",
+        text: "Sweep The floor",
+        points: 100,
+        accepted: false,
+        deadline: moment().valueOf(),
+      },
+      {
+        id: "2",
+        text: "Get A+ in Software Studio",
+        points: 200,
+        accepted: false,
+        deadline: moment().valueOf(),
+      },
+    ];
+    var todo = [
+      {
+        id: "3",
+        text: "Say Hello",
+        points: 500,
+        accepted: true,
+        deadline: moment().valueOf(),
+      },
+    ];
     return (
-      <div className="Task d-flex flex-row">
-        <div className="UserDisplay col-3">
-          <UserDisplay />
-        </div>
-        <div className="col-9">
-          <div className="TodoTask">
-            <TodoTask />
-          </div>
-          <div className="RejectedTask">
-            <RejectedTask />
-          </div>
-          <div className="ProgressBar">
-            <ProgressBar />
-          </div>
-        </div>
-      </div>
+      <Container className="Task d-flex align-items-center justify-content-center flex-column">
+        <TaskGroup tasks={rejected} label="Rejected"></TaskGroup>
+        <div className="p-2"></div>
+        <TaskGroup tasks={todo} label="Todo"></TaskGroup>
+        <Progress className="w-100" value="25"></Progress>
+      </Container>
     );
   }
 }
