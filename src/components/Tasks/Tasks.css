@@ -30,3 +30,6 @@
 .TaskItem .form-check-input:hover {
   cursor: pointer;
 }
+.TaskItem .input-group {
+  min-width: 32px;
+}

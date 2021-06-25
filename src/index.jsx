@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 Amplify.configure(config);
 
 window.onload = function () {
+  console.log("index.jsx");
   console.log(store.getState());
   ReactDOM.render(
     <Provider store={store}>

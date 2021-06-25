@@ -21,8 +21,8 @@ export class TaskItem extends Component {
     const { id, title, information, points, accepted, deadline } = this.props;
     return (
       <div className="TaskItem col-md-6 col-12 p-2">
-        <div className="row">
-          <div className="col-9">
+        <div className="d-flex">
+          <div className="">
             <div className="title"> {title} </div>
             <div className="deadline d-flex align-items-center">
               {accepted ? (
@@ -34,15 +34,13 @@ export class TaskItem extends Component {
             </div>
             <div className=""> {points} pt </div>
           </div>
-          <div className="col-3">
-            <div className="ms-auto">
-              {!accepted && (
-                <InputGroup className="d-flex flex-row">
-                  <Input type="checkbox" />
-                  <Input type="checkbox" />
-                </InputGroup>
-              )}
-            </div>
+          <div className="ms-auto">
+            {!accepted && (
+              <InputGroup className="d-flex flex-row">
+                <Input type="checkbox" />
+                <Input type="checkbox" />
+              </InputGroup>
+            )}
           </div>
         </div>
       </div>

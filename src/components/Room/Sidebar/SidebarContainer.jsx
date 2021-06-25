@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Nav } from "reactstrap";
 import classNames from "classnames";
 import * as IconAi from "react-icons/ai";
+import shortid from "shortid";
 
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 
@@ -27,7 +28,10 @@ export default class SidebarContainer extends Component {
     var bottomItems = [];
     React.Children.map(this.props.children, (child) => {
       if (React.isValidElement(child)) {
-        var newChild = React.cloneElement(child, { isOpen: this.state.isOpen });
+        var newChild = React.cloneElement(child, {
+          isOpen: this.state.isOpen,
+          key: shortid.generate(),
+        });
         if (child.props.bottom) bottomItems.push(newChild);
         else upItems.push(newChild);
       }

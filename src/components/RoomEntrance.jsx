@@ -23,7 +23,7 @@ import { FaChild } from "react-icons/fa";
 import { GiOldKing } from "react-icons/gi";
 
 import ParentPage from "Components/Room/Parent/ParentPage";
-import ChildrenPage from "Components/Room/Children/ChildrenPage";
+import ChildrenPage from "Components/Room/Children/Children";
 import MainNavbar from "Components/MainNavbar";
 import Room from "Components/Room/Room";
 import RoomCardItem from "Components/Room/Cards/RoomCardItem";

@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import * as IconAi from "react-icons/ai";
-import * as IconFi from "react-icons/fi";
-import * as IconGo from "react-icons/go";
-import * as IconBi from "react-icons/bi";
+import { AiOutlineHome, AiOutlineStar } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
+import { GoSignOut } from "react-icons/go";
+import { GiCardAceSpades } from "react-icons/gi";
 import { signOut } from "Api/amplify";
 
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
@@ -15,8 +15,9 @@ import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import RoomUserDisplaySM from "Components/Room/RoomUserDisplaySM";
 import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
+import ChildrenCard from "Components/Room/Children/ChildrenCard";
 
-import "./ChildrenPage.css";
+import "./Children.css";
 
 class ChildrenPage extends Component {
   static propTypes = {};
@@ -29,23 +30,28 @@ class ChildrenPage extends Component {
       <div className="ChildrenPage d-flex">
         <SidebarContainer>
           <SidebarItem
-            icon={<IconAi.AiOutlineHome />}
+            icon={<AiOutlineHome />}
             destination={`${match.url}`}
             label="Menu"
           />
           <SidebarItem
-            icon={<IconAi.AiOutlineStar />}
+            icon={<AiOutlineStar />}
             destination={`${match.url}/wish`}
             label="Wish"
           />
           <SidebarItem
-            icon={<IconGo.GoSignOut />}
+            icon={<GiCardAceSpades />}
+            destination={`${match.url}/card`}
+            label="Card"
+          />
+          <SidebarItem
+            icon={<GoSignOut />}
             destination="/room"
             label="Leave"
             bottom
           />
           <SidebarItem
-            icon={<IconFi.FiLogOut />}
+            icon={<FiLogOut />}
             clickFunc={signOut}
             destination="/"
             label="SignOut"
@@ -59,6 +65,9 @@ class ChildrenPage extends Component {
           </Route>
           <Route path={`${match.path}/wish`}>
             <ChildrenWish />
+          </Route>
+          <Route path={`${match.path}/card`}>
+            <ChildrenCard />
           </Route>
         </Switch>
       </div>
