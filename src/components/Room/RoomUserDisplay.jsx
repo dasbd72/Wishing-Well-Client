@@ -9,7 +9,7 @@ import "./RoomUserDisplay.css";
 
 export class RoomUserDisplay extends Component {
   static propTypes = {
-    prop: PropTypes,
+    size: PropTypes.string,
   };
 
   render() {
@@ -17,10 +17,10 @@ export class RoomUserDisplay extends Component {
       <div className="RoomUserDisplay">
         <div
           className={classNames(
-            "d-flex d-col align-items-center justify-content-center"
+            "d-flex flex-column align-items-center justify-content-center"
           )}
         >
-          <BiUserCircle size={200} className="align-self-start mt-3" />
+          <BiUserCircle size={200} className="mt-3" />
           <Clock format="HH:mm:ss dddd" interval={1000} ticking={true} />
         </div>
       </div>

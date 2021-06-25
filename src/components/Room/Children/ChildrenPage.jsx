@@ -6,17 +6,17 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import * as IconAi from "react-icons/ai";
 import * as IconFi from "react-icons/fi";
 import * as IconGo from "react-icons/go";
-// import { FuncSignOut } from "Components/Auth/SignOut";
+import * as IconBi from "react-icons/bi";
 import { signOut } from "Api/amplify";
 
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import RoomUserDisplay from "Components/Room/RoomUserDisplay";
+import RoomUserDisplaySM from "Components/Room/RoomUserDisplaySM";
 import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
 
 import "./ChildrenPage.css";
-import { ListGroupItemText } from "reactstrap";
 
 class ChildrenPage extends Component {
   static propTypes = {};
@@ -53,6 +53,7 @@ class ChildrenPage extends Component {
           />
         </SidebarContainer>
         <RoomUserDisplay />
+        {/* <RoomUserDisplaySM /> */}
         <Switch>
           <Route exact path={`${match.path}/`}>
             <ChildrenMenu />

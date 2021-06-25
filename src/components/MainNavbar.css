@@ -1,3 +1,11 @@
 .MainNavbar {
   max-width: 100%;
 }
+.MainNavbar .login {
+  position: fixed;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.322);
+  /* background-position: ; */
+}

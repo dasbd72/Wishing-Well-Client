@@ -10,9 +10,7 @@ export class Room extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  ...state.session,
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 

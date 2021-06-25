@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const distPath = path.resolve(__dirname, "dist");
 const srcPath = path.resolve(__dirname, "src");
@@ -8,6 +9,10 @@ const srcPath = path.resolve(__dirname, "src");
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./index.html",
   filename: "./index.html",
+});
+const miniCssPlugin = new MiniCssExtractPlugin({
+  filename: "[name].css",
+  chunkFilename: "[id].css",
 });
 
 module.exports = {
@@ -69,7 +74,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
+          // "style-loader",
           {
             loader: "css-loader",
             options: {
@@ -85,12 +91,12 @@ module.exports = {
       chunks: "all",
     },
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlPlugin, miniCssPlugin],
   devServer: {
     contentBase: distPath,
     compress: true,
     port: 8080,
     historyApiFallback: true,
   },
-  devtool: "eval",
+  // devtool: "eval",
 };

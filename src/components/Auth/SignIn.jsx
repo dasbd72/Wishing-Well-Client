@@ -11,25 +11,30 @@ import { setUser } from "States/session-actions";
 
 export class CustomSignIn extends Component {
   static propTypes = {
-    prop: PropTypes,
+    onStateChange: PropTypes.func,
   };
   handleAuthStateChange = (state) => {
     if (state === "signedin" || state === "signedout") {
-      Auth.currentAuthenticatedUser().then((user) => {
-        this.props.setUser(user);
-      });
+      Auth.currentAuthenticatedUser()
+        .then((user) => {
+          this.props.setUser(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      if (state === "signedin" && this.props.onSignedIn)
+        this.props.onSignedIn();
     }
   };
   render() {
     return (
       <React.Fragment>
         <AmplifyAuthenticator
-          federated={{
-            googleClientId: this.props.googleClientId,
-          }}
+          federated={{ googleClientId: this.props.googleClientId }}
           handleAuthStateChange={this.handleAuthStateChange}
           style={{
-            "--container-height": `75vh`,
+            "--container-height": `fit-content`,
+            "--container-width": `fit-content`,
           }}
         >
           <AmplifySignUp

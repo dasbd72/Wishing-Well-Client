@@ -1,27 +1,28 @@
+import {
+  SET_USER,
+  SIGN_OUT,
+  ERR_SIGN_IN,
+  SET_AUTH_STATE,
+} from "./session-actions";
+
+/*-------------------------------------------------------------------------------*/
+
 const initialState = {
-  logged: false,
-  userId: "",
+  signedin: false,
+  user: null,
   userName: "",
-  userGroup: "",
-  cognitoUser: null,
-  errSignIn: "",
+  email: "",
 };
-
-const initFederated = {
-  googleClientId:
-    "200959026416-psvbb7e09g5e74noktdvdd9sq0js8um1.apps.googleusercontent.com",
-};
-
-import { SET_USER, SIGN_OUT, ERR_SIGN_IN } from "./session-actions";
 
 export const session = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return {
         ...state,
+        user: action.user,
         userName: action.userName,
-        logged: action.logged,
-        cognitoUser: action.cognitoUser,
+        signedin: action.signedin,
+        email: action.email,
       };
     case SIGN_OUT:
       return initialState;
@@ -33,6 +34,13 @@ export const session = (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+/*-------------------------------------------------------------------------------*/
+
+const initFederated = {
+  googleClientId:
+    "200959026416-psvbb7e09g5e74noktdvdd9sq0js8um1.apps.googleusercontent.com",
 };
 
 export const federated = (state = initFederated, action) => {

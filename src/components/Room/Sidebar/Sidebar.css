@@ -2,6 +2,7 @@
   height: 100%;
   border-right: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: auto;
+  z-index: 500;
 }
 .SidebarContainer .sidebar {
   min-width: 2rem;
