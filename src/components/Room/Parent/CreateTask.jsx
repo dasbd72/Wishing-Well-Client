@@ -1,25 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
   Input,
   Form,
   FormGroup,
   Label,
   Button,
   ButtonGroup,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
 } from "reactstrap";
 
 import "./CreateTask.css";
@@ -27,6 +15,11 @@ import "./CreateTask.css";
 export default class CreateTask extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   taskName: "",
+    //   deadLine: "",
+    //   points: 0,
+    // }
   }
 
   handleClick = () => {
@@ -71,3 +64,9 @@ export default class CreateTask extends React.Component {
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//   // taskForm: state.taskForm
+// });
+
+// export default connect(mapStateToProps)(CreateTask);
