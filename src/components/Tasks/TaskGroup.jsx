@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { List } from "reactstrap";
+import { VscFoldDown, VscFoldUp } from "react-icons/vsc";
 
 import TaskItem from "Components/Tasks/TaskItem";
 
@@ -27,13 +27,36 @@ export class TaskGroup extends Component {
   };
 
   render() {
-    var listItems = this.props.tasks.map((item) => <TaskItem {...item} />);
-    return (
-      <div type="unstyled" className="TaskGroup container">
-        <div className="pt-2 label">{this.props.label} : </div>
-        <div className="row g-2">{listItems}</div>
-      </div>
-    );
+    if (this.props.tasks) {
+      var listItems = [];
+      var len =
+        this.props.tasks.length < 6 || this.state.isOpen
+          ? this.props.tasks.length
+          : 6;
+      for (let i = 0; i < len; i++) {
+        listItems.push(<TaskItem {...this.props.tasks[i]} key={i} />);
+      }
+      return (
+        <div type="unstyled" className="TaskGroup container">
+          <div className="pt-2 label">{this.props.label} : </div>
+          <div className="row g-2 list">{listItems}</div>
+          <div className="fold" onClick={this.toggle}>
+            {this.state.isOpen ? (
+              <div>
+                <VscFoldUp /> Show less.
+              </div>
+            ) : (
+              len < this.props.tasks.length && (
+                <div>
+                  <VscFoldDown /> Show more.
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      );
+    }
+    return <div></div>;
   }
 }
 

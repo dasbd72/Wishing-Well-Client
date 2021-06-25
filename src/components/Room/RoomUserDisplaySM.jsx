@@ -8,7 +8,7 @@ import "./RoomUserDisplay.css";
 
 export class RoomUserDisplaySM extends Component {
   static propTypes = {
-    prop: PropTypes,
+    // prop: PropTypes,
   };
 
   constructor(props) {

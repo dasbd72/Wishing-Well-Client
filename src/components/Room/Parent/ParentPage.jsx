@@ -21,7 +21,7 @@ import "./ParentPage.css";
 
 export class ParentPage extends Component {
   static propTypes = {
-    prop: PropTypes,
+    // prop: PropTypes,
   };
 
   render() {

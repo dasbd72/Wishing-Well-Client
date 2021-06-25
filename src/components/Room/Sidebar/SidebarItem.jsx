@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default class SidebarItem extends Component {
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool,
     label: PropTypes.string,
     icon: PropTypes.object,
     clickFunc: PropTypes.func,
@@ -18,22 +18,19 @@ export default class SidebarItem extends Component {
   }
 
   render() {
-    var newDiv = (
-      <div className="d-flex flex-row align-items-center justify-content-between">
-        <Col>{this.props.icon}</Col>
-        <Col hidden={!this.props.isOpen}>{this.props.label}</Col>
-      </div>
+    var newProps = {};
+    if (this.props.clickFunc) newProps["onClick"] = this.props.clickFunc;
+    if (this.props.destination)
+      (newProps["tag"] = Link), (newProps["to"] = this.props.destination);
+    var newDiv = React.cloneElement(
+      <NavLink>
+        <div className="d-flex flex-row align-items-center justify-content-between">
+          <Col>{this.props.icon}</Col>
+          <Col hidden={!this.props.isOpen}>{this.props.label}</Col>
+        </div>
+      </NavLink>,
+      newProps
     );
-    return (
-      <NavItem className="SidebarItem">
-        {this.props.clickFunc ? (
-          <NavLink onClick={this.props.clickFunc} tag={Link} to={this.props.destination}>{newDiv}</NavLink>
-        ) : (
-          <NavLink tag={Link} to={this.props.destination}>
-            {newDiv}
-          </NavLink>
-        )}
-      </NavItem>
-    );
+    return <NavItem className="SidebarItem">{newDiv}</NavItem>;
   }
 }

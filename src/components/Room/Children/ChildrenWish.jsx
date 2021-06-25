@@ -16,7 +16,7 @@ import {
 
 export class ChildrenWish extends Component {
   static propTypes = {
-    prop: PropTypes,
+    // prop: PropTypes,
   };
 
   render() {

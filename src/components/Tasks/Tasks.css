@@ -6,11 +6,16 @@
 .TaskGroup > .label {
   font-size: 1.5em;
 }
+.TaskGroup > .fold {
+  font-size: 0.75em;
+  color: grey;
+  cursor: pointer;
+}
 
 .TaskItem {
   /* max-width: 500px; */
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  /* border-radius: 15px; */
+  /* border: 1px solid rgba(0, 0, 0, 0.15); */
+  border-radius: 2px;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
 }
 .TaskItem:hover {

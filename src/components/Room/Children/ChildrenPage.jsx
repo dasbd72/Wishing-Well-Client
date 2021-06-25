@@ -68,7 +68,7 @@ class ChildrenPage extends Component {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch, ownProps) => {};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,

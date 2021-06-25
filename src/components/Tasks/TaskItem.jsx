@@ -20,22 +20,30 @@ export class TaskItem extends Component {
   render() {
     const { id, title, information, points, accepted, deadline } = this.props;
     return (
-      <div className="TaskItem col-5 p-2">
-        <div className="title"> {title} </div>
-        <div className="deadline">
-          {accepted ? <IconsBi.BiCalendarAlt /> : <IconsBi.BiCalendarPlus />}
-          <span>{moment(deadline).format("MM/DD").toString()}</span>
-        </div>
-        <div className=""> {points} pt </div>
-        <div className="">
-          {accepted ? (
-            <></>
-          ) : (
-            <InputGroup>
-              <Input type="checkbox" />
-              <Input type="checkbox" />
-            </InputGroup>
-          )}
+      <div className="TaskItem col-md-6 col-12 p-2">
+        <div className="row">
+          <div className="col-9">
+            <div className="title"> {title} </div>
+            <div className="deadline d-flex align-items-center">
+              {accepted ? (
+                <IconsBi.BiCalendarAlt />
+              ) : (
+                <IconsBi.BiCalendarPlus />
+              )}
+              <span>{moment(deadline).format("YYYY-MM-DD").toString()}</span>
+            </div>
+            <div className=""> {points} pt </div>
+          </div>
+          <div className="col-3">
+            <div className="ms-auto">
+              {!accepted && (
+                <InputGroup className="d-flex flex-row">
+                  <Input type="checkbox" />
+                  <Input type="checkbox" />
+                </InputGroup>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );

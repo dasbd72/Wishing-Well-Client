@@ -9,7 +9,7 @@ import TaskGroup from "Components/Tasks/TaskGroup";
 
 export class ChildrenMenu extends Component {
   static propTypes = {
-    prop: PropTypes,
+    // prop: PropTypes,
   };
 
   constructor(props) {

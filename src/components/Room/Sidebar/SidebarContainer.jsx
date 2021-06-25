@@ -10,7 +10,7 @@ import "./Sidebar.css";
 
 export default class SidebarContainer extends Component {
   static propTypes = {
-    prop: PropTypes,
+    // prop: PropTypes,
   };
 
   constructor(props) {
@@ -36,10 +36,7 @@ export default class SidebarContainer extends Component {
       <div className="SidebarContainer">
         <div
           className={classNames(
-            "sidebar bg-light text-light h-100 d-flex flex-column",
-            {
-              "is-open": this.state.isOpen,
-            }
+            "sidebar bg-light text-light h-100 d-flex flex-column"
           )}
         >
           <Nav vertical className="list-unstyled flex-column mb-auto">

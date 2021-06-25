@@ -101,7 +101,7 @@ export class MainNavbar extends Component {
               Wishing-Well-Dev
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={!this.state.isOpen} navbar>
+            <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar className="me-auto">
                 <NavItem>
                   <NavLink tag={Link} to="/room">
