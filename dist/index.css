@@ -1,0 +1,242 @@
+.MainNavbar {
+  max-width: 100%;
+}
+.MainNavbar .login {
+  position: fixed;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.322);
+  /* background-position: ; */
+}
+
+.AppDescription {
+  height: 100%;
+}
+
+.Description {
+  color: white;
+  font-size: 2rem;
+}
+
+.AppDescription-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  /* background-image: linear-gradient(rgba(230,100,101,0.5), rgba(98,100,126,0.8)), url("img/background-5.jpg"); */
+  background-image: url("img/background-3.jpg");
+  /* background-size: 100% 100%; */
+  /* filter: blur(5rem); */
+}
+
+.SidebarContainer {
+  height: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: auto;
+  z-index: 500;
+}
+.SidebarContainer .sidebar {
+  min-width: 2rem;
+  max-width: 320px;
+  font-size: 1.2rem;
+  transition: all 0.5s;
+}
+.SidebarContainer .sidebar svg {
+  font-size: 2.5rem;
+}
+.SidebarContainer .sidebar .nav-link {
+  cursor: pointer;
+  color: gray;
+}
+
+.UserDisplayPage {
+  height: 100%;
+  background-color: white;
+  width: 100%;
+}
+
+.ImageForm {
+  position: relative;
+  width: 80%;
+  height: 0;
+  padding-bottom: 80%;
+  border: black solid 0.1rem;
+  border-radius: 50%;
+  margin: auto;
+}
+
+/* .Image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: black solid 0.1rem;
+  border-radius: 50%;
+} */
+
+.ChildDisplay {
+}
+
+.CreateTaskForm {
+  position: fixed;
+  margin: auto;
+  padding: 1rem;
+  background-color: white;
+  width: 50%;
+  border: black solid;
+  /*width: 80%;
+  border-radius: 0.5rem; */
+}
+
+.close {
+  cursor: pointer;
+  float: right;
+}
+
+.CreateButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.ParentMenu {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.TaskForm {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+}
+
+.ClickToCreate {
+  user-select: none;
+}
+
+.ClickToCreate:hover {
+  cursor: pointer;
+}
+
+.TaskGroup {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+
+  font-size: 1.2rem;
+}
+
+.TaskItem {
+  max-width: 500px;
+  width: 460px;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  margin: 1rem;
+}
+.TaskItem:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.TaskItem .form-check-input:hover {
+  cursor: pointer;
+}
+
+.Task {
+  height: 100%;
+  width: 100%;
+}
+
+.progress {
+  height: 3rem !important;
+}
+
+.Request {
+  height: 100%;
+  width: 100%;
+}
+
+.RequestForm {
+  border-radius: 0.5rem;
+  border: solid black 1px;
+  background-color: white;
+  width: 60%;
+  height: 60%;
+  margin: auto;
+}
+
+.RoomUserDisplay {
+  height: 100%;
+  min-width: 420px;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+@media only screen and (max-width: 1050px) {
+  .RoomUserDisplay {
+    display: none;
+  }
+}
+
+.RoomUserDisplaySM .avatar {
+  position: absolute;
+  z-index: 10;
+}
+
+.RoomUserDisplaySM .information {
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: -300px;
+  z-index: 9;
+  transition: all 1s;
+}
+
+.RoomUserDisplaySM .information.show {
+  position: absolute;
+  left: 2rem;
+  z-index: 9;
+  transition: all 1s;
+}
+
+.ParentPage {
+  height: 100%;
+  width: 100%;
+}
+
+.ChildrenPage {
+  height: 100%;
+  width: 100%;
+}
+
+.RoomEntrance .create-room:hover {
+  background-color: rgb(209, 209, 209);
+  cursor: pointer;
+}
+
+.RoomEntrance-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-image: url("img/background-3.jpg");
+  background-position: top right;
+}
+
+body {
+  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+.Main {
+  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+button.close {
+  background: none;
+  border: none;
+}
+
