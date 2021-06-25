@@ -13,17 +13,26 @@ export class TaskGroup extends Component {
     label: PropTypes.string,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  toggle = () => {
+    this.setState((state) => ({
+      isOpen: !state.isOpen,
+    }));
+  };
+
   render() {
-    var listItems = this.props.tasks.map((item) => (
-      <li>
-        <TaskItem {...item} />
-      </li>
-    ));
+    var listItems = this.props.tasks.map((item) => <TaskItem {...item} />);
     return (
-      <List type="unstyled" className="TaskGroup">
-        <div className="ps-3 pt-2 fs-4">{this.props.label} : </div>
-        {listItems}
-      </List>
+      <div type="unstyled" className="TaskGroup container">
+        <div className="pt-2 label">{this.props.label} : </div>
+        <div className="row g-2">{listItems}</div>
+      </div>
     );
   }
 }

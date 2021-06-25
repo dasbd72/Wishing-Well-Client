@@ -53,7 +53,6 @@ class ChildrenPage extends Component {
           />
         </SidebarContainer>
         <RoomUserDisplay />
-        {/* <RoomUserDisplaySM /> */}
         <Switch>
           <Route exact path={`${match.path}/`}>
             <ChildrenMenu />
@@ -67,16 +66,9 @@ class ChildrenPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  sidebarOpen: true,
-});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    toggleSidebar: () =>
-      dispatch({ type: "toggle", sidebarOpen: !ownProps.sidebarOpen }),
-  };
-};
+const mapDispatchToProps = (dispatch, ownProps) => {};
 
 export default connect(
   mapStateToProps,

@@ -1,20 +1,26 @@
 .TaskGroup {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 15px;
-
-  font-size: 1.2rem;
+  /* border: 1px solid rgba(0, 0, 0, 0.15); */
+  /* border-radius: 15px; */
+  font-size: 1rem;
+}
+.TaskGroup > .label {
+  font-size: 1.5em;
 }
 
 .TaskItem {
-  max-width: 500px;
-  width: 460px;
-  padding: 0.5rem;
+  /* max-width: 500px; */
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 15px;
-  margin: 1rem;
+  /* border-radius: 15px; */
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
 }
 .TaskItem:hover {
   background-color: rgba(0, 0, 0, 0.02);
+}
+.TaskItem .title {
+  font-weight: bolder;
+}
+.TaskItem .deadline {
+  font-size: 0.8em;
 }
 .TaskItem .form-check-input:hover {
   cursor: pointer;

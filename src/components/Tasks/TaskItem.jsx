@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Input, InputGroup } from "reactstrap";
 import moment from "moment";
+import * as IconsBi from "react-icons/bi";
 
 export class TaskItem extends Component {
   static propTypes = {
     id: PropTypes.string,
-    text: PropTypes.string,
+    title: PropTypes.string,
+    information: PropTypes.string,
     points: PropTypes.number,
     accepted: PropTypes.bool,
     deadline: PropTypes.number,
@@ -16,14 +18,18 @@ export class TaskItem extends Component {
     super(props);
   }
   render() {
-    const { id, text, points, accepted, deadline } = this.props;
+    const { id, title, information, points, accepted, deadline } = this.props;
     return (
-      <div className="TaskItem d-flex flex-row justify-content-center">
-        <div className="flex-grow-1 p-2"> {text} </div>
-        <div className="p-2"> {points} pt </div>
-        <div className="p-2">
+      <div className="TaskItem col-5 p-2">
+        <div className="title"> {title} </div>
+        <div className="deadline">
+          {accepted ? <IconsBi.BiCalendarAlt /> : <IconsBi.BiCalendarPlus />}
+          <span>{moment(deadline).format("MM/DD").toString()}</span>
+        </div>
+        <div className=""> {points} pt </div>
+        <div className="">
           {accepted ? (
-            moment(deadline).format("MM/DD").toString()
+            <></>
           ) : (
             <InputGroup>
               <Input type="checkbox" />
