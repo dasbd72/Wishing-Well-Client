@@ -165,9 +165,10 @@ export class MainNavbar extends Component {
               onClick={this.toggleAuth}
               style={{
                 position: "relative",
-                top: "-1.5em",
-                left: -10,
+                top: "1.5em",
+                left: "0.3em",
                 fontSize: "2em",
+                zIndex: "999",
               }}
             />
             <SignIn
