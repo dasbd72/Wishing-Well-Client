@@ -11,7 +11,8 @@ export const setUser = (user) => {
 
   signedin = user ? true : false;
   if (signedin) {
-    if (user.username) userName = user.username;
+    if (user.attributes && user.attributes.name)
+      userName = user.attributes.name;
     else if (user.name) userName = user.name;
 
     if (user.email) email = user.email;

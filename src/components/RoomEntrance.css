@@ -1,3 +1,8 @@
+.RoomEntrance {
+  width: 100%;
+  height: 100%;
+}
+
 .RoomEntrance .create-room:hover {
   background-color: rgb(209, 209, 209);
   cursor: pointer;

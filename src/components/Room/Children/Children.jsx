@@ -15,7 +15,7 @@ import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import RoomUserDisplaySM from "Components/Room/RoomUserDisplaySM";
 import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
-import ChildrenCard from "Components/Room/Children/ChildrenCard";
+import ChildrenPrize from "Components/Room/Children/ChildrenPrize";
 
 import "./Children.css";
 
@@ -67,7 +67,7 @@ class ChildrenPage extends Component {
             <ChildrenWish />
           </Route>
           <Route path={`${match.path}/card`}>
-            <ChildrenCard />
+            <ChildrenPrize />
           </Route>
         </Switch>
       </div>

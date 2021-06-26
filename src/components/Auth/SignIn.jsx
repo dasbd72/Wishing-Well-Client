@@ -7,7 +7,9 @@ import {
   AmplifySignUp,
   AmplifySignIn,
 } from "@aws-amplify/ui-react";
+
 import { setUser } from "States/session-actions";
+import { reloadUser } from "Api/amplify";
 
 export class CustomSignIn extends Component {
   static propTypes = {
@@ -15,13 +17,7 @@ export class CustomSignIn extends Component {
   };
   handleAuthStateChange = (state) => {
     if (state === "signedin" || state === "signedout") {
-      Auth.currentAuthenticatedUser()
-        .then((user) => {
-          this.props.setUser(user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      reloadUser();
       if (state === "signedin" && this.props.onSignedIn)
         this.props.onSignedIn();
     }

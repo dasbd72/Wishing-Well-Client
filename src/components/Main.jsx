@@ -13,14 +13,13 @@ import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 import AppDescription from "Components/AppDescription";
 import RoomEntrance from "Components/RoomEntrance";
 import { setUser } from "States/session-actions";
+import { reloadUser } from "Api/amplify";
 
 import "./Main.css";
 
 export class Main extends Component {
   componentDidMount() {
-    Auth.currentAuthenticatedUser().then((user) => {
-      this.props.setUser(user);
-    });
+    reloadUser();
   }
   render() {
     return (

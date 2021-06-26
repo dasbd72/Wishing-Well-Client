@@ -15,14 +15,13 @@ export class AppDescription extends Component {
 
   render() {
     return (
-      <div className="AppDescription text-light text-center d-flex flex-row align-items-center justify-content-center">
+      <React.Fragment>
         <MainNavbar />
-        <div className="AppDescription-bg"></div>
-        <div className="Description col fs-1 white">
+        <div className="AppDescription-bg" />
+        <div className="AppDescription text-light text-center d-flex flex-row align-items-center justify-content-center">
           <h1>Welcome To Wishing Well.</h1>
-          {/* <h6>"I want a pineapple SOOOOO bad!!!"</h6> */}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

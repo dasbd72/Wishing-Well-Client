@@ -55,8 +55,8 @@ class RoomEntrance extends React.Component {
           <div className="RoomEntrance-bg"></div>
           <div className="RoomEntrance">
             <MainNavbar fixedTop={false} />
-            <Container>
-              <Row sm="2" lg="3" xl="4" className="mx-auto pt-3 gy-5">
+            <Container className="pt-4">
+              <Row sm="2" lg="3" xl="4" className="gy-4">
                 <Col>
                   <Card
                     style={{ height: 320, width: 230 }}

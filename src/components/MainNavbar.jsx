@@ -11,17 +11,19 @@ import {
   NavItem,
   NavLink,
   Button,
+  Input,
+  Label,
 } from "reactstrap";
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import classNames from "classnames";
-import { AmplifyGreetings } from "@aws-amplify/ui-react";
+import Popper from "popper.js";
 
 import SignIn from "Components/Auth/SignIn";
-import { signOut } from "Api/amplify";
+import { reloadUser, signOut, updateUserName } from "Api/amplify";
 import { setNavHeight } from "States/main-actions";
 
 import "./MainNavbar.css";
-
+ReactModal.setAppElement("#root");
 export class MainNavbar extends Component {
   static propTypes = {
     fixedTop: PropTypes.bool,
@@ -30,9 +32,12 @@ export class MainNavbar extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      isModalOpen: false,
+      isAuthOpen: false,
+      isUserOpen: false,
     };
+    this.userNameEl = null;
   }
+
   componentDidMount() {
     this.props.setNavHeight(
       document.getElementsByClassName("MainNavbar")[0].clientHeight
@@ -43,22 +48,53 @@ export class MainNavbar extends Component {
       document.getElementsByClassName("MainNavbar")[0].clientHeight
     );
   }
+
   toggle = () => {
     this.setState((state) => ({
       isOpen: !state.isOpen,
     }));
   };
-  toggleModal = (next) => {
+  toggleAuth = (next) => {
     if (next === true || next === false) {
       this.setState({
-        isModalOpen: next,
+        isAuthOpen: next,
       });
     } else {
       this.setState((state) => ({
-        isModalOpen: !state.isModalOpen,
+        isAuthOpen: !state.isAuthOpen,
       }));
     }
   };
+  toggleUser = (next) => {
+    if (next === true || next === false) {
+      this.setState({
+        isUserOpen: next,
+      });
+    } else {
+      this.setState((state) => ({
+        isUserOpen: !state.isUserOpen,
+      }));
+    }
+  };
+
+  updateUserName = () => {
+    updateUserName(this.userNameEl.value)
+      .then((data) => {
+        reloadUser();
+        this.toggleUser(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  handleUserNameType = (e) => {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+      this.updateUserName();
+    }
+  };
+
   render() {
     const signedin = this.props.session.signedin;
     const userName = this.props.session.userName;
@@ -66,9 +102,12 @@ export class MainNavbar extends Component {
       if (signedin) {
         return (
           <React.Fragment>
-            <NavItem>
+            <NavItem className="d-flex align-items-center">
               <NavLink style={{ fontSize: "0.8em" }} className="my-auto">
-                Hello, {userName}
+                Hello,
+                <Button color="link" onClick={this.toggleUser}>
+                  {userName}
+                </Button>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -82,19 +121,19 @@ export class MainNavbar extends Component {
         return (
           <NavItem>
             <NavLink>
-              <Button onClick={this.toggleModal}>LogIn</Button>
+              <Button onClick={this.toggleAuth}>LogIn</Button>
             </NavLink>
           </NavItem>
         );
       }
     };
+
     return (
-      <React.Fragment>
+      <div className="MainNavbar">
         <div
-          className={classNames(
-            "MainNavbar container-fluid px-5 bg-light text-dark",
-            { "fixed-top": !(this.props.fixedTop === false) }
-          )}
+          className={classNames("container-fluid px-5 bg-light text-dark", {
+            "fixed-top": !(this.props.fixedTop === false),
+          })}
         >
           <Navbar color="faded" light expand="md">
             <NavbarBrand className="text-info" href="/">
@@ -109,24 +148,62 @@ export class MainNavbar extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav navbar><Show/></Nav>
+              <Nav navbar>
+                <Show />
+              </Nav>
             </Collapse>
           </Navbar>
-
-          <Modal
-            isOpen={this.state.isModalOpen}
-            onRequestClose={this.toggleModal}
-            className="overflow-hidden d-flex justify-content-center align-items-center h-100"
-          >
-            <Button close onClick={this.toggleModal} />
-            <SignIn
-              onSignedIn={() => {
-                this.toggleModal(false);
+        </div>
+        <ReactModal
+          isOpen={this.state.isAuthOpen}
+          onRequestClose={this.toggleAuth}
+          className="overflow-hidden d-flex justify-content-center align-items-center h-100"
+        >
+          <div>
+            <Button
+              close
+              onClick={this.toggleAuth}
+              style={{
+                position: "relative",
+                top: "-1.5em",
+                left: -10,
+                fontSize: "2em",
               }}
             />
-          </Modal>
-        </div>
-      </React.Fragment>
+            <SignIn
+              onSignedIn={() => {
+                this.toggleAuth(false);
+              }}
+            />
+          </div>
+        </ReactModal>
+        <ReactModal
+          isOpen={this.state.isUserOpen}
+          onRequestClose={this.toggleUser}
+          className="overflow-hidden d-flex justify-content-center align-items-center h-100"
+          ariaHideApp={false}
+          style={{
+            content: { backgroundColor: "rgba(20,30,150,0.5)" },
+          }}
+        >
+          <div>
+            <Label for="userName" color="light">
+              New Username
+            </Label>
+            <Input
+              type="text"
+              name="userName"
+              onKeyPress={this.handleUserNameType}
+              innerRef={(e) => (this.userNameEl = e)}
+              style={{ minWidth: "200px", width: "fit-content" }}
+            />
+            <Button onClick={this.updateUserName}>Submit</Button>
+            <Button onClick={this.toggleUser} color="danger">
+              Cancel
+            </Button>
+          </div>
+        </ReactModal>
+      </div>
     );
   }
 }
