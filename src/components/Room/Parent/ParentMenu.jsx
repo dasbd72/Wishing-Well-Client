@@ -19,7 +19,6 @@ import {
   Button,
 } from "reactstrap";
 
-import UserDisplay from "Components/Room/Parent/UserDisplay.jsx";
 import CreateTask from "Components/Room/Parent/CreateTask.jsx";
 
 import "./ParentMenu.css";

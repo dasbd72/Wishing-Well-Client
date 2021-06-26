@@ -6,17 +6,17 @@
   margin: auto;
 }
 
-.TaskForm {
+.ParentMenu .TaskForm {
   justify-content: center;
   align-items: center;
   margin: auto;
   height: 100%;
 }
 
-.ClickToCreate {
+.ParentMenu .ClickToCreate {
   user-select: none;
 }
 
-.ClickToCreate:hover {
+.ParentMenu .ClickToCreate:hover {
   cursor: pointer;
 }
