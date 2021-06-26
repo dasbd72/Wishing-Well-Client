@@ -54,7 +54,7 @@ export class Task extends React.Component {
         <TaskGroup tasks={rejected} label="Rejected"></TaskGroup>
         <div className="p-2"></div>
         <TaskGroup tasks={todo} label="Todo"></TaskGroup>
-        <Progress className="w-100" value="25"></Progress>
+        <Progress className="w-100" style={{ height: "3rem" }} value="25"></Progress>
       </Container>
     );
   }

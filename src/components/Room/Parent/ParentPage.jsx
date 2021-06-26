@@ -9,7 +9,6 @@ import * as IconFi from "react-icons/fi";
 import * as IconGo from "react-icons/go";
 import { signOut } from "Api/amplify";
 
-import { sidebarToggle } from "States/room-actions";
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import ParentMenu from "Components/Room/Parent/ParentMenu";
@@ -76,11 +75,11 @@ export class ParentPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  ...state.room,
+
 });
 
 const mapDispatchToProps = {
-  sidebarToggle,
+
 };
 
 export default connect(

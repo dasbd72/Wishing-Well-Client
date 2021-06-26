@@ -9,12 +9,12 @@
   border-radius: 0.5rem; */
 }
 
-.close {
+.CreateTaskForm .close {
   cursor: pointer;
   float: right;
 }
 
-.CreateButton {
+.CreateTaskForm .CreateButton {
   display: flex;
   justify-content: center;
   align-items: center;
