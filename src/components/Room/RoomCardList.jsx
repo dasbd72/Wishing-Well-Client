@@ -20,7 +20,7 @@ import RoomCardItem from "./RoomCardItem";
 
 export default class RoomCardList extends Component {
   static propTypes = {
-    rooms: PropTypes.object,
+    rooms: PropTypes.array,
   };
   constructor(props) {
     super(props);
@@ -35,14 +35,24 @@ export default class RoomCardList extends Component {
   };
 
   render() {
+    let content = [];
+    if (!this.props.rooms.length) {
+      content = [
+        <RoomCardItem roomId="children" icon={<FaChild />} title="Children" />,
+        <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />,
+        <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />,
+        <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />,
+      ];
+    } else {
+      content = this.props.rooms.map((el) => {
+        return <RoomCardItem />;
+      });
+    }
     return (
       <Container className="pt-4">
         <Row sm="2" lg="3" xl="4" className="RoomCardList gy-4">
           <RoomCardItem add toggle={this.toggleModal} />
-          <RoomCardItem roomId="children" icon={<FaChild />} title="Children" />
-          <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />
-          <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />
-          <RoomCardItem roomId="parent" icon={<GiOldKing />} title="Parent" />
+          {content}
         </Row>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
