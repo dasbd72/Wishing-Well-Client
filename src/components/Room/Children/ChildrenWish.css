@@ -6,5 +6,10 @@
   border: white solid 0.5rem;
   border-radius: 1rem;
   background: rgba(200, 200, 200, 0.6);
-
+}
+.ChildrenWish {
+  font-size: 1rem;
+}
+.ChildrenWish label {
+  font-size: 2em;
 }

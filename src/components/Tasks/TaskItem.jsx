@@ -22,36 +22,30 @@ export class TaskItem extends Component {
   render() {
     const { id, title, information, points, accepted, deadline } = this.props;
     return (
-      <div className="col-md-6 col-12">
-        <div className="TaskItem p-2 d-flex">
-          <div>
-            <div className="title"> {title} </div>
-            <div className="deadline d-flex align-items-center">
-              {accepted ? (
-                <IconsBi.BiCalendarAlt />
-              ) : (
-                <IconsBi.BiCalendarPlus />
-              )}
-              <span>{moment(deadline).format("YYYY-MM-DD").toString()}</span>
-            </div>
-            <div className=""> {points} pt </div>
+      <div className="TaskItem p-2 d-flex">
+        <div>
+          <div className="title"> {title} </div>
+          <div className="deadline d-flex align-items-center">
+            {accepted ? <IconsBi.BiCalendarAlt /> : <IconsBi.BiCalendarPlus />}
+            <span>{moment(deadline).format("YYYY-MM-DD").toString()}</span>
           </div>
-          <div className="ml-auto">
-            {!accepted && (
-              <InputGroup size="sm">
-                <InputGroupAddon addonType="prepend">
-                  <Button outline color="success">
-                    O
-                  </Button>
-                </InputGroupAddon>
-                <InputGroupAddon addonType="append">
-                  <Button outline color="danger">
-                    X
-                  </Button>
-                </InputGroupAddon>
-              </InputGroup>
-            )}
-          </div>
+          <div className=""> {points} pt </div>
+        </div>
+        <div className="ml-auto">
+          {!accepted && (
+            <InputGroup size="sm">
+              <InputGroupAddon addonType="prepend">
+                <Button outline color="success">
+                  O
+                </Button>
+              </InputGroupAddon>
+              <InputGroupAddon addonType="append">
+                <Button outline color="danger">
+                  X
+                </Button>
+              </InputGroupAddon>
+            </InputGroup>
+          )}
         </div>
       </div>
     );

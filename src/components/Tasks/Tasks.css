@@ -5,11 +5,12 @@
 }
 .TaskGroup > .label {
   font-size: 1.5em;
-  background: rgba(200, 200, 200, 0.6);
+  background: rgba(136, 136, 136, 0.6);
 }
 .TaskGroup > .fold {
-  font-size: 0.75em;
-  color: grey;
+  font-size: 0.9em;
+  color: rgb(0, 0, 0);
+  text-shadow: rgb(255, 255, 255) 0 0 0.1em;
   cursor: pointer;
 }
 
@@ -19,14 +20,13 @@
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
   border-radius: 0.5rem;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.822);
 }
 .TaskItem:hover {
   background-color: rgb(247, 242, 242);
 }
 .TaskItem .title {
-  font-size: 1.5rem;
-  font-weight: bolder;
+  font-size: 1.3em;
 }
 .TaskItem .deadline {
   font-size: 0.8em;

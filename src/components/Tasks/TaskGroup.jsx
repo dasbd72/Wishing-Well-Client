@@ -34,7 +34,11 @@ export class TaskGroup extends Component {
           ? this.props.tasks.length
           : 6;
       for (let i = 0; i < len; i++) {
-        listItems.push(<TaskItem {...this.props.tasks[i]} key={i} />);
+        listItems.push(
+          <div className="col-md-6 col-12 p-1" key={i}>
+            <TaskItem {...this.props.tasks[i]} />
+          </div>
+        );
       }
       return (
         <div type="unstyled" className="TaskGroup container">
@@ -46,17 +50,17 @@ export class TaskGroup extends Component {
               borderRadius: "1rem",
             }}
           >
-            {this.props.label} :{" "}
+            {this.props.label} :
           </div>
-          <div className="row g-2 list">{listItems}</div>
+          <div className="row">{listItems}</div>
           <div className="fold" onClick={this.toggle}>
             {this.state.isOpen ? (
-              <div style={{ color: "white" }}>
+              <div>
                 <VscFoldUp /> Show less.
               </div>
             ) : (
               len < this.props.tasks.length && (
-                <div style={{ color: "white" }}>
+                <div>
                   <VscFoldDown /> Show more.
                 </div>
               )
