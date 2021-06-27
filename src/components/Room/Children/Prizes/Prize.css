@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap");
 
 .PrizeItem {
-  height: 200px;
-  width: 350px;
+  height: 12em;
+  width: 22em;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.418);
 }

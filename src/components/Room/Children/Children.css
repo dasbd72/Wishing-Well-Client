@@ -1,9 +1,9 @@
-.ChildrenPage {
+.Children {
   height: 100%;
   width: 100%;
 }
 
-.ChildrenMenu {
+.ChildrenTask {
   width: 100%;
   overflow-y: auto;
 }

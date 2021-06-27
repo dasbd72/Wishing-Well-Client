@@ -16,7 +16,7 @@ export function listPrizes(roomId, userId, selectActive = 0) {
   query.push(`roomId=${roomId}`);
   query.push(`userId=${userId}`);
   query.push(`selectActive=${selectActive}`);
-  if (query.length()) url += "?" + query.join("&");
+  if (query.length) url += "?" + query.join("&");
 
   console.log(`Making GET request to: ${url}`);
 

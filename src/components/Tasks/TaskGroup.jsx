@@ -39,7 +39,7 @@ export class TaskGroup extends Component {
       return (
         <div type="unstyled" className="TaskGroup container">
           <div className="pt-2 label">{this.props.label} : </div>
-          <div className="row g-2 list">{listItems}</div>
+          <div className="row row-cols-1 row-cols-md-2 g-2">{listItems}</div>
           <div className="fold" onClick={this.toggle}>
             {this.state.isOpen ? (
               <div>

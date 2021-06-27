@@ -14,9 +14,8 @@ export class PrizeItem extends Component {
       <div className="PrizeItem">
         <div className="container d-flex h-100 flex-column py-3">
           <div className="title fs-1">IphoneX</div>
-          <div className="mt-auto" style={{}}>
+          <div className="mt-auto">
             <Progress
-              // bar
               barStyle={{ backgroundColor: "purple" }}
               value={35}
             ></Progress>

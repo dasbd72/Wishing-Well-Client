@@ -7,7 +7,7 @@ import moment from "moment";
 
 import TaskGroup from "Components/Tasks/TaskGroup";
 
-export class ChildrenMenu extends Component {
+export class ChildrenTask extends Component {
   static propTypes = {
     // prop: PropTypes,
   };
@@ -126,7 +126,8 @@ export class ChildrenMenu extends Component {
       },
     ];
     return (
-      <Container className="ChildrenMenu d-flex align-items-center flex-column">
+      <Container className="ChildrenTask d-flex align-items-center flex-column pt-2">
+        <h1 className="me-auto">Your Tasks</h1>
         <TaskGroup tasks={unaccepted} label="Unaccepted"></TaskGroup>
         <TaskGroup tasks={accepted} label="Accepted"></TaskGroup>
       </Container>
@@ -138,4 +139,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChildrenMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(ChildrenTask);

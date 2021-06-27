@@ -34,7 +34,7 @@ export class Request extends React.Component {
       },
     ];
     return (
-      <Container className="ChildrenMenu d-flex align-items-center justify-content-center flex-column">
+      <Container className="ChildrenTask d-flex align-items-center justify-content-center flex-column">
         <TaskGroup tasks={accepted} label="Accepted"></TaskGroup>
       </Container>
     );
