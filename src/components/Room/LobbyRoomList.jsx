@@ -65,17 +65,17 @@ export class LobbyRoomList extends Component {
     let content = [];
     content = this.props.rooms.map((el) => {
       return (
-        <LobbyRoomItem
-          roomId={el.roomId}
-          title={String(el.roomname)}
-          key={shortid.generate()}
-        />
+        <Col key={shortid.generate()}>
+          <LobbyRoomItem roomId={el.roomId} title={String(el.roomName)} />
+        </Col>
       );
     });
     return (
       <Container className="pt-4">
         <Row sm="2" lg="3" xl="4" className="LobbyRoomList g-4">
-          <LobbyRoomItem add toggle={this.toggleModal} />
+          <Col>
+            <LobbyRoomItem add toggle={this.toggleModal} />
+          </Col>
           {content}
         </Row>
         <Modal isOpen={this.state.isModalOpen}>

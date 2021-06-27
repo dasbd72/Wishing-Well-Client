@@ -50,9 +50,6 @@ export class ChildrenWish extends Component {
         }, 2000);
       });
   };
-  makeWish = () => {
-    createPrizes();
-  };
   render() {
     return (
       <div className="ChildrenWish">

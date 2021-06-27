@@ -1,64 +1,72 @@
-import React from "react";
+// import React, { Component } from "react";
+// import PropTypes from "prop-types";
+// import { connect } from "react-redux";
+
+// import ParentCreateTask from "Components/Room/Parent/ParentCreateTask.jsx";
+
+// export class ParentMenu extends Component {
+//   static propTypes = {
+//     prop: PropTypes,
+//   };
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       seen: false,
+//     };
+//   }
+
+//   togglePop = () => {
+//     this.setState({
+//       seen: !this.state.seen,
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <div className="ParentMenu d-flex">
+//         <h1>
+//           <span
+//             className="ClickToCreate"
+//             onClick={this.togglePop}
+//             style={{
+//               color: "white",
+//               background: "black",
+//               paddingLeft: "0.5rem",
+//               paddingRight: "0.5rem",
+//             }}
+//           >
+//             Create a New Task
+//           </span>
+//         </h1>
+//         {this.state.seen ? <ParentCreateTask toggle={this.togglePop} /> : null}
+//       </div>
+//     );
+//   }
+// }
+
+// const mapStateToProps = (state) => ({});
+
+// const mapDispatchToProps = {};
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ParentMenu);
+
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  withRouter,
-} from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Input,
-  Button,
-} from "reactstrap";
+import { connect } from "react-redux";
 
-import CreateTask from "Components/Room/Parent/CreateTask.jsx";
-
-import "./ParentMenu.css";
-
-export class ParentMenu extends React.Component {
-  state = {
-    seen: false,
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
-  togglePop = () => {
-    this.setState({
-      seen: !this.state.seen,
-    });
+export class ParentMenu extends Component {
+  static propTypes = {
+    // prop: PropTypes,
   };
 
   render() {
-    return (
-      <div className="ParentMenu d-flex">
-        <h1>
-          <span
-            className="ClickToCreate"
-            onClick={this.togglePop}
-            style={{
-              color: "white",
-              background: "black",
-              paddingLeft: "0.5rem",
-              paddingRight: "0.5rem",
-            }}
-          >
-            Create a New Task
-          </span>
-        </h1>
-        {this.state.seen ? <CreateTask toggle={this.togglePop} /> : null}
-      </div>
-    );
+    return <div className="ParentMenu"></div>;
   }
 }
 
-export default withRouter(ParentMenu);
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParentMenu);

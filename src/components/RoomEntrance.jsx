@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import ParentPage from "Components/Room/Parent/ParentPage";
+import Parent from "Components/Room/Parent/Parent";
 import Children from "Components/Room/Children/Children";
 import Room from "Components/Room/Room";
 import Lobby from "Components/Room/Lobby";
@@ -30,7 +30,7 @@ class RoomEntrance extends React.Component {
           <Children />
         </Route>
         <Route path={`${match.path}/parent`}>
-          <ParentPage />
+          <Parent />
         </Route>
         <Route path={`${match.path}/:roomId`}>
           <Room />

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
 import { Container } from "reactstrap";
-import UUID from "uuid";
 import moment from "moment";
 import { Progress } from "reactstrap";
 

@@ -1,0 +1,31 @@
+.Parent {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+}
+
+.Parent-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-image: url("img/background-15.jpg");
+  background-size: cover;
+  /* background-position: top right; */
+}
+
+.ParentMenu {
+  width: 100%;
+}
+
+.ParentCreateTask {
+  height: 100%;
+  width: 100%;
+}
+
+.ParentCreateTask .CreateTaskForm {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.432);
+  width: 80%;
+  max-width: 800px;
+}

@@ -17,15 +17,28 @@
   font-size: 2rem;
 }
 
+.AppDescription > h1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: black;
+}
+
+.AppDescription > h5 {
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  background-color: black;
+}
+
 .AppDescription-bg {
   position: fixed;
   z-index: -1;
   height: 100%;
   width: 100%;
   /* background-image: linear-gradient(rgba(230,100,101,0.5), rgba(98,100,126,0.8)), url("img/background-5.jpg"); */
-  background-image: url("img/background-3.jpg");
+  background-image: url("img/background-16.jpg");
   /* background-size: 100% 100%; */
   /* filter: blur(5rem); */
+  background-size: cover;
 }
 
 .SidebarContainer {
@@ -35,7 +48,7 @@
   z-index: 500;
 }
 .SidebarContainer > .sidebar {
-  min-width: 2rem;
+  min-width: 1.5rem;
   max-width: 320px;
   font-size: 1.2rem;
   transition: all 0.5s;
@@ -48,7 +61,7 @@
   color: gray;
 }
 
-.SidebarContainer > .navbar {
+.SidebarContainer > .nav {
   width: 100%;
   font-size: 1.2rem;
   display: none;
@@ -60,60 +73,20 @@
   }
 }
 
-.CreateTaskForm {
-  position: fixed;
-  margin: auto;
-  padding: 1rem;
-  background-color: white;
-  width: 50%;
-  border: black solid;
-  /*width: 80%;
-  border-radius: 0.5rem; */
-}
-
-.CreateTaskForm .close {
-  cursor: pointer;
-  float: right;
-}
-
-.CreateTaskForm .CreateButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-input:invalid {
-  box-shadow: 1.5rem red;
-}
-
-input:valid {
-  border: 1.5rem black;
-}
-
-.ParentMenu {
+.RoomUserDisplay {
   height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+  min-width: 300px;
+  max-width: 400px;
+  width: 40vw;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-.ParentMenu .TaskForm {
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  height: 100%;
+@media only screen and (max-width: 1050px) {
+  .RoomUserDisplay {
+    display: none;
+  }
 }
-
-.ParentMenu .ClickToCreate {
-  user-select: none;
-}
-
-.ParentMenu .ClickToCreate:hover {
-  cursor: pointer;
-}
-
 .TaskGroup {
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
   /* border-radius: 15px; */
@@ -121,10 +94,12 @@ input:valid {
 }
 .TaskGroup > .label {
   font-size: 1.5em;
+  background: rgba(136, 136, 136, 0.6);
 }
 .TaskGroup > .fold {
-  font-size: 0.75em;
-  color: grey;
+  font-size: 0.9em;
+  color: rgb(0, 0, 0);
+  text-shadow: rgb(255, 255, 255) 0 0 0.1em;
   cursor: pointer;
 }
 
@@ -132,14 +107,15 @@ input:valid {
   max-width: 475px;
   width: 100%;
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
-  border-radius: 2px;
+  border-radius: 0.5rem;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.822);
 }
 .TaskItem:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgb(247, 242, 242);
 }
 .TaskItem .title {
-  font-weight: bolder;
+  font-size: 1.3em;
 }
 .TaskItem .deadline {
   font-size: 0.8em;
@@ -156,6 +132,11 @@ input:valid {
   width: 100%;
 }
 
+.Task .progress {
+  position: relative;
+  bottom: -20rem;
+}
+
 .Request {
   height: 100%;
   width: 100%;
@@ -170,54 +151,51 @@ input:valid {
   margin: auto;
 }
 
-.RoomUserDisplay {
-  height: 100%;
-  min-width: 300px;
-  max-width: 400px;
-  width: 40vw;
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-@media only screen and (max-width: 1050px) {
-  .RoomUserDisplay {
-    display: none;
-  }
-}
-
-.RoomUserDisplaySM .avatar {
-  position: absolute;
-  z-index: 10;
-}
-
-.RoomUserDisplaySM .information {
-  background-color: red;
-  position: absolute;
-  top: 0;
-  left: -300px;
-  z-index: 9;
-  transition: all 1s;
-}
-
-.RoomUserDisplaySM .information.show {
-  position: absolute;
-  left: 2rem;
-  z-index: 9;
-  transition: all 1s;
-}
-
-.ParentPage {
+.Parent {
+  font-size: 1rem;
   height: 100%;
   width: 100%;
 }
 
+.Parent-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-image: url("img/background-15.jpg");
+  background-size: cover;
+  /* background-position: top right; */
+}
+
+.ParentMenu {
+  width: 100%;
+}
+
+.ParentCreateTask {
+  height: 100%;
+  width: 100%;
+}
+
+.ParentCreateTask .CreateTaskForm {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.432);
+  width: 80%;
+  max-width: 800px;
+}
+
 .PrizeItem {
+  font-size: 1rem;
   height: 12em;
   width: 22em;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.418);
+  border: white solid 0.3rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.418);  
+  color: white;
+  background: rgb(66, 64, 97);
 }
 
 .PrizeItem .title {
+  font-size: 2em;
   font-family: "Dancing Script", cursive;
 }
 
@@ -236,23 +214,80 @@ input:valid {
   width: 100%;
 }
 
-.RoomEntrance {
-  width: 100%;
-  height: 100%;
-}
-
-.RoomEntrance .create-room:hover {
-  background-color: rgb(209, 209, 209);
-  cursor: pointer;
-}
-
-.RoomEntrance-bg {
+.ChildrenPage-bg {
   position: fixed;
   z-index: -1;
   height: 100%;
   width: 100%;
-  background-image: url("img/background-3.jpg");
-  background-position: top right;
+  background-image: url("img/background-10.jpg");
+  background-size: cover;
+}
+
+.ChildrenWish {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+}
+
+.ChildrenWish .alert {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+  z-index: 999;
+}
+
+.ChildrenWish label {
+  font-size: 2em;
+}
+
+.wishBlur-bg {
+  width: 23%;
+  height: 27%;
+  position: fixed;
+  z-index: -1;
+  border: white solid 0.5rem;
+  border-radius: 1rem;
+  background: rgba(200, 200, 200, 0.6);
+}
+
+.Lobby .create-room:hover {
+  background-color: rgb(209, 209, 209);
+  cursor: pointer;
+}
+
+.Lobby-bg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-image: url("img/background-16.jpg");
+  filter: blur(5px);
+  /* background-position: top right; */
+  background-size: cover;
+}
+
+.Lobby .loading {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+  z-index: 999;
+}
+
+.LobbyRoomItem {
+  height: 320;
+  width: 230;
+  border: solid black 0.2rem;
+}
+
+.RoomEntrance {
+  width: 100%;
+  height: 100%;
 }
 
 html {
@@ -269,9 +304,5 @@ body {
   height: 100%;
   height: 100vh;
   width: 100%;
-}
-button.close {
-  background: none;
-  border: none;
 }
 

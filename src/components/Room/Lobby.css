@@ -23,3 +23,9 @@
   text-align: center;
   z-index: 999;
 }
+
+.LobbyRoomItem {
+  height: 320;
+  width: 230;
+  border: solid black 0.2rem;
+}
