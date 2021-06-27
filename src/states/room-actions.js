@@ -4,11 +4,11 @@ import {
   AorRTask as AorRTaskFromApi,
   childrenComplete as childrenCompleteFromApi,
   parentVerify as parentVerifyFromApi,
-} from '../api/tasks.js';
+} from 'Api/tasks.js';
 
 /**
  * 
- * @returns task
+ * @returns task create
  */
 function startLoading() {
   return {
@@ -22,10 +22,10 @@ function endLoading() {
   };
 }
 
-function endListTasks(posts) {
+function endListTasks(tasks) {
   return {
       type: '@TASK/END_LIST_TASKS',
-      posts
+      tasks
   };
 }
 
@@ -45,7 +45,7 @@ export function listTasks(roomId, userId, selectActive) {
 export function createTask(roomId, type, taskName, deadLine, targetPoints, userId) {
   return (dispatch, getState) => {
       dispatch(startLoading());
-      return createTaskFromApi(roomId, type, taskName, deadLine, targetPoints, userId).then(posts => {
+      return createTaskFromApi(roomId, type, taskName, deadLine, targetPoints, userId).then(tasks => {
           dispatch(listTasks());
       }).catch(err => {
           console.error('Error creating tasks', err);

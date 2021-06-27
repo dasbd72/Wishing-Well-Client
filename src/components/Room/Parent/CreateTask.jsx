@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
 import {
   Input,
   Form,
@@ -10,25 +9,28 @@ import {
   Button,
   ButtonGroup,
 } from "reactstrap";
+import { createTask } from "Api/tasks";
 
 import "./CreateTask.css";
 
 export class CreateTask extends React.Component {
   static propTypes = {
-    roomId: PropTypes.string,
-    type: PropTypes.string,
-    taskName: PropTypes.string,
-    deadLine: PropTypes.string,
-    targetPoints: PropTypes.number,
-    userId: PropTypes.string,
-    dispatch: PropTypes.func
+    roomId: PropTypes.string
   };
 
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);    
+    this.state = {
+      type: '',
+      taskName: '',
+      deadLine: '',
+      targetPoints: 0,
+      userId: '',
+    }
+
+    this.handleCreate = this.handleCreate.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleClick = () => {
@@ -43,24 +45,24 @@ export class CreateTask extends React.Component {
             &times;
           </span>
           <FormGroup className="TaskForm">
-            <Label for="taskname">Type</Label>
-            <Input value={this.props.type}/>
+            <Label for="type">Type</Label>
+            <Input id="type" name="type" value={this.state.type} onChange={this.handleInputChange}/>
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="taskname">Task Name</Label>
-            <Input value={this.props.taskName}/>
+            <Input id="taskname" name="taskName" value={this.state.taskName} onChange={this.handleInputChange}/>
           </FormGroup>
           <FormGroup>
             <Label for="taskdeadline">Dead Line</Label>
-            <Input value={this.props.deadLine}/>
+            <Input id="taskdeadline" name="deadLine" value={this.state.deadLine} onChange={this.handleInputChange}/>
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="taskpoints">Points</Label>
-            <Input value={this.props.targetPoints}/>
+            <Input id="taskpoints" name="targetPoints" value={this.state.targetPoints} onChange={this.handleInputChange}/>
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="tasktarget">Target</Label>
-            <Input value={this.props.userId}/>
+            <Input id="tasktarget" name="userId" value={this.state.userId} onChange={this.handleInputChange}/>
           </FormGroup>
           <div className="CreateButton">
             <Button onClick={this.handleCreate}>Create</Button>
@@ -71,27 +73,28 @@ export class CreateTask extends React.Component {
   }
 
   handleCreate() {
-  //   this.props.dispatch(createTask(
-  //     this.props.roomId,
-  //     this.props.type,
-  //     this.props.taskName,
-  //     this.props.deadLine,
-  //     this.props.targetPoints,
-  //     this.props.userId));
-  this.handleClick();
+    console.log(this.state.type);
+    console.log(this.state.taskName);
+    console.log(this.state.deadLine);
+    console.log(this.state.targetPoints);
+    console.log(this.state.userId);
+    createTask(roomId, type, taskName, deadLine, targetPoints, userId);
+    this.setState({
+      type: '',
+      taskName: '',
+      deadLine: '',
+      targetPoints: 0,
+      userId: '',
+    })
+    this.handleClick();
+  }
 
+  handleInputChange(event) {
+    let changeName = event.target.name
+    this.setState({ [changeName]: event.target.value })
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-});
-
-const mapDispatchToProps = {
-  
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(CreateTask));
+export default connect(state => ({
+  ...state.room,
+}))(CreateTask);

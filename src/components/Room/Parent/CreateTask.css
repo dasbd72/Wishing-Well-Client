@@ -20,3 +20,11 @@
   align-items: center;
   padding: 1rem;
 }
+
+input:invalid {
+  box-shadow: 1.5rem red;
+}
+
+input:valid {
+  border: 1.5rem black;
+}
