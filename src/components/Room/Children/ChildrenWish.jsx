@@ -15,8 +15,6 @@ import {
 } from "reactstrap";
 import { createPrize } from "Api/prizes";
 
-import "./ChildrenWish.css";
-
 export class ChildrenWish extends Component {
   static propTypes = {
     // prop: PropTypes,
