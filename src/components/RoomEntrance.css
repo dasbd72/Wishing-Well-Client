@@ -3,16 +3,3 @@
   height: 100%;
 }
 
-.RoomEntrance .create-room:hover {
-  background-color: rgb(209, 209, 209);
-  cursor: pointer;
-}
-
-.RoomEntrance-bg {
-  position: fixed;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  background-image: url("img/background-3.jpg");
-  background-position: top right;
-}
