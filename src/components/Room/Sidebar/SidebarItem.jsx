@@ -25,8 +25,10 @@ export default class SidebarItem extends Component {
     var newDiv = React.cloneElement(
       <NavLink>
         <div className="d-flex flex-row align-items-center justify-content-between">
-          <Col>{this.props.icon}</Col>
-          <Col hidden={!this.props.isOpen}>{this.props.label}</Col>
+          <div>{this.props.icon}</div>
+          <div hidden={!this.props.isOpen} className="mr-auto pl-2">
+            {this.props.label}
+          </div>
         </div>
       </NavLink>,
       newProps

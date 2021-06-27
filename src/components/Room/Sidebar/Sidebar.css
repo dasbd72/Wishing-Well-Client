@@ -5,7 +5,7 @@
   z-index: 500;
 }
 .SidebarContainer > .sidebar {
-  min-width: 2rem;
+  min-width: 1.5rem;
   max-width: 320px;
   font-size: 1.2rem;
   transition: all 0.5s;
@@ -18,7 +18,7 @@
   color: gray;
 }
 
-.SidebarContainer > .navbar {
+.SidebarContainer > .nav {
   width: 100%;
   font-size: 1.2rem;
   display: none;

@@ -21,3 +21,18 @@
   background-image: url("img/background-10.jpg");
   background-size: cover;
 }
+
+.ChildrenWish {
+  height: 100%;
+  width: 100%;
+}
+
+.ChildrenWish .alert {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+  z-index: 999;
+}

@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Input, InputGroup } from "reactstrap";
+import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 import moment from "moment";
 import * as IconsBi from "react-icons/bi";
 
 export class TaskItem extends Component {
   static propTypes = {
-    id: PropTypes.string,
     title: PropTypes.string,
     information: PropTypes.string,
     points: PropTypes.number,
     accepted: PropTypes.bool,
     deadline: PropTypes.number,
+
+    targetUser: PropTypes.string,
+    text: PropTypes.string,
   };
   constructor(props) {
     super(props);
@@ -34,11 +36,19 @@ export class TaskItem extends Component {
             </div>
             <div className=""> {points} pt </div>
           </div>
-          <div className="ms-auto">
+          <div className="ml-auto">
             {!accepted && (
-              <InputGroup className="d-flex flex-row">
-                <Input type="checkbox" />
-                <Input type="checkbox" />
+              <InputGroup size="sm">
+                <InputGroupAddon addonType="prepend">
+                  <Button outline color="success">
+                    O
+                  </Button>
+                </InputGroupAddon>
+                <InputGroupAddon addonType="append">
+                  <Button outline color="danger">
+                    X
+                  </Button>
+                </InputGroupAddon>
               </InputGroup>
             )}
           </div>

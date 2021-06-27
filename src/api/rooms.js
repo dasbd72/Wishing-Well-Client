@@ -19,7 +19,6 @@ export function listRooms(userId) {
   return axios.get(url).then((res) => {
     if (res.status !== 200)
       throw new Error(`Unexpected response code: ${res.status}`);
-
     return res.data;
   });
 }
@@ -48,18 +47,19 @@ export function listUsers(roomId, role = "both") {
 }
 
 /**
- *
+ * @param {string} roomName
  * @param {string} userId
  * @param {string} role
  * @returns Room Object
  */
-export function createRoom(userId, role) {
+export function createRoom(roomName, userId, role) {
   let url = roomsBaseUrl;
 
   console.log(`Making POST request to: ${url}`);
-
+  console.log(roomName, userId, role);
   return axios
     .post(url, {
+      roomName,
       userId,
       role,
     })

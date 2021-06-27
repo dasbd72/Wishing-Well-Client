@@ -6,19 +6,26 @@ import { Progress } from "reactstrap";
 import "./Prize.css";
 export class PrizeItem extends Component {
   static propTypes = {
-    // prop: PropTypes,
+    prizeId: PropTypes.number,
+    prizeName: PropTypes.string,
+    isAccepted: PropTypes.number,
+    curPoints: PropTypes.number,
+    targetPoints: PropTypes.number,
+    targetUser: PropTypes.string,
+    ts: PropTypes.number,
   };
 
   render() {
+    let percentage = (this.props.curPoints / this.props.targetPoints) * 100;
     return (
       <div className="PrizeItem">
         <div className="container d-flex h-100 flex-column py-3">
-          <div className="title fs-1">IphoneX</div>
+          <div className="title">{this.props.prizeName}</div>
           <div className="mt-auto">
             <Progress
               // bar
               barStyle={{ backgroundColor: "gray" }}
-              value={35}
+              value={percntage}
             ></Progress>
           </div>
         </div>

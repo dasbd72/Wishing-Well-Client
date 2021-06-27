@@ -12,7 +12,6 @@ import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 import AppDescription from "Components/AppDescription";
 import RoomEntrance from "Components/RoomEntrance";
-import { setUser } from "States/session-actions";
 import { reloadUser } from "Api/amplify";
 
 import "./Main.css";
@@ -47,8 +46,6 @@ const mapStateToProps = (state) => ({
   federated: state.federated,
 });
 
-const mapDispatchToProps = {
-  setUser,
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

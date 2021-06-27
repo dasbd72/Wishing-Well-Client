@@ -126,9 +126,9 @@ export class ChildrenTask extends Component {
       },
     ];
     return (
-      <Container className="ChildrenTask d-flex align-items-center flex-column pt-4 mb-4">
-        <h1
-          className="m-3"
+      <Container className="ChildrenTask d-flex align-items-center flex-column pt-2">
+        <h1 
+          className="mr-auto"
           style={{
             color: "white",
             background: "black",

@@ -12,7 +12,6 @@ import { signOut } from "Api/amplify";
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import RoomUserDisplay from "Components/Room/RoomUserDisplay";
-import RoomUserDisplaySM from "Components/Room/RoomUserDisplaySM";
 import ChildrenTask from "Components/Room/Children/ChildrenTask";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
 import ChildrenPrize from "Components/Room/Children/ChildrenPrize";
