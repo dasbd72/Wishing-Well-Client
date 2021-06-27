@@ -13,13 +13,13 @@ import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import RoomUserDisplaySM from "Components/Room/RoomUserDisplaySM";
-import ChildrenMenu from "Components/Room/Children/ChildrenMenu";
+import ChildrenTask from "Components/Room/Children/ChildrenTask";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
 import ChildrenPrize from "Components/Room/Children/ChildrenPrize";
 
 import "./Children.css";
 
-class ChildrenPage extends Component {
+class Children extends Component {
   static propTypes = {};
   constructor(props) {
     super(props);
@@ -27,7 +27,8 @@ class ChildrenPage extends Component {
   render() {
     const { match } = this.props;
     return (
-      <div className="ChildrenPage d-flex">
+      <div className="Children d-flex">
+        <div className="ChildrenPage-bg"></div>
         <SidebarContainer>
           <SidebarItem
             icon={<AiOutlineHome />}
@@ -61,7 +62,7 @@ class ChildrenPage extends Component {
         <RoomUserDisplay />
         <Switch>
           <Route exact path={`${match.path}/`}>
-            <ChildrenMenu />
+            <ChildrenTask />
           </Route>
           <Route path={`${match.path}/wish`}>
             <ChildrenWish />
@@ -82,4 +83,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(ChildrenPage));
+)(withRouter(Children));

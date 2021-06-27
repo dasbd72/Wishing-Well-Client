@@ -38,16 +38,25 @@ export class TaskGroup extends Component {
       }
       return (
         <div type="unstyled" className="TaskGroup container">
-          <div className="pt-2 label" style={{color: "white"}}>{this.props.label} : </div>
+          <div
+            className="pt-2 label p-2 mt-3 mb-3"
+            style={{
+              color: "white",
+              border: "solid white 0.5rem",
+              borderRadius: "1rem",
+            }}
+          >
+            {this.props.label} :{" "}
+          </div>
           <div className="row g-2 list">{listItems}</div>
           <div className="fold" onClick={this.toggle}>
             {this.state.isOpen ? (
-              <div>
+              <div style={{ color: "white" }}>
                 <VscFoldUp /> Show less.
               </div>
             ) : (
               len < this.props.tasks.length && (
-                <div>
+                <div style={{ color: "white" }}>
                   <VscFoldDown /> Show more.
                 </div>
               )

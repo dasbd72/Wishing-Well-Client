@@ -20,9 +20,9 @@ export class TaskItem extends Component {
   render() {
     const { id, title, information, points, accepted, deadline } = this.props;
     return (
-      <div className="TaskItem col-md-6 col-12 p-2">
-        <div className="d-flex">
-          <div className="">
+      <div className="col-md-6 col-12">
+        <div className="TaskItem p-2 d-flex">
+          <div>
             <div className="title"> {title} </div>
             <div className="deadline d-flex align-items-center">
               {accepted ? (

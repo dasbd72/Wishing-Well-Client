@@ -1,13 +1,15 @@
-const SET_USER = "@SESSION/SET_USER";
-const SET_AUTH_STATE = "@SESSION/SET_AUTH_STATE";
-const SIGN_OUT = "@SESSION/SIGN_OUT";
-const ERR_SIGN_IN = "@SESSION/ERR_SIGN_IN";
+import {
+  SET_USER,
+  SIGN_OUT,
+  ERR_SIGN_IN,
+  SET_AUTH_STATE,
+} from "./session-reducers";
 
 export const setUser = (user) => {
   var signedin = false;
   var userName = "";
   var email = "";
-  var id = "";
+  var userId = "";
 
   signedin = user ? true : false;
   if (signedin) {
@@ -18,8 +20,8 @@ export const setUser = (user) => {
     if (user.email) email = user.email;
     else if (user.attributes.email) email = user.attributes.email;
 
-    if (user.id) id = user.id;
-    else if (user.attributes.sub) email = user.attributes.sub;
+    if (user.id) userId = user.id.split(":")[1];
+    else if (user.attributes.sub) userId = user.attributes.sub;
   }
   return {
     type: SET_USER,
@@ -27,6 +29,7 @@ export const setUser = (user) => {
     userName: userName,
     signedin: signedin,
     email: email,
+    userId: userId,
   };
 };
 
@@ -37,5 +40,3 @@ export const setSignOut = () => {
 export const setErrSignIn = (err) => {
   return { type: ERR_SIGN_IN, error: err };
 };
-
-export { SET_USER, SIGN_OUT, ERR_SIGN_IN, SET_AUTH_STATE };

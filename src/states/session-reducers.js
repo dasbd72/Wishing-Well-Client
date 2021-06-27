@@ -1,18 +1,15 @@
-import {
-  SET_USER,
-  SIGN_OUT,
-  ERR_SIGN_IN,
-  SET_AUTH_STATE,
-} from "./session-actions";
-
-/*-------------------------------------------------------------------------------*/
-
 const initialState = {
   signedin: false,
   user: null,
   userName: "",
   email: "",
+  userId: "",
 };
+
+export const SET_USER = "@SESSION/SET_USER";
+export const SET_AUTH_STATE = "@SESSION/SET_AUTH_STATE";
+export const SIGN_OUT = "@SESSION/SIGN_OUT";
+export const ERR_SIGN_IN = "@SESSION/ERR_SIGN_IN";
 
 export const session = (state = initialState, action) => {
   switch (action.type) {
@@ -23,6 +20,7 @@ export const session = (state = initialState, action) => {
         userName: action.userName,
         signedin: action.signedin,
         email: action.email,
+        userId: action.userId,
       };
     case SIGN_OUT:
       return initialState;

@@ -2,3 +2,8 @@
   height: 100%;
   width: 100%;
 }
+
+.Task .progress {
+  position: relative;
+  bottom: -20rem;
+}

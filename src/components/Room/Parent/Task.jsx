@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  withRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
@@ -50,11 +44,26 @@ export class Task extends React.Component {
       },
     ];
     return (
-      <Container className="Task d-flex align-items-center justify-content-center flex-column">
+      <Container className="Task d-flex align-items-center flex-column pt-3">
+        <h1
+          className="m-3"
+          style={{
+            color: "white",
+            background: "black",
+            paddingLeft: "0.5rem",
+            paddingRight: "0.5rem",
+          }}
+        >
+          Watching
+        </h1>
         <TaskGroup tasks={rejected} label="Rejected"></TaskGroup>
         <div className="p-2"></div>
         <TaskGroup tasks={todo} label="Todo"></TaskGroup>
-        <Progress className="w-100" style={{ height: "3rem" }} value="25"></Progress>
+        <Progress
+          className="w-100"
+          style={{ height: "3rem" }}
+          value="25"
+        ></Progress>
       </Container>
     );
   }

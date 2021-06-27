@@ -42,7 +42,16 @@ export class ParentMenu extends React.Component {
     return (
       <div className="ParentMenu d-flex">
         <h1>
-          <span className="ClickToCreate" onClick={this.togglePop} style={{color: "white"}}>
+          <span
+            className="ClickToCreate"
+            onClick={this.togglePop}
+            style={{
+              color: "white",
+              background: "black",
+              paddingLeft: "0.5rem",
+              paddingRight: "0.5rem",
+            }}
+          >
             Create a New Task
           </span>
         </h1>

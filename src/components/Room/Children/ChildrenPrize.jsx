@@ -11,7 +11,18 @@ export class ChildrenPrize extends Component {
 
   render() {
     return (
-      <div className="ChildrenPrize">
+      <div className="ChildrenPrize d-flex align-items-center flex-column pt-4">
+        <h1
+          className="m-3"
+          style={{
+            color: "white",
+            background: "black",
+            paddingLeft: "0.5rem",
+            paddingRight: "0.5rem",
+          }}
+        >
+          Your Wishs
+        </h1>
         <PrizeList />
       </div>
     );

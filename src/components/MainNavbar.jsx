@@ -103,11 +103,11 @@ export class MainNavbar extends Component {
         return (
           <React.Fragment>
             <NavItem className="d-flex align-items-center">
-              <NavLink style={{ fontSize: "0.8em" }} className="my-auto">
-                Hello,
-                <Button color="link" onClick={this.toggleUser}>
+              <NavLink className="my-auto">
+                <span className="align-middle">Hello,</span>
+                <div className="btn btn-link" onClick={this.toggleUser}>
                   {userName}
-                </Button>
+                </div>
               </NavLink>
             </NavItem>
             <NavItem>

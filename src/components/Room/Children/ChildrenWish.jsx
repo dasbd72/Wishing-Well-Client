@@ -14,6 +14,8 @@ import {
   Col,
 } from "reactstrap";
 
+import './ChildrenWish.css'
+
 export class ChildrenWish extends Component {
   static propTypes = {
     // prop: PropTypes,
@@ -22,10 +24,11 @@ export class ChildrenWish extends Component {
   render() {
     return (
       <Container className="ChildrenWish d-flex align-items-center justify-content-center ">
+        <div className="wishBlur-bg"></div>
         <Form className="font-monospace">
           <FormGroup>
-            <Label for="wish" style={{ fontSize: "2rem" }}>
-              Your Wish
+            <Label for="wish" style={{ fontSize: "2rem", color: "white" }}>
+              Make Your Wish
             </Label>
             <Input
               type="text"
@@ -36,7 +39,7 @@ export class ChildrenWish extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="points">Points</Label>
+            <Label for="points" style={{color: "white"}}>Goal Points</Label>
             <InputGroup>
               <Input type="number" name="points" id="PointsOfWish" min={0} />
               <InputGroupAddon addonType="append">

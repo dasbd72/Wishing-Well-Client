@@ -34,7 +34,18 @@ export class Request extends React.Component {
       },
     ];
     return (
-      <Container className="ChildrenMenu d-flex align-items-center justify-content-center flex-column">
+      <Container className="ChildrenTask d-flex align-items-center flex-column pt-3">
+        <h1
+          className="m-3"
+          style={{
+            color: "white",
+            background: "black",
+            paddingLeft: "0.5rem",
+            paddingRight: "0.5rem",
+          }}
+        >
+          New Request
+        </h1>
         <TaskGroup tasks={accepted} label="Accepted"></TaskGroup>
       </Container>
     );

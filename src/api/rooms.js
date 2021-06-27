@@ -12,7 +12,7 @@ export function listRooms(userId) {
   let url = roomsBaseUrl;
   let query = [];
   query.push(`userId=${userId}`);
-  if (query.length()) url += "?" + query.join("&");
+  if (query.length) url += "?" + query.join("&");
 
   console.log(`Making GET request to: ${url}`);
 
@@ -35,7 +35,7 @@ export function listUsers(roomId, role = "both") {
   let query = [];
   query.push(`roomId=${roomId}`);
   if (role != "both") query.push(`role=${role}`);
-  if (query.length()) url += "?" + query.join("&");
+  if (query.length) url += "?" + query.join("&");
 
   console.log(`Making GET request to: ${url}`);
 
