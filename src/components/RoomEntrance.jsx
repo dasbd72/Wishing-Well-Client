@@ -32,7 +32,7 @@ class RoomEntrance extends React.Component {
         <Route path={`${match.path}/parent`}>
           <ParentPage />
         </Route>
-        <Route path={`${match.path}/:id`}>
+        <Route path={`${match.path}/:roomId`}>
           <Room />
         </Route>
       </Switch>

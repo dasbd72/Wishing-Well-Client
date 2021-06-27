@@ -127,7 +127,7 @@ export class ChildrenTask extends Component {
     ];
     return (
       <Container className="ChildrenTask d-flex align-items-center flex-column pt-2">
-        <h1 className="me-auto">Your Tasks</h1>
+        <h1 className="mr-auto">Your Tasks</h1>
         <TaskGroup tasks={unaccepted} label="Unaccepted"></TaskGroup>
         <TaskGroup tasks={accepted} label="Accepted"></TaskGroup>
       </Container>

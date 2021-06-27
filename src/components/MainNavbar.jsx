@@ -141,7 +141,7 @@ export class MainNavbar extends Component {
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav navbar className="me-auto">
+              <Nav navbar className="mr-auto">
                 <NavItem>
                   <NavLink tag={Link} to="/room">
                     Room
@@ -165,8 +165,7 @@ export class MainNavbar extends Component {
               onClick={this.toggleAuth}
               style={{
                 position: "relative",
-                top: "1.5em",
-                left: "0.3em",
+                left: "-0.5em",
                 fontSize: "2em",
                 zIndex: "999",
               }}

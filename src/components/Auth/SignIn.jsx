@@ -8,7 +8,6 @@ import {
   AmplifySignIn,
 } from "@aws-amplify/ui-react";
 
-import { setUser } from "States/session-actions";
 import { reloadUser } from "Api/amplify";
 
 export class CustomSignIn extends Component {
@@ -75,8 +74,6 @@ const mapStateToProps = (state) => ({
   navHeight: state.main.navHeight,
 });
 
-const mapDispatchToProps = {
-  setUser,
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomSignIn);

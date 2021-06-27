@@ -11,24 +11,3 @@
     display: none;
   }
 }
-
-.RoomUserDisplaySM .avatar {
-  position: absolute;
-  z-index: 10;
-}
-
-.RoomUserDisplaySM .information {
-  background-color: red;
-  position: absolute;
-  top: 0;
-  left: -300px;
-  z-index: 9;
-  transition: all 1s;
-}
-
-.RoomUserDisplaySM .information.show {
-  position: absolute;
-  left: 2rem;
-  z-index: 9;
-  transition: all 1s;
-}

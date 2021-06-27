@@ -36,17 +36,18 @@ export function listPrizes(roomId, userId, selectActive = 0) {
  * @param {number} targetPoints
  * @returns Prize Object
  */
-export function createPrizes(roomId, userId, prizeName, targetPoints) {
+export function createPrize(roomId, userId, prizeName, targetPoints) {
   let url = prizesUrl;
 
   console.log(`Making POST request to: ${url}`);
+  console.log(roomId, userId, prizeName, targetPoints);
 
   return axios
     .post(url, {
-      roomId,
-      userId,
-      prizeName,
-      targetPoints,
+      prizename: prizeName,
+      targetPoints: targetPoints,
+      userId: userId,
+      roomId: roomId,
     })
     .then((res) => {
       if (res.status !== 200)

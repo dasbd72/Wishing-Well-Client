@@ -6,10 +6,10 @@ import { GiMushroomHouse } from "react-icons/gi";
 import { Link, withRouter } from "react-router-dom";
 
 export default withRouter(
-  class RoomCardItem extends Component {
+  class LobbyRoomItem extends Component {
     static propTypes = {
       add: PropTypes.bool,
-      roomId: PropTypes.string,
+      roomId: PropTypes.number,
       icon: PropTypes.object,
       title: PropTypes.string,
       text: PropTypes.string,
