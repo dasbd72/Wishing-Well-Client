@@ -15,11 +15,12 @@
 .TaskItem {
   /* max-width: 500px; */
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
-  border-radius: 2px;
+  border-radius: 0.5rem;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 .TaskItem:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgb(247, 242, 242);
 }
 .TaskItem .title {
   font-weight: bolder;

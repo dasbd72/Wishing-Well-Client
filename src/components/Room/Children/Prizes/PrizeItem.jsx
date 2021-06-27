@@ -17,7 +17,7 @@ export class PrizeItem extends Component {
           <div className="mt-auto" style={{}}>
             <Progress
               // bar
-              barStyle={{ backgroundColor: "purple" }}
+              barStyle={{ backgroundColor: "gray" }}
               value={35}
             ></Progress>
           </div>

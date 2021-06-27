@@ -27,6 +27,7 @@ export class ParentPage extends Component {
     const { match } = this.props;
     return (
       <div className="ParentPage d-flex">
+        <div className="ParentPage-bg"></div>
         <SidebarContainer>
           <SidebarItem
             icon={<IconAi.AiOutlineHome />}

@@ -1,33 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  Input,
-  Form,
-  FormGroup,
-  Label,
-  Button,
-  ButtonGroup,
-} from "reactstrap";
+import { Input, Form, FormGroup, Label, Button, ButtonGroup } from "reactstrap";
 import { createTask } from "Api/tasks";
 
 import "./CreateTask.css";
 
 export class CreateTask extends React.Component {
   static propTypes = {
-    roomId: PropTypes.string
+    roomId: PropTypes.string,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      type: '',
-      taskName: '',
-      deadLine: '',
+      type: "",
+      taskName: "",
+      deadLine: "",
       targetPoints: 0,
-      userId: '',
-    }
+      userId: "",
+    };
 
     this.handleCreate = this.handleCreate.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,23 +39,48 @@ export class CreateTask extends React.Component {
           </span>
           <FormGroup className="TaskForm">
             <Label for="type">Type</Label>
-            <Input id="type" name="type" value={this.state.type} onChange={this.handleInputChange}/>
+            <Input
+              id="type"
+              name="type"
+              value={this.state.type}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="taskname">Task Name</Label>
-            <Input id="taskname" name="taskName" value={this.state.taskName} onChange={this.handleInputChange}/>
+            <Input
+              id="taskname"
+              name="taskName"
+              value={this.state.taskName}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label for="taskdeadline">Dead Line</Label>
-            <Input id="taskdeadline" name="deadLine" value={this.state.deadLine} onChange={this.handleInputChange}/>
+            <Input
+              id="taskdeadline"
+              name="deadLine"
+              value={this.state.deadLine}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="taskpoints">Points</Label>
-            <Input id="taskpoints" name="targetPoints" value={this.state.targetPoints} onChange={this.handleInputChange}/>
+            <Input
+              id="taskpoints"
+              name="targetPoints"
+              value={this.state.targetPoints}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
           <FormGroup className="TaskForm">
             <Label for="tasktarget">Target</Label>
-            <Input id="tasktarget" name="userId" value={this.state.userId} onChange={this.handleInputChange}/>
+            <Input
+              id="tasktarget"
+              name="userId"
+              value={this.state.userId}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
           <div className="CreateButton">
             <Button onClick={this.handleCreate}>Create</Button>
@@ -80,21 +98,21 @@ export class CreateTask extends React.Component {
     console.log(this.state.userId);
     createTask(roomId, type, taskName, deadLine, targetPoints, userId);
     this.setState({
-      type: '',
-      taskName: '',
-      deadLine: '',
+      type: "",
+      taskName: "",
+      deadLine: "",
       targetPoints: 0,
-      userId: '',
-    })
+      userId: "",
+    });
     this.handleClick();
   }
 
   handleInputChange(event) {
-    let changeName = event.target.name
-    this.setState({ [changeName]: event.target.value })
+    let changeName = event.target.name;
+    this.setState({ [changeName]: event.target.value });
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   ...state.room,
 }))(CreateTask);
