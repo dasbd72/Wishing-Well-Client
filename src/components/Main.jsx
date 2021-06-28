@@ -3,22 +3,25 @@ import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Redirect,
   Switch,
 } from "react-router-dom";
-import { Auth } from "aws-amplify";
-import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 import AppDescription from "Components/AppDescription";
 import RoomEntrance from "Components/RoomEntrance";
 import { reloadUser } from "Api/amplify";
+import { getUserInfo } from "States/session-actions";
 
 import "./Main.css";
 
 export class Main extends Component {
   componentDidMount() {
     reloadUser();
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.session.userId != this.props.session.userId) {
+      this.props.getUserInfo(this.props.session.userId);
+    }
   }
   render() {
     return (
@@ -42,10 +45,12 @@ export class Main extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  ...state.session,
+  session: state.session,
   federated: state.federated,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getUserInfo,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

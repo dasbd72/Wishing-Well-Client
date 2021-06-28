@@ -7,6 +7,7 @@ import { BiUserCircle } from "react-icons/bi";
 
 import "./RoomUserDisplay.css";
 import PrizeItem from "./Prizes/PrizeItem";
+import { c_getChosenPrize } from "States/room-actions";
 
 export class RoomUserDisplay extends Component {
   static propTypes = {
@@ -17,7 +18,12 @@ export class RoomUserDisplay extends Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.c_getChosenPrize(
+      this.props.room.roomId,
+      this.props.session.userId
+    );
+  }
 
   render() {
     return (
@@ -48,6 +54,6 @@ const mapStateToProps = (state) => ({
   room: state.room,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { c_getChosenPrize };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomUserDisplay);

@@ -39,7 +39,7 @@ export class PrizeItem extends Component {
             onClick={() => {
               this.props.c_choosePrize(
                 this.props.prizeId,
-                this.props.session.userId
+                this.props.room.roomId
               );
             }}
           >

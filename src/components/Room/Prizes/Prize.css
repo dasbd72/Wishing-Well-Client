@@ -24,7 +24,7 @@
 .RoomUserDisplay .PrizeItem {
   height: 10em;
   width: 18em;
-  background: rgb(66, 64, 97);
+  background: rgba(221, 215, 130, 0.76);
 }
 
 .PrizeItem .title {
