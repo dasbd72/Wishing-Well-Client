@@ -16,7 +16,7 @@ export class Request extends Component {
     return (
       <Container className="Request">
         <h1 className="mt-5 custom-title" style={{ display: "inline-block" }}>
-          New Requests
+          New Requests.
         </h1>
         <PrizeList prizes={this.props.room.p_prizeList} />
       </Container>

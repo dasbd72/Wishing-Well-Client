@@ -18,7 +18,7 @@ export class ChildrenPrize extends Component {
 
   render() {
     return (
-      <div className="ChildrenPrize">
+      <div className="ChildrenPrize align-items-center justify-content-center">
         {this.props.room.c_prizeList.length == 0 ? (
           <div className="d-flex align-items-center justify-content-center h-100">
             <h1 className="m-3 custom-title">Go make some wish.</h1>

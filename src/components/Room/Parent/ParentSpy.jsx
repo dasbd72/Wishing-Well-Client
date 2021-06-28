@@ -83,7 +83,10 @@ export class ParentSpy extends Component {
           onExited={() => this.setState({ animating: false })}
           key={shortid.generate()}
         >
-          <div className="slidePage h-100 d-flex justify-content-center align-items-center">
+          <div
+            className="slidePage h-100 d-flex justify-content-center align-items-center"
+            style={{ overflowY: "auto" }}
+          >
             <div className="w-75">
               <TaskGroup tasks={this.state.acceptedTasks} label={"Accepted"} />
               <TaskGroup
@@ -112,7 +115,7 @@ export class ParentSpy extends Component {
               paddingRight: "0.5rem",
             }}
           >
-            No Children Yet
+            No Children Yet.
           </h1>
         ) : (
           <Carousel

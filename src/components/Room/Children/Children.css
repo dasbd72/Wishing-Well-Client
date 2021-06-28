@@ -42,12 +42,10 @@
   font-size: 2em;
 }
 
-.wishBlur-bg {
-  width: 23%;
-  height: 27%;
-  position: fixed;
-  z-index: -1;
-  border: white solid 0.5rem;
-  border-radius: 1rem;
-  background: rgba(200, 200, 200, 0.6);
+.ChildrenPrize > h1 {
+  display: inline-flex;
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }

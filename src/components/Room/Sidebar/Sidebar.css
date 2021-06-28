@@ -3,12 +3,14 @@
   border-right: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: auto;
   z-index: 500;
+  position: sticky;
 }
 .SidebarContainer > .sidebar {
   min-width: 1.5rem;
   max-width: 320px;
   font-size: 1.2rem;
   transition: all 0.5s;
+  position: sticky;
 }
 .SidebarContainer > .sidebar svg {
   font-size: 2.5rem;
