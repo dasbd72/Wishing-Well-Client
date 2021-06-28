@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Progress } from "reactstrap";
-
-import "./Prize.css";
+import { ButtonGroup, Progress, Button } from "reactstrap";
 import classNames from "classnames";
+
+import { responsePrize } from "Api/prizes";
+import "./Prize.css";
+
 export class PrizeItem extends Component {
   static propTypes = {
     prizeId: PropTypes.number,
@@ -13,33 +15,64 @@ export class PrizeItem extends Component {
     curPoints: PropTypes.number,
     targetPoints: PropTypes.number,
     userId: PropTypes.string,
-    ts: PropTypes.number,
+    ts: PropTypes.string,
+  };
+
+  responsePrize = (accept) => {
+    return () => {
+      responsePrize(this.props.prizeId, accept).then(()=>{
+        
+      });
+    };
   };
 
   render() {
     let percentage = (this.props.curPoints / this.props.targetPoints) * 100;
-    return (
-      <div
-        className={classNames("PrizeItem", {
-          accepted: this.props.isAccepted == 1,
-        })}
-      >
-        <div className="container d-flex h-100 flex-column py-3">
-          <div className="title">{this.props.prizeName}</div>
-          <div className="mt-auto">
-            <Progress
-              // bar
-              barStyle={{ backgroundColor: "gray" }}
-              value={percentage}
-            ></Progress>
+    if (this.props.room.role === "children") {
+      return (
+        <div
+          className={classNames("PrizeItem", {
+            accepted: this.props.isAccepted == 1,
+          })}
+        >
+          <div className="container d-flex h-100 flex-column py-3">
+            <div className="title">{this.props.prizeName}</div>
+            <div className="mt-auto">
+              <Progress
+                // bar
+                barStyle={{ backgroundColor: "gray" }}
+                value={percentage}
+              ></Progress>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div
+          className={classNames("PrizeItem", {
+            accepted: this.props.isAccepted == 1,
+          })}
+        >
+          <div className="container d-flex h-100 flex-column py-3">
+            <div className="title">{this.props.prizeName}</div>
+            <div className="mt-auto">
+              <ButtonGroup>
+                <Button>Accept</Button>
+                <Button>Reject</Button>
+              </ButtonGroup>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  room: state.room,
+  session: state.session,
+});
 
 const mapDispatchToProps = {};
 

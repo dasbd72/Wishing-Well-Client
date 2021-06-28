@@ -63,6 +63,8 @@ export const room = (state = initialState, action) => {
 
     case P_END_LIST_CHILD:
       return { ...state, p_childList: action.childList };
+    case P_END_LIST_PRIZE:
+      return { ...state, p_prizeList: action.prizeList };
 
     default:
       return state;

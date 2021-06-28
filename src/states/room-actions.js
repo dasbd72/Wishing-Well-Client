@@ -165,3 +165,24 @@ export const p_listChild = (roomId) => {
 const p_endListChild = (childList) => {
   return { type: T.P_END_LIST_CHILD, childList: childList };
 };
+
+export const p_listPrizes = (roomId) => {
+  if (!roomId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return listPrizesApi(roomId, "", 0)
+      .then((prizes) => {
+        dispatch(p_endListPrizes(prizes));
+      })
+      .catch((err) => {
+        console.error("Error Listing Prizes", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const p_endListPrizes = (prizes) => {
+  return { type: T.P_END_LIST_PRIZE, prizeList: prizes };
+};

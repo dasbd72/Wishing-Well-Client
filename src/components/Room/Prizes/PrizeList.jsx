@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import shortid from "shortid";
 
 import PrizeItem from "./PrizeItem";
 import "./Prize.css";
@@ -13,7 +14,7 @@ export class PrizeList extends Component {
   render() {
     let prizelist = this.props.prizes.map((el) => {
       return (
-        <div className="col">
+        <div className="col p-3" key={shortid.generate()}>
           <PrizeItem {...el} />
         </div>
       );
