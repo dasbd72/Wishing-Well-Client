@@ -7,6 +7,8 @@ const initialState = {
   c_unacceptedTasks: [],
   c_prizeList: [],
   c_currentPrize: null,
+
+  p_childList: [],
 };
 
 export const SET_ROOM_ID = "@ROOM/SET_ROOM_ID";
@@ -19,6 +21,8 @@ export const C_END_LIST_TASKS = "@CHILD/END_LIST_TASKS";
 export const C_END_LIST_PRIZE = "@CHILD/END_LIST_PRIZE";
 export const C_END_CHOSE_PRIZE = "@CHILD/END_CHOSE_PRIZE";
 
+export const P_END_LIST_CHILD = "@PARENT/END_LIST_CHILD";
+
 export const room = (state = initialState, action) => {
   switch (action.type) {
     case START_LOADING:
@@ -29,6 +33,7 @@ export const room = (state = initialState, action) => {
       return { ...state, roomId: action.roomId };
     case END_GET_ROLE:
       return { ...state, role: action.role };
+
     case C_END_LIST_TASKS:
       return {
         ...state,
@@ -43,6 +48,10 @@ export const room = (state = initialState, action) => {
       };
     case C_END_CHOSE_PRIZE:
       return { ...state, c_currentPrize: action.prize };
+
+    case P_END_LIST_CHILD:
+      return { ...state, p_childList: action.childList };
+
     default:
       return state;
   }

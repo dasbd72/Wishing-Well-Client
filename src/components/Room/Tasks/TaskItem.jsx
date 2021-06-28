@@ -5,7 +5,7 @@ import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 import moment from "moment";
 import { Popover, PopoverBody } from "reactstrap";
 import * as IconsBi from "react-icons/bi";
-import { responseTask } from "States/room-actions";
+import { c_responseTask } from "States/room-actions";
 
 export class TaskItem extends Component {
   static propTypes = {
@@ -34,16 +34,16 @@ export class TaskItem extends Component {
   };
 
   responseTask = (accept) => {
-    return this.props.responseTask(
-      this.props.taskId,
-      accept,
-      this.props.room.roomId,
-      this.props.session.userId
-    );
+    return () =>
+      this.props.c_responseTask(
+        this.props.taskId,
+        accept,
+        this.props.room.roomId,
+        this.props.session.userId
+      );
   };
 
   render() {
-    // return null;
     const { taskName, points, isAccepted, deadline, description } = this.props;
     return (
       <React.Fragment>
@@ -71,12 +71,20 @@ export class TaskItem extends Component {
             {isAccepted == 0 && (
               <InputGroup size="sm">
                 <InputGroupAddon addonType="prepend">
-                  <Button outline color="success">
+                  <Button
+                    outline
+                    color="success"
+                    onClick={this.responseTask(true)}
+                  >
                     O
                   </Button>
                 </InputGroupAddon>
                 <InputGroupAddon addonType="append">
-                  <Button outline color="danger">
+                  <Button
+                    outline
+                    color="danger"
+                    onClick={this.responseTask(false)}
+                  >
                     X
                   </Button>
                 </InputGroupAddon>
@@ -102,7 +110,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  responseTask,
+  c_responseTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskItem);

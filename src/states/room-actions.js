@@ -9,6 +9,7 @@ import {
   listPrizes as listPrizesApi,
   createPrize as createPrizeApi,
 } from "Api/prizes";
+import { listUsers as listUsersApi } from "Api/rooms";
 
 const startLoading = () => {
   return {
@@ -51,7 +52,7 @@ const endGetUserRole = (role) => {
   return { type: T.END_GET_ROLE, role: role };
 };
 
-export const listTasks = (roomId, userId) => {
+export const c_listTasks = (roomId, userId) => {
   console.log("ListTasks");
   console.log(roomId, userId);
   if (!roomId || !userId) return { type: T.WRONG_INPUT };
@@ -68,7 +69,7 @@ export const listTasks = (roomId, userId) => {
       .then(() => {
         listTasksApi(roomId, userId, 0)
           .then((tasks) => {
-            dispatch(endListTasks(acceptedTasks, tasks));
+            dispatch(c_endListTasks(acceptedTasks, tasks));
           })
           .catch((err) => {
             console.error("Error Listing Unaccepted Tasks", err);
@@ -80,13 +81,12 @@ export const listTasks = (roomId, userId) => {
   };
 };
 
-const endListTasks = (acceptedTasks, unacceptedTasks) => {
+const c_endListTasks = (acceptedTasks, unacceptedTasks) => {
   return { type: T.C_END_LIST_TASKS, acceptedTasks, unacceptedTasks };
 };
 
-export const responseTask = (taskId, accept, roomId, userId) => {
-  if (!taskId || !isAccepted || !roomId || !userId)
-    return { type: T.WRONG_INPUT };
+export const c_responseTask = (taskId, accept, roomId, userId) => {
+  if (!taskId || !roomId || !userId) return { type: T.WRONG_INPUT };
   return (dispatch, getState) => {
     dispatch(startLoading());
     return responseTaskApi(taskId, accept)
@@ -100,4 +100,25 @@ export const responseTask = (taskId, accept, roomId, userId) => {
         dispatch(endLoading());
       });
   };
+};
+
+export const p_listChild = (roomId) => {
+  if (!roomId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return listUsersApi(roomId, "children")
+      .then((childList) => {
+        dispatch(p_endListChild(childList));
+      })
+      .catch((err) => {
+        console.error("Error Listing Child", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const p_endListChild = (childList) => {
+  return { type: T.P_END_LIST_CHILD, childList: childList };
 };

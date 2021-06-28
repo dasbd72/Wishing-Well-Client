@@ -6,9 +6,7 @@ import PrizeList from "Components/Room/Prizes/PrizeList";
 import { listPrizes } from "Api/prizes";
 
 export class ChildrenPrize extends Component {
-  static propTypes = {
-    // prop: PropTypes
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -42,7 +40,9 @@ export class ChildrenPrize extends Component {
                 paddingLeft: "0.5rem",
                 paddingRight: "0.5rem",
               }}
-            >Go make some wish.</h1>
+            >
+              Go make some wish.
+            </h1>
           </div>
         ) : (
           <PrizeList prizes={this.state.prizes} />

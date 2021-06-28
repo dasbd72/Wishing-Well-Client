@@ -10,9 +10,7 @@ import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import "./Sidebar.css";
 
 export default class SidebarContainer extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
