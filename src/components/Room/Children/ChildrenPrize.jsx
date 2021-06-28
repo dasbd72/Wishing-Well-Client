@@ -42,7 +42,9 @@ export class ChildrenPrize extends Component {
                 paddingLeft: "0.5rem",
                 paddingRight: "0.5rem",
               }}
-            >Go make some wish.</h1>
+            >
+              Go make some wish.
+            </h1>
           </div>
         ) : (
           <PrizeList prizes={this.state.prizes} />

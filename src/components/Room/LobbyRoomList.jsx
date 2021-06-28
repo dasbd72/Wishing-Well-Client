@@ -70,14 +70,14 @@ export class LobbyRoomList extends Component {
       return (
         <LobbyRoomItem
           roomId={el.roomId}
-          title={String(el.roomname)}
+          title={String(el.roomName)}
           key={shortid.generate()}
         />
       );
     });
     return (
       <Container className="pt-4">
-        <Row sm="2" lg="3" xl="4" className="LobbyRoomList g-4">
+        <Row sm="2" lg="3" xl="4" className="LobbyRoomList">
           <LobbyRoomItem add toggle={this.toggleModal} />
           {content}
         </Row>

@@ -30,21 +30,23 @@ export function listTasks(roomId, userId, selectActive = 0) {
 
 /**
  *
- * @param {number} roomId
- * @param {string} type
- * @param {number} taskName
- * @param {string} deadLine
- * @param {number} targetPoints
- * @param {string} userId
+ * @param {string} roomId
+ * @param {string} type normal/forced
+ * @param {string} taskName
+ * @param {number} deadline
+ * @param {number} points
+ * @param {string} targetUser user id
+ * @param {string} description
  * @returns
  */
 export function createTask(
   roomId,
   type,
   taskName,
-  deadLine,
-  targetPoints,
-  userId
+  deadline,
+  points,
+  targetUser,
+  description
 ) {
   let url = tasksBaseUrl;
 
@@ -55,9 +57,10 @@ export function createTask(
       roomId,
       type,
       taskName,
-      deadLine,
-      targetPoints,
-      userId,
+      deadline,
+      points,
+      targetUser,
+      description,
     })
     .then((res) => {
       if (res.status !== 200)

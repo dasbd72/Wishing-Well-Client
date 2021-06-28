@@ -9,7 +9,7 @@ export default withRouter(
   class LobbyRoomItem extends Component {
     static propTypes = {
       add: PropTypes.bool,
-      roomId: PropTypes.number,
+      roomId: PropTypes.string,
       icon: PropTypes.object,
       title: PropTypes.string,
       text: PropTypes.string,
@@ -29,10 +29,9 @@ export default withRouter(
         return (
           <Col>
             <Card
-              style={{ height: 320, width: 230, border: "solid black 0.2rem" }}
               body
               onClick={this.props.toggle}
-              className="create-room"
+              className="create-room LobbyRoomItem mx-auto"
             >
               <IoMdAddCircle
                 size={50}
@@ -49,11 +48,8 @@ export default withRouter(
         );
       } else {
         return (
-          <Col>
-            <Card
-              style={{ height: 320, width: 230, border: "solid black 0.2rem" }}
-              body
-            >
+          <Col className="p-2">
+            <Card body className="LobbyRoomItem mx-auto">
               {icon}
               <CardBody>
                 <CardTitle hidden={!this.props.title}>

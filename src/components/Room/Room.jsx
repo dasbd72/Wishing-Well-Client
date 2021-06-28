@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import ChildrenPage from "Components/Room/Children/Children";
-import ParentPage from "Components/Room/Parent/ParentPage";
+import Parent from "Components/Room/Parent/Parent";
 import { setRoomId, getUserRole } from "States/room-actions";
 
 export class Room extends Component {
@@ -29,7 +29,7 @@ export class Room extends Component {
   }
   render() {
     if (this.props.room.role === "parent") {
-      return <ParentPage />;
+      return <Parent />;
     } else if (this.props.room.role === "children") {
       return <ChildrenPage />;
     } else {

@@ -37,3 +37,17 @@
   text-align: center;
   z-index: 999;
 }
+
+.ChildrenWish label {
+  font-size: 2em;
+}
+
+.wishBlur-bg {
+  width: 23%;
+  height: 27%;
+  position: fixed;
+  z-index: -1;
+  border: white solid 0.5rem;
+  border-radius: 1rem;
+  background: rgba(200, 200, 200, 0.6);
+}

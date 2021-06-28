@@ -44,10 +44,10 @@ export function createPrize(roomId, userId, prizeName, targetPoints) {
 
   return axios
     .post(url, {
-      prizename: prizeName,
-      targetPoints: targetPoints,
-      userId: userId,
-      roomId: roomId,
+      userId,
+      prizeName,
+      targetPoints,
+      roomId,
     })
     .then((res) => {
       if (res.status !== 200)
