@@ -25,7 +25,7 @@ export class PrizeItem extends Component {
             <Progress
               // bar
               barStyle={{ backgroundColor: "gray" }}
-              value={percntage}
+              value={percentage}
             ></Progress>
           </div>
         </div>
