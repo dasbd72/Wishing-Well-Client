@@ -39,7 +39,9 @@ export default withRouter(
                 style={{ margin: 75 }}
               />
               <CardBody>
-                <CardTitle>Create or Join</CardTitle>
+                <CardTitle>
+                  Create or Join <br />a room
+                </CardTitle>
               </CardBody>
             </Card>
           </Col>

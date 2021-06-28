@@ -38,9 +38,9 @@ export class ChildrenTask extends Component {
 
   render() {
     return (
-      <Container className="ChildrenTask d-flex align-items-center flex-column pt-2">
+      <Container className="ChildrenTask d-flex align-items-center flex-column pt-2 pb-4">
         <h1
-          className="mr-auto"
+          className="ml-auto mr-auto mt-5 mb-4"
           style={{
             color: "white",
             background: "black",
@@ -48,7 +48,7 @@ export class ChildrenTask extends Component {
             paddingRight: "0.5rem",
           }}
         >
-          Your Tasks
+          Your Tasks.
         </h1>
         <TaskGroup tasks={this.state.unaccepted} label="Unaccepted"></TaskGroup>
         <TaskGroup tasks={this.state.accepted} label="Accepted"></TaskGroup>

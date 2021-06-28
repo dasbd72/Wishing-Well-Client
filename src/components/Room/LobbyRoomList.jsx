@@ -18,6 +18,9 @@ import shortid from "shortid";
 import { FaChild } from "react-icons/fa";
 import { GiOldKing } from "react-icons/gi";
 
+import { RiGroupLine } from "react-icons/ri"; // better for parent
+import { RiGhostSmileLine } from "react-icons/ri"; // better for children
+
 import LobbyRoomItem from "./LobbyRoomItem";
 import { userCreateRoom, userJoinRoom } from "States/lobby-actions";
 
@@ -80,7 +83,7 @@ export class LobbyRoomList extends Component {
         </Row>
         <Modal isOpen={this.state.isModalOpen}>
           <ModalHeader toggle={this.toggleModal}>
-            Join Or Create Room
+            Create Or Join Room
           </ModalHeader>
           <ModalBody>
             <Container>

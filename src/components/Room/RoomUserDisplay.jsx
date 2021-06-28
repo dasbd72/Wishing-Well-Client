@@ -21,6 +21,7 @@ export class RoomUserDisplay extends Component {
           )}
         >
           <BiUserCircle size={200} className="mt-3" />
+          <h1>{this.props.session.userName}</h1>
           <Clock format="HH:mm:ss dddd" interval={1000} ticking={true} />
         </div>
       </div>
@@ -28,7 +29,9 @@ export class RoomUserDisplay extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  session: state.session,
+});
 
 const mapDispatchToProps = {};
 

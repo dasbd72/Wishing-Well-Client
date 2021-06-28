@@ -14,6 +14,7 @@ import {
   Alert,
 } from "reactstrap";
 import { createPrize } from "Api/prizes";
+import { BiFontSize } from "react-icons/bi";
 
 export class ChildrenWish extends Component {
   static propTypes = {
@@ -56,7 +57,19 @@ export class ChildrenWish extends Component {
         <div className="d-flex align-items-center justify-content-center h-100">
           <Form className="font-monospace" onSubmit={this.handleSubmit}>
             <FormGroup>
-              <Label for="wish">Your Wish</Label>
+              <Label
+                for="wish"
+                style={{
+                  color: "white",
+                  background: "black",
+                  paddingLeft: "1rem",
+                  paddingRight: "1rem",
+                  fontWeight: "600",
+                  fontSize: "2em"
+                }}
+              >
+                Your Wish.
+              </Label>
               <Input
                 type="text"
                 name="wish"
@@ -66,7 +79,19 @@ export class ChildrenWish extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="points">Points</Label>
+              <Label
+                for="points"
+                style={{
+                  color: "white",
+                  background: "black",
+                  paddingLeft: "1rem",
+                  paddingRight: "1rem",
+                  fontWeight: "500",
+                  fontSize: "1.5em",
+                }}
+              >
+                Expect Points.
+              </Label>
               <InputGroup>
                 <Input type="number" name="points" id="PointsOfWish" min={0} />
                 <InputGroupAddon addonType="append">
