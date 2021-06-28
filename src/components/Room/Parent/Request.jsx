@@ -16,7 +16,7 @@ export class Request extends Component {
             paddingRight: "0.5rem",
           }}
         >
-          New Request
+          New Request.
         </h1>
       </Container>
     );

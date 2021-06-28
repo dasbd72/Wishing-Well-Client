@@ -16,8 +16,7 @@ export function userJoinRoom(roomId, userId, role) {
     })
     .then((res) => {
       if (res.status !== 200)
-        throw new Error(`Unexpected response code: ${res.status}`);
-
+        throw new Error(`Unexpected response code: ${res.status}`)
       return res.data;
     });
 }

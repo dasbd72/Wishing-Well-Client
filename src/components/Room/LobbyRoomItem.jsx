@@ -21,7 +21,7 @@ export default withRouter(
       var icon = React.cloneElement(
         this.props.icon ? this.props.icon : <GiMushroomHouse />,
         {
-          size: 200,
+          size: 180,
           className: "mx-auto",
         }
       );
