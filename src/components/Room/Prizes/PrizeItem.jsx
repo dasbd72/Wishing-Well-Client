@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Progress } from "reactstrap";
 
 import "./Prize.css";
+import classNames from "classnames";
 export class PrizeItem extends Component {
   static propTypes = {
     prizeId: PropTypes.number,
@@ -11,14 +12,18 @@ export class PrizeItem extends Component {
     isAccepted: PropTypes.number,
     curPoints: PropTypes.number,
     targetPoints: PropTypes.number,
-    targetUser: PropTypes.string,
+    userId: PropTypes.string,
     ts: PropTypes.number,
   };
 
   render() {
     let percentage = (this.props.curPoints / this.props.targetPoints) * 100;
     return (
-      <div className="PrizeItem">
+      <div
+        className={classNames("PrizeItem", {
+          accepted: this.props.isAccepted == 1,
+        })}
+      >
         <div className="container d-flex h-100 flex-column py-3">
           <div className="title">{this.props.prizeName}</div>
           <div className="mt-auto">

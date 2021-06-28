@@ -21,7 +21,7 @@ export class PrizeList extends Component {
     return (
       <div className="PrizeList p-4">
         <div className="container">
-          <div className="row"></div>
+          <div className="row">{prizelist}</div>
         </div>
       </div>
     );

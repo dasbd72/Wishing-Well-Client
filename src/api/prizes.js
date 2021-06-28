@@ -10,12 +10,12 @@ const prizesUrl = baseUrl + "/prizes";
  * @param {number} selectActive
  * @returns List of Prize object
  */
-export function listPrizes(roomId, userId, selectActive = 0) {
+export function listPrizes(roomId, userId, selectActive = -1) {
   let url = prizesUrl;
   let query = [];
   if (roomId.length) query.push(`roomId=${roomId}`);
   if (userId.length) query.push(`userId=${userId}`);
-  query.push(`selectActive=${selectActive}`);
+  if (selectActive != -1) query.push(`selectActive=${selectActive}`);
   if (query.length) url += "?" + query.join("&");
 
   console.log(`Making GET request to: ${url}`);

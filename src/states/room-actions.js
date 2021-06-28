@@ -1,6 +1,9 @@
 import * as T from "./room-reducers";
 
-import { getUserRole as getUserRoleApi } from "Api/users";
+import {
+  getUserRole as getUserRoleApi,
+  getChosenPrize as getChosenPrizeApi,
+} from "Api/users";
 import {
   listTasks as listTasksApi,
   responseTask as responseTaskApi,
@@ -53,8 +56,6 @@ const endGetUserRole = (role) => {
 };
 
 export const c_listTasks = (roomId, userId) => {
-  console.log("ListTasks");
-  console.log(roomId, userId);
   if (!roomId || !userId) return { type: T.WRONG_INPUT };
   let acceptedTasks;
   return (dispatch, getState) => {
@@ -102,6 +103,48 @@ export const c_responseTask = (taskId, accept, roomId, userId) => {
   };
 };
 
+export const c_listPrizes = (roomId, userId) => {
+  if (!roomId || !userId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return listPrizesApi(roomId, userId, 0)
+      .then((prizes) => {
+        dispatch(c_endListPrizes(prizes));
+      })
+      .catch((err) => {
+        console.error("Error Listing Prizes", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const c_endListPrizes = (prizes) => {
+  return { type: T.C_END_LIST_PRIZE, prizes: prizes };
+};
+
+export const c_getChosenPrize = (roomId, userId) => {
+  if (!roomId || !userId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return getChosenPrizeApi(roomId, userId)
+      .then((prize) => {
+        dispatch(c_endGetChosenPrize(prize));
+      })
+      .catch((err) => {
+        console.error("Error Getting Prize", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const c_endGetChosenPrize = (prize) => {
+  return { type: T.C_END_GET_CHOSEN_PRIZE, prize: prize };
+};
+
 export const p_listChild = (roomId) => {
   if (!roomId) return { type: T.WRONG_INPUT };
   return (dispatch, getState) => {
@@ -122,4 +165,3 @@ export const p_listChild = (roomId) => {
 const p_endListChild = (childList) => {
   return { type: T.P_END_LIST_CHILD, childList: childList };
 };
-
