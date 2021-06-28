@@ -47,7 +47,7 @@ export class ParentSpy extends Component {
     this.setActiveIndex(nextIndex);
   };
   setActiveIndex = (index) => {
-    if (this.state.animating) return;
+    if (this.state.animating || !this.props.room.p_childList) return;
     this.setState({ activeIndex: index });
     listTasks(
       this.props.room.roomId,
