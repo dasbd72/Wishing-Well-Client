@@ -14,14 +14,14 @@ export class PrizeList extends Component {
   render() {
     let prizelist = this.props.prizes.map((el) => {
       return (
-        <div className="col p-3" key={shortid.generate()}>
+        <div className="col-6 p-4" key={shortid.generate()}>
           <PrizeItem {...el} />
         </div>
       );
     });
     return (
       <div className="PrizeList p-4">
-        <div className="container">
+        <div type="unstyled" className="container">
           <div className="row">{prizelist}</div>
         </div>
       </div>

@@ -43,7 +43,7 @@ export class PrizeItem extends Component {
               );
             }}
           >
-            <div className="container d-flex h-100 flex-column py-3">
+            <div className="container d-flex h-100 flex-column py-4">
               <div className="title">{this.props.prizeName}</div>
               <div className="mt-auto">
                 <Progress
@@ -58,7 +58,7 @@ export class PrizeItem extends Component {
       } else {
         return (
           <div className={classNames("PrizeItem")}>
-            <div className="container d-flex h-100 flex-column py-3">
+            <div className="container d-flex h-100 flex-column py-4">
               <div className="title">{this.props.prizeName}</div>
               <div className="mt-auto"></div>
             </div>
@@ -72,7 +72,7 @@ export class PrizeItem extends Component {
             accepted: this.props.isAccepted == 1,
           })}
         >
-          <div className="container d-flex h-100 flex-column py-3">
+          <div className="container d-flex h-100 flex-column py-4">
             <div className="title">{this.props.prizeName}</div>
             <div className="mt-auto">
               <ButtonGroup>

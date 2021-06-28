@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .PrizeItem {
   font-size: 1rem;
@@ -12,11 +12,12 @@
 }
 
 .ChildrenPrize .PrizeItem {
-  background: rgba(143, 140, 194, 0.521);
+  background: rgba(0, 0, 0, 0.288);
+  width: 100%;
 }
 
 .ChildrenPrize .PrizeItem.accepted {
-  background: rgba(221, 215, 130, 0.76);
+  background: rgb(209, 199, 110);
   cursor: pointer;
 }
 
@@ -28,5 +29,5 @@
 
 .PrizeItem .title {
   font-size: 2em;
-  font-family: "Dancing Script", cursive;
+  font-family: "Roboto", cursive;
 }
