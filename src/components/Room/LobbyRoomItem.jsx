@@ -40,7 +40,9 @@ export default withRouter(
                 style={{ margin: 75 }}
               />
               <CardBody>
-                <CardTitle>Create or Join</CardTitle>
+                <CardTitle>
+                  Create or Join <br />a room
+                </CardTitle>
               </CardBody>
             </Card>
           </Col>
@@ -48,7 +50,10 @@ export default withRouter(
       } else {
         return (
           <Col>
-            <Card style={{ height: 320, width: 230, border: "solid black 0.2rem" }} body>
+            <Card
+              style={{ height: 320, width: 230, border: "solid black 0.2rem" }}
+              body
+            >
               {icon}
               <CardBody>
                 <CardTitle hidden={!this.props.title}>

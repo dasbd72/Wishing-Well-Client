@@ -4,7 +4,7 @@
   max-width: 400px;
   width: 40vw;
   border-right: 1px solid rgba(0, 0, 0, 0.125);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 @media only screen and (max-width: 1050px) {

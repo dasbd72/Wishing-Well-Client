@@ -10,7 +10,6 @@
   width: 100%;
   background-image: url("img/background-16.jpg");
   filter: blur(5px);
-  /* background-position: top right; */
   background-size: cover;
 }
 
