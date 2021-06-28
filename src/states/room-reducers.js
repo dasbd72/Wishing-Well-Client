@@ -54,13 +54,11 @@ export const room = (state = initialState, action) => {
       return {
         ...state,
         c_currentPrize: action.prize,
-        c_prizeList: [action.prize, ...state.c_prizeList],
       };
     case C_END_GET_CHOSEN_PRIZE:
       return {
         ...state,
         c_currentPrize: action.prize,
-        c_prizeList: [action.prize, ...state.c_prizeList],
       };
 
     case P_END_LIST_CHILD:
