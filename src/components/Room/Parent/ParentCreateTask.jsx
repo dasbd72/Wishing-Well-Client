@@ -32,8 +32,6 @@ export class ParentCreateTask extends Component {
 
   componentDidMount() {
     listUsers(this.props.room.roomId, "children").then((users) => {
-      console.log("users");
-      console.log(users);
       this.setState({ childrenList: users });
     });
   }

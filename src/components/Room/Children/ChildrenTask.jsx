@@ -6,6 +6,7 @@ import { Element } from "react-scroll";
 import moment from "moment";
 
 import TaskGroup from "Components/Tasks/TaskGroup";
+import { listTasks } from "Api/tasks";
 
 export class ChildrenTask extends Component {
   static propTypes = {
@@ -14,120 +15,31 @@ export class ChildrenTask extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      unaccepted: [],
+      accepted: [],
+    };
+  }
+
+  componentDidMount() {}
+
+  loadTasks() {
+    listTasks(this.props.room.roomId, this.props.session.userId, 0).then(
+      (tasks) => {
+        this.setState({ unaccepted: tasks });
+      }
+    );
+    listTasks(this.props.room.roomId, this.props.session.userId, 2).then(
+      (tasks) => {
+        this.setState({ accepted: tasks });
+      }
+    );
   }
 
   render() {
-    var unaccepted = [
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "1",
-        title: "Sweep The floor",
-        information: "",
-        points: 100,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-      {
-        id: "2",
-        title: "Get A+ in Software Studio",
-        information: "",
-        points: 200,
-        accepted: false,
-        deadline: moment().valueOf(),
-      },
-    ];
-    var accepted = [
-      {
-        id: "3",
-        title: "Say Hello",
-        information: "",
-        points: 500,
-        accepted: true,
-        deadline: moment().valueOf(),
-      },
-    ];
     return (
       <Container className="ChildrenTask d-flex align-items-center flex-column pt-2">
-        <h1 
+        <h1
           className="mr-auto"
           style={{
             color: "white",
@@ -138,14 +50,17 @@ export class ChildrenTask extends Component {
         >
           Your Tasks
         </h1>
-        <TaskGroup tasks={unaccepted} label="Unaccepted"></TaskGroup>
-        <TaskGroup tasks={accepted} label="Accepted"></TaskGroup>
+        <TaskGroup tasks={this.state.unaccepted} label="Unaccepted"></TaskGroup>
+        <TaskGroup tasks={this.state.accepted} label="Accepted"></TaskGroup>
       </Container>
     );
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  room: state.room,
+  session: state.session,
+});
 
 const mapDispatchToProps = {};
 

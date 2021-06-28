@@ -27,35 +27,41 @@ export default withRouter(
       );
       if (this.props.add) {
         return (
-          <Card
-            body
-            onClick={this.props.toggle}
-            className="create-room LobbyRoomItem"
-          >
-            <IoMdAddCircle
-              size={50}
-              className="mx-auto"
-              style={{ margin: 75 }}
-            />
-            <CardBody>
-              <CardTitle>Create or Join</CardTitle>
-            </CardBody>
-          </Card>
+          <Col>
+            <Card
+              body
+              onClick={this.props.toggle}
+              className="create-room LobbyRoomItem mx-auto"
+            >
+              <IoMdAddCircle
+                size={50}
+                className="mx-auto"
+                style={{ margin: 75 }}
+              />
+              <CardBody>
+                <CardTitle>Create or Join</CardTitle>
+              </CardBody>
+            </Card>
+          </Col>
         );
       } else {
         return (
-          <Card body className="LobbyRoomItem">
-            {icon}
-            <CardBody>
-              <CardTitle hidden={!this.props.title}>
-                {this.props.title}
-              </CardTitle>
-              <CardText hidden={!this.props.text}>{!this.props.text}</CardText>
-              <Button tag={Link} to={`${match.url}/${this.props.roomId}`}>
-                Enter
-              </Button>
-            </CardBody>
-          </Card>
+          <Col className="p-2">
+            <Card body className="LobbyRoomItem mx-auto">
+              {icon}
+              <CardBody>
+                <CardTitle hidden={!this.props.title}>
+                  {this.props.title}
+                </CardTitle>
+                <CardText hidden={!this.props.text}>
+                  {!this.props.text}
+                </CardText>
+                <Button tag={Link} to={`${match.url}/${this.props.roomId}`}>
+                  Enter
+                </Button>
+              </CardBody>
+            </Card>
+          </Col>
         );
       }
     }

@@ -18,8 +18,8 @@ import SidebarItem from "Components/Room/Sidebar/SidebarItem";
 import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import ParentCreateTask from "Components/Room/Parent/ParentCreateTask";
 import ParentMenu from "Components/Room/Parent/ParentMenu";
-import Task from "Components/Room/Parent/Task";
 import Request from "Components/Room/Parent/Request";
+import ParentSpy from "Components/Room/Parent/ParentSpy";
 
 import "./Parent.css";
 
@@ -74,7 +74,7 @@ export class Parent extends Component {
             <ParentMenu />
           </Route>
           <Route path={`${match.url}/spy`}>
-            <Task />
+            <ParentSpy />
           </Route>
           <Route path={`${match.url}/create`}>
             <ParentCreateTask />
