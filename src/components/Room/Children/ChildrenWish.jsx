@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   Form,
@@ -14,7 +13,6 @@ import {
   Alert,
 } from "reactstrap";
 import { createPrize } from "Api/prizes";
-import { BiFontSize } from "react-icons/bi";
 
 export class ChildrenWish extends Component {
   static propTypes = {};
