@@ -22,9 +22,3 @@ export function signIn(email, password) {
       store.dispatch(setErrSignIn(err.message));
     });
 }
-export async function updateUserName(userName) {
-  var user = store.getState().session.user;
-  return await Auth.updateUserAttributes(user, {
-    name: userName,
-  });
-}

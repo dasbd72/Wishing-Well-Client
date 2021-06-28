@@ -39,7 +39,9 @@ export class ChildrenWish extends Component {
       .then((prize) => {
         this.setState({ sending: false, success: true });
         setTimeout(() => {
-          this.setState({ success: false });
+          this.setState({ success: false }, () => {
+            (WishOfChild.value = ""), (PointsOfWish.value = 0);
+          });
         }, 2000);
       })
       .catch((err) => {

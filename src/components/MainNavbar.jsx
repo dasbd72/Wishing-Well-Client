@@ -13,14 +13,15 @@ import {
   Button,
   Input,
   Label,
+  Form,
 } from "reactstrap";
 import ReactModal from "react-modal";
 import classNames from "classnames";
-import Popper from "popper.js";
 
 import SignIn from "Components/Auth/SignIn";
-import { reloadUser, signOut, updateUserName } from "Api/amplify";
+import { signOut } from "Api/amplify";
 import { setNavHeight } from "States/main-actions";
+import { setUserName } from "States/session-actions";
 
 import "./MainNavbar.css";
 ReactModal.setAppElement("#root");
@@ -33,9 +34,8 @@ export class MainNavbar extends Component {
     this.state = {
       isOpen: false,
       isAuthOpen: false,
-      isUserOpen: false,
+      isUserNameModalOpen: false,
     };
-    this.userNameEl = null;
   }
 
   componentDidMount() {
@@ -54,7 +54,7 @@ export class MainNavbar extends Component {
       isOpen: !state.isOpen,
     }));
   };
-  toggleAuth = (next) => {
+  toggleAuthModal = (next) => {
     if (next === true || next === false) {
       this.setState({
         isAuthOpen: next,
@@ -65,48 +65,35 @@ export class MainNavbar extends Component {
       }));
     }
   };
-  toggleUser = (next) => {
+  toggleUserNameModal = (next) => {
     if (next === true || next === false) {
       this.setState({
-        isUserOpen: next,
+        isUserNameModalOpen: next,
       });
     } else {
       this.setState((state) => ({
-        isUserOpen: !state.isUserOpen,
+        isUserNameModalOpen: !state.isUserNameModalOpen,
       }));
     }
   };
-
-  updateUserName = () => {
-    updateUserName(this.userNameEl.value)
-      .then((data) => {
-        reloadUser();
-        this.toggleUser(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  handleUserNameType = (e) => {
-    var keyCode = e.keyCode || e.which;
-    if (keyCode === 13) {
-      this.updateUserName();
-    }
+  handleUsernameSubmit = (e) => {
+    e.preventDefault();
+    this.props.setUserName(this.props.session.userId, newUserName.value);
   };
 
   render() {
-    const signedin = this.props.session.signedin;
-    const userName = this.props.session.userName;
     const Show = () => {
-      if (signedin) {
+      if (this.props.session.signedin) {
         return (
           <React.Fragment>
             <NavItem className="d-flex align-items-center">
               <NavLink className="my-auto">
                 <span className="align-middle">Hello,</span>
-                <div className="btn btn-link" onClick={this.toggleUser}>
-                  {userName}
+                <div
+                  className="btn btn-link"
+                  onClick={this.toggleUserNameModal}
+                >
+                  {this.props.session.userName}
                 </div>
               </NavLink>
             </NavItem>
@@ -121,7 +108,7 @@ export class MainNavbar extends Component {
         return (
           <NavItem>
             <NavLink>
-              <Button onClick={this.toggleAuth}>LogIn</Button>
+              <Button onClick={this.toggleAuthModal}>LogIn</Button>
             </NavLink>
           </NavItem>
         );
@@ -156,13 +143,13 @@ export class MainNavbar extends Component {
         </div>
         <ReactModal
           isOpen={this.state.isAuthOpen}
-          onRequestClose={this.toggleAuth}
+          onRequestClose={this.toggleAuthModal}
           className="overflow-hidden d-flex justify-content-center align-items-center h-100"
         >
           <div>
             <Button
               close
-              onClick={this.toggleAuth}
+              onClick={this.toggleAuthModal}
               style={{
                 position: "relative",
                 left: "-0.5em",
@@ -172,36 +159,39 @@ export class MainNavbar extends Component {
             />
             <SignIn
               onSignedIn={() => {
-                this.toggleAuth(false);
+                this.toggleAuthModal(false);
               }}
             />
           </div>
         </ReactModal>
         <ReactModal
-          isOpen={this.state.isUserOpen}
-          onRequestClose={this.toggleUser}
+          isOpen={this.state.isUserNameModalOpen}
+          onRequestClose={this.toggleUserNameModal}
           className="overflow-hidden d-flex justify-content-center align-items-center h-100"
           ariaHideApp={false}
           style={{
             content: { backgroundColor: "rgba(20,30,150,0.5)" },
           }}
         >
-          <div>
+          <Form onSubmit={this.handleUsernameSubmit}>
             <Label for="userName" color="light">
               New Username
             </Label>
             <Input
               type="text"
               name="userName"
-              onKeyPress={this.handleUserNameType}
-              innerRef={(e) => (this.userNameEl = e)}
+              id="newUserName"
               style={{ minWidth: "200px", width: "fit-content" }}
             />
-            <Button onClick={this.updateUserName}>Submit</Button>
-            <Button onClick={this.toggleUser} color="danger">
+            <Button type="submit">Submit</Button>
+            <Button
+              onClick={this.toggleUserNameModal}
+              type="reset"
+              color="danger"
+            >
               Cancel
             </Button>
-          </div>
+          </Form>
         </ReactModal>
       </div>
     );
@@ -210,11 +200,11 @@ export class MainNavbar extends Component {
 
 const mapStateToProps = (state) => ({
   session: state.session,
-  ...state.main,
 });
 
 const mapDispatchToProps = {
   setNavHeight,
+  setUserName,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);

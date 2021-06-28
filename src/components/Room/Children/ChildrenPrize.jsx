@@ -10,27 +10,15 @@ export class ChildrenPrize extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      prizes: [],
-      loading: false,
-    };
   }
 
-  componentDidMount() {
-    this.setState({ loading: true });
-    listPrizes(this.props.room.roomId, this.props.session.userId, 0).then(
-      (prizes) => {
-        this.setState({ prizes: prizes }, () => {
-          this.setState({ loading: false });
-        });
-      }
-    );
-  }
+  componentDidMount() {}
 
   render() {
+    console.log("child prizes", this.props.room.c_prizeList);
     return (
       <div className="ChildrenPrize">
-        {this.state.prizes.length == 0 ? (
+        {this.props.room.c_prizeList.length == 0 ? (
           <div className="d-flex align-items-center justify-content-center h-100">
             <h1
               className="m-3"
@@ -45,7 +33,7 @@ export class ChildrenPrize extends Component {
             </h1>
           </div>
         ) : (
-          <PrizeList prizes={this.state.prizes} />
+          <PrizeList prizes={this.props.room.c_prizeList} />
         )}
       </div>
     );

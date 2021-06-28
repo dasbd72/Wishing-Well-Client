@@ -37,12 +37,6 @@ export class CustomSignIn extends Component {
             formFields={[
               {
                 type: "username",
-                label: "Username",
-                placeholder: "Username",
-                inputProps: { required: true },
-              },
-              {
-                type: "email",
                 label: "Email",
                 placeholder: "example@email.com",
                 inputProps: { required: true, autocomplete: "email" },

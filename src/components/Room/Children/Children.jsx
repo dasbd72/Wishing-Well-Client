@@ -15,6 +15,7 @@ import RoomUserDisplay from "Components/Room/RoomUserDisplay";
 import ChildrenTask from "Components/Room/Children/ChildrenTask";
 import ChildrenWish from "Components/Room/Children/ChildrenWish";
 import ChildrenPrize from "Components/Room/Children/ChildrenPrize";
+import { c_getChosenPrize, c_listPrizes } from "States/room-actions";
 
 import "./Children.css";
 
@@ -22,6 +23,13 @@ class Children extends Component {
   static propTypes = {};
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    // this.props.c_getChosenPrize(
+    //   this.props.room.roomId,
+    //   this.props.session.userId
+    // );
+    this.props.c_listPrizes(this.props.room.roomId, this.props.session.userId);
   }
   render() {
     const { match } = this.props;
@@ -75,9 +83,12 @@ class Children extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  room: state.room,
+  session: state.session,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { c_getChosenPrize, c_listPrizes };
 
 export default connect(
   mapStateToProps,

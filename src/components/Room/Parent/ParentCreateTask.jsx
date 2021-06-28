@@ -37,15 +37,6 @@ export class ParentCreateTask extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log(
-      "roomId:" + this.props.room.roomId,
-      "type:" + this.state.chosenType,
-      "taskName:" + taskName.value,
-      "deadLine:" + moment.utc(deadLine.value).unix(),
-      "targetPoints:" + targetPoints.value,
-      "userId:" + userId.value,
-      "taskDescription:" + taskDescription.value
-    );
     e.preventDefault();
     this.setState({ sending: true });
     createTask(
