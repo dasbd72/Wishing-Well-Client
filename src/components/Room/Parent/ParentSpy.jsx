@@ -25,7 +25,6 @@ export class ParentSpy extends Component {
       rejectedTasks: [],
       unacceptedTasks: [],
       doneTasks: [],
-      userNameList: [],
       activeIndex: 0,
       animating: false,
     };
@@ -82,15 +81,24 @@ export class ParentSpy extends Component {
           onExited={() => this.setState({ animating: false })}
           key={shortid.generate()}
         >
-          <div className="slidePage h-100 d-flex justify-content-center align-items-center">
-            <div className="w-75">
-              <TaskGroup tasks={this.state.acceptedTasks} label={"Accepted"} />
+          <div className="slidePage h-100 d-flex justify-content-center pt-3 pb-5">
+            <div className="slidePageContent w-75">
+              <TaskGroup
+                tasks={this.state.acceptedTasks}
+                label={"Accepted"}
+                min={2}
+              />
               <TaskGroup
                 tasks={this.state.unacceptedTasks}
                 label={"Unaccepted"}
+                min={2}
               />
-              <TaskGroup tasks={this.state.rejectedTasks} label={"Rejected"} />
-              <TaskGroup tasks={this.state.doneTasks} label={"Done"} />
+              <TaskGroup
+                tasks={this.state.rejectedTasks}
+                label={"Rejected"}
+                min={2}
+              />
+              <TaskGroup tasks={this.state.doneTasks} label={"Done"} min={2} />
             </div>
           </div>
           <CarouselCaption

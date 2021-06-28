@@ -38,10 +38,12 @@ export class ChildrenTask extends Component {
         <TaskGroup
           tasks={this.props.room.c_unacceptedTasks}
           label="Unaccepted"
+          min={6}
         ></TaskGroup>
         <TaskGroup
           tasks={this.props.room.c_acceptedTasks}
           label="Accepted"
+          min={6}
         ></TaskGroup>
       </Container>
     );

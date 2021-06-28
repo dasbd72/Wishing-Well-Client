@@ -5,7 +5,7 @@ import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 import moment from "moment";
 import { Popover, PopoverBody } from "reactstrap";
 import * as IconsBi from "react-icons/bi";
-import { c_responseTask, c_doneTask } from "States/room-actions";
+import { c_responseTask, c_doneTask, p_verifyTask } from "States/room-actions";
 
 export class TaskItem extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ export class TaskItem extends Component {
     taskName: PropTypes.string,
     deadline: PropTypes.string,
     points: PropTypes.number,
-    targetUser: PropTypes.string,
+    userId: PropTypes.string,
     done: PropTypes.number,
     description: PropTypes.string,
     ts: PropTypes.string,
@@ -44,7 +44,14 @@ export class TaskItem extends Component {
   };
 
   p_verifyTask = (accept) => {
-    return () => {};
+    return () => {
+      this.props.p_verifyTask(
+        this.props.taskId,
+        this.props.room.roomId,
+        accept,
+        this.props.userId
+      );
+    };
   };
 
   render() {
@@ -113,7 +120,7 @@ export class TaskItem extends Component {
                 </Button>
               )}
             {this.props.room.role === "parent" && done == 1 && (
-              <Button color="info" outline onClick={() => {}}>
+              <Button color="info" outline onClick={this.p_verifyTask(true)}>
                 Verify
               </Button>
             )}
@@ -139,6 +146,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   c_responseTask,
   c_doneTask,
+  p_verifyTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskItem);
