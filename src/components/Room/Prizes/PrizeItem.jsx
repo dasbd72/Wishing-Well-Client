@@ -47,7 +47,7 @@ export class PrizeItem extends Component {
               <div className="title">{this.props.prizeName}</div>
               <div className="mt-auto">
                 <Progress
-                  barStyle={{ backgroundColor: "gray" }}
+                  barStyle={{ backgroundColor: "rgba(255, 171, 103, 0.87)" }}
                   value={percentage}
                   hidden={this.props.isAccepted != 1}
                 ></Progress>

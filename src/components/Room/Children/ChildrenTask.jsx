@@ -23,7 +23,10 @@ export class ChildrenTask extends Component {
 
   render() {
     return (
-      <Container className="ChildrenTask d-flex align-items-center flex-column pt-2 pb-4">
+      <Container
+        className="ChildrenTask d-flex align-items-center flex-column pt-2 pb-4"
+        style={{ overflowY: "auto" }}
+      >
         <h1
           className="ml-auto mr-auto mt-5 mb-4"
           style={{
@@ -38,10 +41,12 @@ export class ChildrenTask extends Component {
         <TaskGroup
           tasks={this.props.room.c_unacceptedTasks}
           label="Unaccepted"
+          min={6}
         ></TaskGroup>
         <TaskGroup
           tasks={this.props.room.c_acceptedTasks}
           label="Accepted"
+          min={6}
         ></TaskGroup>
       </Container>
     );

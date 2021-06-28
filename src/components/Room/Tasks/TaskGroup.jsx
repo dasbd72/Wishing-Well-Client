@@ -11,6 +11,7 @@ export class TaskGroup extends Component {
   static propTypes = {
     tasks: PropTypes.array,
     label: PropTypes.string,
+    min: PropTypes.number,
   };
 
   constructor(props) {
@@ -30,9 +31,9 @@ export class TaskGroup extends Component {
     if (this.props.tasks) {
       var listItems = [];
       var len =
-        this.props.tasks.length < 6 || this.state.isOpen
+        this.props.tasks.length < this.props.min || this.state.isOpen
           ? this.props.tasks.length
-          : 6;
+          : this.props.min;
       for (let i = 0; i < len; i++) {
         listItems.push(
           <div className="col-md-6 col-12 pt-1 pb-1" key={i}>

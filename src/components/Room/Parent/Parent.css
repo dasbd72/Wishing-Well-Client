@@ -22,16 +22,36 @@
   background-color: rgba(80, 80, 80, 0.623);
 }
 
+.ParentSpy .slidePageContent {
+  overflow-y: auto;
+}
+
 .ParentCreateTask {
   height: 100%;
   width: 100%;
 }
 
+.ParentCreateTask h1 {
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .ParentCreateTask .CreateTaskForm {
   padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.432);
   width: 80%;
   max-width: 800px;
+}
+
+.CreateTaskForm label {
+  text-align: center;
+  display: inline-flex;
+  font-weight: 600;
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .ParentCreateTask .loading {

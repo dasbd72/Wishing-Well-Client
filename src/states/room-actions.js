@@ -4,7 +4,6 @@ import {
   getUserRole as getUserRoleApi,
   userChoosePrize as userChoosePrizeApi,
   getChosenPrize as getChosenPrizeApi,
-  getUserInfo as getUserInfoApi,
 } from "Api/users";
 import {
   listTasks as listTasksApi,
@@ -235,7 +234,6 @@ export const p_spyTasks = (roomId, userId) => {
     dispatch(startLoading());
     return listTasksApi(roomId, userId)
       .then((tasks) => {
-        console.log("tasks", tasks);
         dispatch(p_endSpyTasks(tasks));
       })
       .catch((err) => {
@@ -249,4 +247,21 @@ export const p_spyTasks = (roomId, userId) => {
 
 const p_endSpyTasks = (tasks) => {
   return { type: T.P_END_LIST_SPY_TASKS, tasks: tasks };
+};
+
+export const p_verifyTask = (taskId, roomId, accept, userId) => {
+  if (!roomId || !userId || !taskId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return verifyTaskApi(taskId, roomId, accept)
+      .then(() => {
+        dispatch(p_spyTasks(roomId, userId));
+      })
+      .catch((err) => {
+        console.error("Error Verifying Prize", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
 };

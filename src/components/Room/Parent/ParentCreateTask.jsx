@@ -63,6 +63,7 @@ export class ParentCreateTask extends Component {
   };
 
   render() {
+    console.log(this.state.childrenList);
     let optionList = this.state.childrenList.map((el) => {
       return (
         <option value={el.userId} key={shortid.generate()}>
@@ -71,13 +72,15 @@ export class ParentCreateTask extends Component {
       );
     });
     return (
-      <div className="ParentCreateTask d-flex justify-content-center align-items-center">
+      <div className="ParentCreateTask d-flex flex-column justify-content-center align-items-center">
+        <h1>Create a New Task.</h1>
         <div className="CreateTaskForm">
-          <Form onSubmit={this.handleSubmit}>
+          <Form className="font-monospace" onSubmit={this.handleSubmit}>
             <FormGroup>
               <ButtonGroup>
                 <Button
                   type="button"
+                  className="btn-light"
                   outline={this.state.chosenType !== "normal"}
                   onClick={() => {
                     this.setState({ chosenType: "normal" });
@@ -87,6 +90,7 @@ export class ParentCreateTask extends Component {
                 </Button>
                 <Button
                   type="button"
+                  className="btn-light"
                   outline={this.state.chosenType !== "forced"}
                   onClick={() => {
                     this.setState({ chosenType: "forced" });
@@ -96,56 +100,42 @@ export class ParentCreateTask extends Component {
                 </Button>
               </ButtonGroup>
             </FormGroup>
-            <FormGroup row>
+            <FormGroup>
               <Label for="taskName" sm={3}>
                 Task Name
               </Label>
-              <Col sm={9}>
-                <Input id="taskName" name="taskName" type="text" />
-              </Col>
+              <Input id="taskName" name="taskName" type="text" />
             </FormGroup>
-            <FormGroup row>
+            <FormGroup>
               <Label for="taskDescription" sm={3}>
                 Description
               </Label>
-              <Col sm={9}>
-                <Input
-                  id="taskDescription"
-                  name="taskDescription"
-                  type="textarea"
-                />
-              </Col>
+              <Input id="taskDescription" name="taskDescription" type="text" />
             </FormGroup>
-            <FormGroup row>
+            <FormGroup>
               <Label for="deadLine" sm={3}>
                 Dead Line
               </Label>
-              <Col sm={9}>
-                <Input id="deadLine" name="deadLine" type="datetime-local" />
-              </Col>
+              <Input id="deadLine" name="deadLine" type="datetime-local" />
             </FormGroup>
-            <FormGroup row>
+            <FormGroup>
               <Label for="targetPoints" sm={3}>
                 Points
               </Label>
-              <Col sm={9}>
-                <Input
-                  id="targetPoints"
-                  name="targetPoints"
-                  type="number"
-                  min={0}
-                />
-              </Col>
+              <Input
+                id="targetPoints"
+                name="targetPoints"
+                type="number"
+                min={0}
+              />
             </FormGroup>
-            <FormGroup row>
+            <FormGroup>
               <Label for="userId" sm={3}>
                 Target
               </Label>
-              <Col sm={9}>
-                <Input id="userId" name="userId" type="select">
-                  {optionList}
-                </Input>
-              </Col>
+              <Input id="userId" name="userId" type="select">
+                {optionList}
+              </Input>
             </FormGroup>
             <Button type="submit">Create</Button>
           </Form>

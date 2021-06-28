@@ -51,8 +51,8 @@ export class ChildrenWish extends Component {
   };
   render() {
     return (
-      <div className="ChildrenWish">
-        <div className="d-flex align-items-center justify-content-center h-100">
+      <div className="ChildrenWish justify-content-center">
+        <div className="d-flex flex-column align-items-center justify-content-center h-100">
           <Form className="font-monospace" onSubmit={this.handleSubmit}>
             <FormGroup>
               <Label
