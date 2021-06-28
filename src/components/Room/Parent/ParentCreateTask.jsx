@@ -9,7 +9,7 @@ import {
   Button,
   ButtonGroup,
   Col,
-  Row,
+  Alert,
 } from "reactstrap";
 import moment from "moment";
 import { createTask } from "Api/tasks";
@@ -150,6 +150,15 @@ export class ParentCreateTask extends Component {
             <Button type="submit">Create</Button>
           </Form>
         </div>
+        <Alert className="loading" color="warning" hidden={!this.state.sending}>
+          Sending...
+        </Alert>
+        <Alert className="loading" color="success" hidden={!this.state.success}>
+          Success!
+        </Alert>
+        <Alert className="loading" color="danger" hidden={!this.state.failed}>
+          Failed!
+        </Alert>
       </div>
     );
   }

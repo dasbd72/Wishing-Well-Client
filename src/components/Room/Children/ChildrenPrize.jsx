@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import PrizeList from "Components/Room/Children/Prizes/PrizeList";
+import PrizeList from "Components/Room/Prizes/PrizeList";
 import { listPrizes } from "Api/prizes";
 
 export class ChildrenPrize extends Component {
