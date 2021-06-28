@@ -70,7 +70,13 @@ export function createTask(
     });
 }
 
-export function AorRTask(taskId, isAccepted) {
+/**
+ *
+ * @param {number} taskId
+ * @param {boolean} isAccepted
+ * @returns
+ */
+export function responseTask(taskId, isAccepted) {
   let url = tasksBaseUrl;
   let query = [];
   query.push(`${taskId}`);
@@ -88,7 +94,7 @@ export function AorRTask(taskId, isAccepted) {
 }
 
 export function childrenComplete(taskId) {
-  let url = tasksBaseUrl + `/childrenDone/${taskId}`;
+  let url = tasksBaseUrl + `/tasksChildrenDone/${taskId}`;
 
   console.log(`Making POST request to: ${url}`);
 
@@ -101,7 +107,7 @@ export function childrenComplete(taskId) {
 }
 
 export function parentVerify(taskId) {
-  let url = tasksBaseUrl + `/parentDone/${taskId}`;
+  let url = tasksBaseUrl + `/tasksParentDone/${taskId}`;
 
   console.log(`Making POST request to: ${url}`);
 

@@ -82,7 +82,7 @@ export function responsePrize(prizeId, isAccepted) {
  * @param {number} prizeId
  * @returns
  */
-export function donePrize(prizeId) {
+export function exchangePrize(prizeId) {
   let url = prizesUrl;
   utl += `/done/${prizeId}`;
 

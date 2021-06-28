@@ -5,38 +5,24 @@ import { Container } from "reactstrap";
 import { Element } from "react-scroll";
 import moment from "moment";
 
-import TaskGroup from "Components/Tasks/TaskGroup";
-import { listTasks } from "Api/tasks";
+import TaskGroup from "Components/Room/Tasks/TaskGroup";
+import { listTasks } from "States/room-actions";
 
 export class ChildrenTask extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      unaccepted: [],
-      accepted: [],
-    };
+  componentDidMount() {
+    this.props.listTasks(this.props.room.roomId, this.props.session.userId);
   }
 
-  componentDidMount() {}
-
-  loadTasks() {
-    listTasks(this.props.room.roomId, this.props.session.userId, 0).then(
-      (tasks) => {
-        this.setState({ unaccepted: tasks });
-      }
-    );
-    listTasks(this.props.room.roomId, this.props.session.userId, 2).then(
-      (tasks) => {
-        this.setState({ accepted: tasks });
-      }
-    );
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.room.roomId != this.props.room.roomId ||
+      prevProps.session.userId != this.props.session.userId
+    )
+      this.props.listTasks(this.props.room.roomId, this.props.session.userId);
   }
 
   render() {
+    console.log(this.props.room.c_unacceptedTasks);
     return (
       <Container className="ChildrenTask d-flex align-items-center flex-column pt-2 pb-4">
         <h1
@@ -50,8 +36,14 @@ export class ChildrenTask extends Component {
         >
           Your Tasks.
         </h1>
-        <TaskGroup tasks={this.state.unaccepted} label="Unaccepted"></TaskGroup>
-        <TaskGroup tasks={this.state.accepted} label="Accepted"></TaskGroup>
+        <TaskGroup
+          tasks={this.props.room.c_unacceptedTasks}
+          label="Unaccepted"
+        ></TaskGroup>
+        <TaskGroup
+          tasks={this.props.room.c_acceptedTasks}
+          label="Accepted"
+        ></TaskGroup>
       </Container>
     );
   }
@@ -62,6 +54,8 @@ const mapStateToProps = (state) => ({
   session: state.session,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  listTasks,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildrenTask);

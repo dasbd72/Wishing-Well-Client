@@ -30,6 +30,16 @@
   max-width: 800px;
 }
 
+.ParentCreateTask .loading {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+  z-index: 999;
+}
+
 .Request {
   height: 100%;
   width: 100%;
