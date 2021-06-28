@@ -27,8 +27,6 @@ export class TaskGroup extends Component {
   };
 
   render() {
-    console.log(this.props.label);
-    console.log(this.props.tasks);
     if (this.props.tasks) {
       var listItems = [];
       var len =

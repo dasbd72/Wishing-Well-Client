@@ -81,3 +81,16 @@ export function userRegister(userId, userName) {
     return res.data;
   });
 }
+
+export function getUserInfo(userId) {
+  let url = usersBaseUrl + `/usersinfo?userId=${userId}`;
+
+  console.log(`Making GET request to: ${url}`);
+
+  return axios.get(url).then((res) => {
+    if (res.status !== 200)
+      throw new Error(`Unexpected response code: ${res.status}`);
+
+    return res.data;
+  });
+}

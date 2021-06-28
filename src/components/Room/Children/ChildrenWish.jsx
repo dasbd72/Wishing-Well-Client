@@ -28,7 +28,6 @@ export class ChildrenWish extends Component {
     };
   }
   handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
     this.setState({ sending: true });
     createPrize(
