@@ -2,8 +2,10 @@ import * as T from "./session-reducers";
 
 import {
   getUserInfo as getUserInfoApi,
-  userRegister as userRegisterApi,
+  registerUserName as registerUserNameApi,
+  updateUserName as updateUserNameApi,
 } from "Api/users";
+import shortid from "shortid";
 
 export const setUser = (user) => {
   var signedin = false;
@@ -38,19 +40,28 @@ export const setErrSignIn = (err) => {
 export const getUserInfo = (userId) => {
   return (dispatch) => {
     return getUserInfoApi(userId).then((info) => {
+      if (!info) dispatch(registerUserName(userId, shortid.generate()));
+      else dispatch(storeUserName(info.userName));
+    });
+  };
+};
+
+export const registerUserName = (userId, userName) => {
+  return (dispatch) => {
+    return registerUserNameApi(userId, userName).then((info) => {
       dispatch(storeUserName(info.userName));
     });
   };
 };
 
-export const setUserName = (userId, userName) => {
+export const updateUserName = (userId, userName) => {
   return (dispatch) => {
-    return userRegisterApi(userId, userName).then((info) => {
-      console.log("Info", info);
+    return updateUserNameApi(userId, userName).then((info) => {
       dispatch(storeUserName(info.userName));
     });
   };
 };
+
 const storeUserName = (userName) => {
   return { type: T.STORE_USERNAME, userName: userName };
 };

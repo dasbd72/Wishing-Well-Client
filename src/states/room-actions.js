@@ -4,10 +4,13 @@ import {
   getUserRole as getUserRoleApi,
   userChoosePrize as userChoosePrizeApi,
   getChosenPrize as getChosenPrizeApi,
+  getUserInfo as getUserInfoApi,
 } from "Api/users";
 import {
   listTasks as listTasksApi,
   responseTask as responseTaskApi,
+  childrenComplete as doneTaskApi,
+  parentVerify as verifyTaskApi,
 } from "Api/tasks";
 import {
   listPrizes as listPrizesApi,
@@ -93,10 +96,27 @@ export const c_responseTask = (taskId, accept, roomId, userId) => {
     dispatch(startLoading());
     return responseTaskApi(taskId, accept)
       .then(() => {
-        dispatch(listTasks(roomId, userId));
+        dispatch(c_listTasks(roomId, userId));
       })
       .catch((err) => {
         console.error("Error Response Tasks", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+export const c_doneTask = (taskId, roomId, userId) => {
+  if (!taskId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return doneTaskApi(taskId)
+      .then(() => {
+        dispatch(c_listTasks(roomId, userId));
+      })
+      .catch((err) => {
+        console.error("Error Finishing Task", err);
       })
       .then(() => {
         dispatch(endLoading());
@@ -207,4 +227,26 @@ export const p_listPrizes = (roomId) => {
 
 const p_endListPrizes = (prizes) => {
   return { type: T.P_END_LIST_PRIZE, prizeList: prizes };
+};
+
+export const p_spyTasks = (roomId, userId) => {
+  if (!roomId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return listTasksApi(roomId, userId)
+      .then((tasks) => {
+        console.log("tasks", tasks);
+        dispatch(p_endSpyTasks(tasks));
+      })
+      .catch((err) => {
+        console.error("Error Listing Prizes", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const p_endSpyTasks = (tasks) => {
+  return { type: T.P_END_LIST_SPY_TASKS, tasks: tasks };
 };

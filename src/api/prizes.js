@@ -7,7 +7,7 @@ const prizesUrl = baseUrl + "/prizes";
  *
  * @param {string} roomId
  * @param {string} userId
- * @param {number} selectActive
+ * @param {number} selectActive 0-unconfirmed, 1-rejected, 2-undone
  * @returns List of Prize object
  */
 export function listPrizes(roomId, userId, selectActive = -1) {
@@ -40,7 +40,6 @@ export function createPrize(roomId, userId, prizeName, targetPoints) {
   let url = prizesUrl;
 
   console.log(`Making POST request to: ${url}`);
-  console.log(roomId, userId, prizeName, targetPoints);
 
   return axios
     .post(url, {
@@ -83,8 +82,8 @@ export function responsePrize(prizeId, isAccepted) {
  * @returns
  */
 export function exchangePrize(prizeId) {
-  let url = prizesUrl;
-  utl += `/done/${prizeId}`;
+  let url = baseUrl;
+  utl += `/prizesdone/${prizeId}`;
 
   console.log(`Making POST request to: ${url}`);
 
