@@ -21,7 +21,7 @@ import classNames from "classnames";
 import SignIn from "Components/Auth/SignIn";
 import { signOut } from "Api/amplify";
 import { setNavHeight } from "States/main-actions";
-import { updateUserName, getUserInfo } from "States/session-actions";
+import { updateUserName } from "States/session-actions";
 
 import "./MainNavbar.css";
 ReactModal.setAppElement("#root");
@@ -47,9 +47,6 @@ export class MainNavbar extends Component {
     this.props.setNavHeight(
       document.getElementsByClassName("MainNavbar")[0].clientHeight
     );
-    if (prevProps.session.userId != this.props.session.userId) {
-      this.props.getUserInfo(this.props.session.userId);
-    }
   }
 
   toggle = () => {
@@ -210,7 +207,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setNavHeight,
   updateUserName,
-  getUserInfo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);
