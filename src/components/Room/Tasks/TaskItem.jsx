@@ -5,11 +5,11 @@ import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 import moment from "moment";
 import { Popover, PopoverBody } from "reactstrap";
 import * as IconsBi from "react-icons/bi";
-import { c_responseTask } from "States/room-actions";
+import { c_responseTask, c_doneTask } from "States/room-actions";
 
 export class TaskItem extends Component {
   static propTypes = {
-    taskId: PropTypes.number,
+    taskId: PropTypes.string,
     isAccepted: PropTypes.number,
     type: PropTypes.string,
     taskName: PropTypes.string,
@@ -43,8 +43,13 @@ export class TaskItem extends Component {
       );
   };
 
+  p_verifyTask = (accept) => {
+    return () => {};
+  };
+
   render() {
-    const { taskName, points, isAccepted, deadline, description } = this.props;
+    const { taskName, points, isAccepted, deadline, description, done } =
+      this.props;
     return (
       <React.Fragment>
         <div
@@ -56,7 +61,7 @@ export class TaskItem extends Component {
           <div>
             <div className="title"> {taskName} </div>
             <div className="deadline d-flex align-items-center">
-              {isAccepted == 2 ? (
+              {isAccepted == 1 ? (
                 <IconsBi.BiCalendarAlt />
               ) : (
                 <IconsBi.BiCalendarPlus />
@@ -68,7 +73,7 @@ export class TaskItem extends Component {
             <div className=""> {points} pt </div>
           </div>
           <div className="ml-auto">
-            {isAccepted == 0 && (
+            {isAccepted == 0 && this.props.room.role === "children" && (
               <InputGroup size="sm">
                 <InputGroupAddon addonType="prepend">
                   <Button
@@ -89,6 +94,28 @@ export class TaskItem extends Component {
                   </Button>
                 </InputGroupAddon>
               </InputGroup>
+            )}
+            {this.props.room.role === "children" &&
+              isAccepted == 1 &&
+              done == 0 && (
+                <Button
+                  color="info"
+                  outline
+                  onClick={() => {
+                    this.props.c_doneTask(
+                      this.props.taskId,
+                      this.props.room.roomId,
+                      this.props.session.userId
+                    );
+                  }}
+                >
+                  Done
+                </Button>
+              )}
+            {this.props.room.role === "parent" && done == 1 && (
+              <Button color="info" outline onClick={() => {}}>
+                Verify
+              </Button>
             )}
           </div>
         </div>
@@ -111,6 +138,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   c_responseTask,
+  c_doneTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskItem);

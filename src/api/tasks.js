@@ -10,12 +10,12 @@ const tasksBaseUrl = baseUrl + "/tasks";
  * @param {number} selectActive 0:not confirmed, 1:rejected, 2:undone
  * @returns
  */
-export function listTasks(roomId, userId, selectActive = 0) {
+export function listTasks(roomId, userId, selectActive = -1) {
   let url = tasksBaseUrl;
   let query = [];
-  query.push(`roomId=${roomId}`);
-  query.push(`userId=${userId}`);
-  query.push(`selectActive=${selectActive}`);
+  if (roomId) query.push(`roomId=${roomId}`);
+  if (userId) query.push(`userId=${userId}`);
+  if (selectActive != -1) query.push(`selectActive=${selectActive}`);
   if (query.length) url += "?" + query.join("&");
 
   console.log(`Making GET request to: ${url}`);
@@ -35,7 +35,7 @@ export function listTasks(roomId, userId, selectActive = 0) {
  * @param {string} taskName
  * @param {number} deadline
  * @param {number} points
- * @param {string} targetUser user id
+ * @param {string} userId user id
  * @param {string} description
  * @returns
  */
@@ -45,7 +45,7 @@ export function createTask(
   taskName,
   deadline,
   points,
-  targetUser,
+  userId,
   description
 ) {
   let url = tasksBaseUrl;
@@ -59,7 +59,7 @@ export function createTask(
       taskName,
       deadline,
       points,
-      targetUser,
+      userId,
       description,
     })
     .then((res) => {
@@ -90,7 +90,7 @@ export function responseTask(taskId, isAccepted) {
 }
 
 export function childrenComplete(taskId) {
-  let url = tasksBaseUrl + `/tasksChildrenDone/${taskId}`;
+  let url = baseUrl + `/tasksChildrenDone/${taskId}`;
 
   console.log(`Making POST request to: ${url}`);
 
@@ -102,8 +102,8 @@ export function childrenComplete(taskId) {
   });
 }
 
-export function parentVerify(taskId) {
-  let url = tasksBaseUrl + `/tasksParentDone/${taskId}`;
+export function parentVerify(taskId, roomId, accept) {
+  let url = baseUrl + `/tasksParentDone/${taskId}/${roomId}/${accept}`;
 
   console.log(`Making POST request to: ${url}`);
 

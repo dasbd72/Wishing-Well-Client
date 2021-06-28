@@ -11,9 +11,9 @@ import {
 } from "reactstrap";
 import shortid from "shortid";
 
-import { p_listChild } from "States/room-actions";
-import { listTasks } from "Api/tasks";
-import TaskGroup from "../Tasks/TaskGroup";
+import { p_listChild, p_spyTasks } from "States/room-actions";
+import TaskGroup from "Components/Room/Tasks/TaskGroup";
+import { getUserInfo } from "Api/users";
 
 export class ParentSpy extends Component {
   static propTypes = {};
@@ -25,6 +25,7 @@ export class ParentSpy extends Component {
       rejectedTasks: [],
       unacceptedTasks: [],
       doneTasks: [],
+      userNameList: [],
       activeIndex: 0,
       animating: false,
     };
@@ -33,6 +34,24 @@ export class ParentSpy extends Component {
     this.props
       .p_listChild(this.props.room.roomId)
       .then(() => this.setActiveIndex(0));
+  }
+  componentDidUpdate(prevProps, prevStates) {
+    if (prevProps.room.p_spy_tasks != this.props.room.p_spy_tasks) {
+      this.setState({
+        acceptedTasks: this.props.room.p_spy_tasks.filter(
+          (el) => el.isAccepted == 1 && el.done == 0
+        ),
+        rejectedTasks: this.props.room.p_spy_tasks.filter(
+          (el) => el.isAccepted == 2
+        ),
+        unacceptedTasks: this.props.room.p_spy_tasks.filter(
+          (el) => el.isAccepted == 0
+        ),
+        doneTasks: this.props.room.p_spy_tasks.filter(
+          (el) => el.isAccepted == 1 && el.done == 1
+        ),
+      });
+    }
   }
   nextCarousel = () => {
     const nextIndex =
@@ -49,34 +68,10 @@ export class ParentSpy extends Component {
   setActiveIndex = (index) => {
     if (this.state.animating || this.props.room.p_childList.length == 0) return;
     this.setState({ activeIndex: index });
-    listTasks(
+    this.props.p_spyTasks(
       this.props.room.roomId,
-      this.props.room.p_childList[index].userId,
-      0
-    ).then((tasks) => {
-      this.setState({ unacceptedTasks: tasks });
-    });
-    listTasks(
-      this.props.room.roomId,
-      this.props.room.p_childList[index].userId,
-      1
-    ).then((tasks) => {
-      this.setState({ rejectedTasks: tasks });
-    });
-    listTasks(
-      this.props.room.roomId,
-      this.props.room.p_childList[index].userId,
-      2
-    ).then((tasks) => {
-      this.setState({ acceptedTasks: tasks });
-    });
-    listTasks(
-      this.props.room.roomId,
-      this.props.room.p_childList[index].userId,
-      3
-    ).then((tasks) => {
-      this.setState({ doneTasks: tasks });
-    });
+      this.props.room.p_childList[index].userId
+    );
   };
 
   render() {
@@ -100,8 +95,8 @@ export class ParentSpy extends Component {
             </div>
           </div>
           <CarouselCaption
-            captionText={user.userId}
-            captionHeader={user.userId}
+            captionText={user.userName}
+            captionHeader={user.userName}
           />
         </CarouselItem>
       );
@@ -155,6 +150,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   p_listChild,
+  p_spyTasks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParentSpy);

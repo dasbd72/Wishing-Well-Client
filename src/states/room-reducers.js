@@ -10,6 +10,7 @@ const initialState = {
 
   p_childList: [],
   p_prizeList: [],
+  p_spy_tasks: [],
 };
 
 export const SET_ROOM_ID = "@ROOM/SET_ROOM_ID";
@@ -25,6 +26,7 @@ export const C_END_GET_CHOSEN_PRIZE = "@CHILD/C_END_GET_CHOSEN_PRIZE";
 
 export const P_END_LIST_CHILD = "@PARENT/END_LIST_CHILD";
 export const P_END_LIST_PRIZE = "@PARENT/P_END_LIST_PRIZE";
+export const P_END_LIST_SPY_TASKS = "@PARENT/P_END_LIST_SPY_TASKS";
 
 export const room = (state = initialState, action) => {
   switch (action.type) {
@@ -65,6 +67,8 @@ export const room = (state = initialState, action) => {
       return { ...state, p_childList: action.childList };
     case P_END_LIST_PRIZE:
       return { ...state, p_prizeList: action.prizeList };
+    case P_END_LIST_SPY_TASKS:
+      return { ...state, p_spy_tasks: action.tasks };
 
     default:
       return state;
