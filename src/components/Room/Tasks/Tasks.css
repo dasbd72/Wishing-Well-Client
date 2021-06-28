@@ -1,7 +1,7 @@
 .TaskGroup {
   /* border: 1px solid rgba(0, 0, 0, 0.15); */
   /* border-radius: 15px; */
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .ParentSpy .TaskGroup {
   font-size: 0.8rem;
