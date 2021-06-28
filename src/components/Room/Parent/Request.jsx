@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { Container } from "reactstrap";
 
 export class Request extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  };
+  static propTypes = {};
 
   render() {
     return (

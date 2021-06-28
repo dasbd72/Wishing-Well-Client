@@ -7,38 +7,32 @@ import {
   CarouselControl,
   CarouselItem,
   CarouselCaption,
+  Container,
 } from "reactstrap";
-
-import { listUsers } from "Api/rooms";
 import shortid from "shortid";
 
+import { p_listChild } from "States/room-actions";
+import { listTasks } from "Api/tasks";
+import TaskGroup from "../Tasks/TaskGroup";
+
 export class ParentSpy extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
     this.state = {
-      childrenList: [],
-      carouselItems: [],
+      acceptedTasks: [],
+      rejectedTasks: [],
+      unacceptedTasks: [],
+      doneTasks: [],
       activeIndex: 0,
       animating: false,
     };
   }
   componentDidMount() {
-    listUsers(this.props.room.roomId, "children").then((users) => {
-      this.setState(
-        { childrenList: users }
-        // this.setState((state) => ({ carouselItems: state.users }))
-      );
-    });
-  }
-  componentDidUpdate(prevProps, prevStates) {
-    if (prevStates.childrenList != this.state.childrenList) {
-      console.log(this.state.childrenList);
-      this.setState((state) => ({ carouselItems: state.childrenList }));
-    }
+    this.props
+      .p_listChild(this.props.room.roomId)
+      .then(() => this.setActiveIndex(0));
   }
   nextCarousel = () => {
     const nextIndex =
@@ -48,23 +42,62 @@ export class ParentSpy extends Component {
   prevCarousel = () => {
     const nextIndex =
       this.state.activeIndex === 0
-        ? this.state.carouselItems.length - 1
+        ? this.props.room.p_childList.length - 1
         : this.state.activeIndex - 1;
     this.setActiveIndex(nextIndex);
   };
   setActiveIndex = (index) => {
     if (this.state.animating) return;
     this.setState({ activeIndex: index });
+    listTasks(
+      this.props.room.roomId,
+      this.props.room.p_childList[index].userId,
+      0
+    ).then((tasks) => {
+      this.setState({ unacceptedTasks: tasks });
+    });
+    listTasks(
+      this.props.room.roomId,
+      this.props.room.p_childList[index].userId,
+      1
+    ).then((tasks) => {
+      this.setState({ rejectedTasks: tasks });
+    });
+    listTasks(
+      this.props.room.roomId,
+      this.props.room.p_childList[index].userId,
+      2
+    ).then((tasks) => {
+      this.setState({ acceptedTasks: tasks });
+    });
+    listTasks(
+      this.props.room.roomId,
+      this.props.room.p_childList[index].userId,
+      3
+    ).then((tasks) => {
+      this.setState({ doneTasks: tasks });
+    });
   };
 
   render() {
-    const slides = this.state.carouselItems.map((user) => {
+    const slides = this.props.room.p_childList.map((user) => {
       return (
         <CarouselItem
           onExiting={() => this.setState({ animating: true })}
           onExited={() => this.setState({ animating: false })}
           key={shortid.generate()}
         >
+          <div className="slidePage h-100 d-flex justify-content-center align-items-center">
+            <div className="w-75">
+              <TaskGroup tasks={this.state.acceptedTasks} label={"Accepted"} />
+              <TaskGroup
+                tasks={this.state.unacceptedTasks}
+                label={"Unaccepted"}
+              />
+              <TaskGroup tasks={this.state.rejectedTasks} label={"Rejected"} />
+              <TaskGroup tasks={this.state.doneTasks} label={"Done"} />
+            </div>
+          </div>
           <CarouselCaption
             captionText={user.userId}
             captionHeader={user.userId}
@@ -80,7 +113,7 @@ export class ParentSpy extends Component {
           activeIndex={this.state.activeIndex}
         >
           <CarouselIndicators
-            items={this.state.carouselItems}
+            items={this.props.room.p_childList}
             activeIndex={this.state.activeIndex}
             onClickHandler={this.setActiveIndex}
           />
@@ -106,6 +139,8 @@ const mapStateToProps = (state) => ({
   session: state.session,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  p_listChild,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParentSpy);

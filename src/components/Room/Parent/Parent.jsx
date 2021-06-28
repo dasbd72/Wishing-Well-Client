@@ -24,9 +24,7 @@ import ParentSpy from "Components/Room/Parent/ParentSpy";
 import "./Parent.css";
 
 export class Parent extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
+  static propTypes = {};
 
   render() {
     const { match } = this.props;

@@ -3,10 +3,13 @@
   /* border-radius: 15px; */
   font-size: 1rem;
 }
+.ParentSpy .TaskGroup {
+  font-size: 0.8rem;
+}
 .TaskGroup > .label {
   /* display: inline-block; */
   background: rgba(100, 100, 100, 0.6);
-  font-size: 1.5rem;
+  font-size: 1.5em;
   color: white;
   border: solid white 0.5rem;
 }

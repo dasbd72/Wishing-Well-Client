@@ -6,7 +6,6 @@
 
 // export class ParentMenu extends Component {
 //   static propTypes = {
-//     prop: PropTypes,
 //   };
 
 //   constructor(props) {
@@ -56,9 +55,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 export class ParentMenu extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
+  static propTypes = {};
 
   render() {
     return <div className="ParentMenu"></div>;

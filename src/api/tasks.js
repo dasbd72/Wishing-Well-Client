@@ -77,11 +77,7 @@ export function createTask(
  * @returns
  */
 export function responseTask(taskId, isAccepted) {
-  let url = tasksBaseUrl;
-  let query = [];
-  query.push(`${taskId}`);
-  query.push(`${isAccepted}`);
-  if (query.length) url += "/" + query.join("/");
+  let url = `${tasksBaseUrl}/${taskId}/${isAccepted}`;
 
   console.log(`Making POST request to: ${url}`);
 

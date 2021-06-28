@@ -17,9 +17,7 @@ import { createPrize } from "Api/prizes";
 import { BiFontSize } from "react-icons/bi";
 
 export class ChildrenWish extends Component {
-  static propTypes = {
-    // prop: PropTypes,
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -65,7 +63,7 @@ export class ChildrenWish extends Component {
                   paddingLeft: "1rem",
                   paddingRight: "1rem",
                   fontWeight: "600",
-                  fontSize: "2em"
+                  fontSize: "2em",
                 }}
               >
                 Your Wish.

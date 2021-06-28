@@ -6,11 +6,11 @@ import { Element } from "react-scroll";
 import moment from "moment";
 
 import TaskGroup from "Components/Room/Tasks/TaskGroup";
-import { listTasks } from "States/room-actions";
+import { c_listTasks } from "States/room-actions";
 
 export class ChildrenTask extends Component {
   componentDidMount() {
-    this.props.listTasks(this.props.room.roomId, this.props.session.userId);
+    this.props.c_listTasks(this.props.room.roomId, this.props.session.userId);
   }
 
   componentDidUpdate(prevProps) {
@@ -18,11 +18,10 @@ export class ChildrenTask extends Component {
       prevProps.room.roomId != this.props.room.roomId ||
       prevProps.session.userId != this.props.session.userId
     )
-      this.props.listTasks(this.props.room.roomId, this.props.session.userId);
+      this.props.c_listTasks(this.props.room.roomId, this.props.session.userId);
   }
 
   render() {
-    console.log(this.props.room.c_unacceptedTasks);
     return (
       <Container className="ChildrenTask d-flex align-items-center flex-column pt-2 pb-4">
         <h1
@@ -55,7 +54,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  listTasks,
+  c_listTasks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildrenTask);

@@ -6,9 +6,7 @@ import PrizeList from "Components/Room/Prizes/PrizeList";
 import { listPrizes } from "Api/prizes";
 
 export class ChildrenPrize extends Component {
-  static propTypes = {
-    // prop: PropTypes
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
