@@ -29,3 +29,17 @@
   width: 80%;
   max-width: 800px;
 }
+
+.Request {
+  height: 100%;
+  width: 100%;
+}
+
+.Request .RequestForm {
+  border-radius: 0.5rem;
+  border: solid black 1px;
+  background-color: white;
+  width: 60%;
+  height: 60%;
+  margin: auto;
+}

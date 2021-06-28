@@ -31,6 +31,7 @@ export class RoomUserDisplay extends Component {
 
 const mapStateToProps = (state) => ({
   session: state.session,
+  room: state.room,
 });
 
 const mapDispatchToProps = {};
