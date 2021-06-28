@@ -29,7 +29,6 @@ class Children extends Component {
     //   this.props.room.roomId,
     //   this.props.session.userId
     // );
-    this.props.c_listPrizes(this.props.room.roomId, this.props.session.userId);
   }
   render() {
     const { match } = this.props;
@@ -88,7 +87,7 @@ const mapStateToProps = (state) => ({
   session: state.session,
 });
 
-const mapDispatchToProps = { c_getChosenPrize, c_listPrizes };
+const mapDispatchToProps = { c_getChosenPrize };
 
 export default connect(
   mapStateToProps,

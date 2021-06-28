@@ -2,6 +2,7 @@ import * as T from "./room-reducers";
 
 import {
   getUserRole as getUserRoleApi,
+  userChoosePrize as userChoosePrizeApi,
   getChosenPrize as getChosenPrizeApi,
 } from "Api/users";
 import {
@@ -107,7 +108,7 @@ export const c_listPrizes = (roomId, userId) => {
   if (!roomId || !userId) return { type: T.WRONG_INPUT };
   return (dispatch, getState) => {
     dispatch(startLoading());
-    return listPrizesApi(roomId, userId, 0)
+    return listPrizesApi(roomId, userId)
       .then((prizes) => {
         dispatch(c_endListPrizes(prizes));
       })
@@ -122,6 +123,27 @@ export const c_listPrizes = (roomId, userId) => {
 
 const c_endListPrizes = (prizes) => {
   return { type: T.C_END_LIST_PRIZE, prizes: prizes };
+};
+
+export const c_choosePrize = (prizeId, userId) => {
+  if (!prizeId || !userId) return { type: T.WRONG_INPUT };
+  return (dispatch, getState) => {
+    dispatch(startLoading());
+    return userChoosePrizeApi(prizeId, userId)
+      .then((prize) => {
+        dispatch(c_endChoosePrize(prize));
+      })
+      .catch((err) => {
+        console.error("Error Choosing Prize", err);
+      })
+      .then(() => {
+        dispatch(endLoading());
+      });
+  };
+};
+
+const c_endChoosePrize = (prize) => {
+  return { type: T.C_END_CHOSE_PRIZE, prize: prize };
 };
 
 export const c_getChosenPrize = (roomId, userId) => {

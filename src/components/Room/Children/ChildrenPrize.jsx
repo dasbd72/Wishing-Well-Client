@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import PrizeList from "Components/Room/Prizes/PrizeList";
-import { listPrizes } from "Api/prizes";
+import { c_listPrizes } from "States/room-actions";
 
 export class ChildrenPrize extends Component {
   static propTypes = {};
@@ -12,28 +12,23 @@ export class ChildrenPrize extends Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.c_listPrizes(this.props.room.roomId, this.props.session.userId);
+  }
 
   render() {
-    console.log("child prizes", this.props.room.c_prizeList);
     return (
       <div className="ChildrenPrize">
         {this.props.room.c_prizeList.length == 0 ? (
           <div className="d-flex align-items-center justify-content-center h-100">
-            <h1
-              className="m-3"
-              style={{
-                color: "white",
-                background: "black",
-                paddingLeft: "0.5rem",
-                paddingRight: "0.5rem",
-              }}
-            >
-              Go make some wish.
-            </h1>
+            <h1 className="m-3 custom-title">Go make some wish.</h1>
           </div>
         ) : (
-          <PrizeList prizes={this.props.room.c_prizeList} />
+          <PrizeList
+            prizes={this.props.room.c_prizeList.filter(
+              (el) => el.isAccepted != 2
+            )}
+          />
         )}
       </div>
     );
@@ -45,6 +40,8 @@ const mapStateToProps = (state) => ({
   session: state.session,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  c_listPrizes,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildrenPrize);
