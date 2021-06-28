@@ -47,7 +47,7 @@ export class ParentSpy extends Component {
     this.setActiveIndex(nextIndex);
   };
   setActiveIndex = (index) => {
-    if (this.state.animating || !this.props.room.p_childList) return;
+    if (this.state.animating || this.props.room.p_childList.length == 0) return;
     this.setState({ activeIndex: index });
     listTasks(
       this.props.room.roomId,
@@ -107,28 +107,41 @@ export class ParentSpy extends Component {
     });
     return (
       <div className="ParentSpy d-flex align-items-center justify-content-center">
-        <Carousel
-          next={this.nextCarousel}
-          previous={this.prevCarousel}
-          activeIndex={this.state.activeIndex}
-        >
-          <CarouselIndicators
-            items={this.props.room.p_childList}
+        {this.props.room.p_childList.length == 0 ? (
+          <h1
+            style={{
+              color: "white",
+              background: "black",
+              paddingLeft: "0.5rem",
+              paddingRight: "0.5rem",
+            }}
+          >
+            No Children Yet
+          </h1>
+        ) : (
+          <Carousel
+            next={this.nextCarousel}
+            previous={this.prevCarousel}
             activeIndex={this.state.activeIndex}
-            onClickHandler={this.setActiveIndex}
-          />
-          {slides}
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={this.prevCarousel}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={this.nextCarousel}
-          />
-        </Carousel>
+          >
+            <CarouselIndicators
+              items={this.props.room.p_childList}
+              activeIndex={this.state.activeIndex}
+              onClickHandler={this.setActiveIndex}
+            />
+            {slides}
+            <CarouselControl
+              direction="prev"
+              directionText="Previous"
+              onClickHandler={this.prevCarousel}
+            />
+            <CarouselControl
+              direction="next"
+              directionText="Next"
+              onClickHandler={this.nextCarousel}
+            />
+          </Carousel>
+        )}
       </div>
     );
   }

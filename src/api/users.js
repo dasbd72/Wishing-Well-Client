@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "Api/backend";
+import baseUrl from "Api/backend";
 
 const usersBaseUrl = baseUrl + "/users";
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "Api/backend";
+import baseUrl from "Api/backend";
 
 const prizesUrl = baseUrl + "/prizes";
 
@@ -13,8 +13,8 @@ const prizesUrl = baseUrl + "/prizes";
 export function listPrizes(roomId, userId, selectActive = 0) {
   let url = prizesUrl;
   let query = [];
-  query.push(`roomId=${roomId}`);
-  query.push(`userId=${userId}`);
+  if (roomId.length) query.push(`roomId=${roomId}`);
+  if (userId.length) query.push(`userId=${userId}`);
   query.push(`selectActive=${selectActive}`);
   if (query.length) url += "?" + query.join("&");
 
