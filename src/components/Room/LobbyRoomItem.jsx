@@ -27,7 +27,7 @@ export default withRouter(
       );
       if (this.props.add) {
         return (
-          <Col>
+          <Col className="p-2">
             <Card
               body
               onClick={this.props.toggle}

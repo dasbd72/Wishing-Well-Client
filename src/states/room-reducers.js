@@ -9,6 +9,7 @@ const initialState = {
   c_currentPrize: null,
 
   p_childList: [],
+  p_prizeList: [],
 };
 
 export const SET_ROOM_ID = "@ROOM/SET_ROOM_ID";
@@ -22,6 +23,7 @@ export const C_END_LIST_PRIZE = "@CHILD/END_LIST_PRIZE";
 export const C_END_CHOSE_PRIZE = "@CHILD/END_CHOSE_PRIZE";
 
 export const P_END_LIST_CHILD = "@PARENT/END_LIST_CHILD";
+export const P_END_LIST_PRIZE = "@PARENT/P_END_LIST_PRIZE";
 
 export const room = (state = initialState, action) => {
   switch (action.type) {

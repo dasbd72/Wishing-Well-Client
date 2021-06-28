@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { Container } from "reactstrap";
 
 export class Request extends Component {
-  static propTypes = {};
-
   render() {
     return (
       <Container className="ChildrenTask d-flex align-items-center flex-column pt-3">
