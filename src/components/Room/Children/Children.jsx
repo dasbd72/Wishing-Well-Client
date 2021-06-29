@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
+import { Navbar, NavItem, Nav, NavLink } from "reactstrap";
 
 import { AiOutlineHome, AiOutlineStar } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { GoSignOut } from "react-icons/go";
 import { GiCardAceSpades } from "react-icons/gi";
+import { RiArrowGoBackFill } from "react-icons/ri";
 import { signOut } from "Api/amplify";
 
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
@@ -20,22 +21,12 @@ import { c_getChosenPrize, c_listPrizes } from "States/room-actions";
 import "./Children.css";
 
 class Children extends Component {
-  static propTypes = {};
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    // this.props.c_getChosenPrize(
-    //   this.props.room.roomId,
-    //   this.props.session.userId
-    // );
-  }
   render() {
     const { match } = this.props;
     return (
       <div className="Children d-flex">
         <div className="ChildrenPage-bg"></div>
-        <SidebarContainer>
+        <SidebarContainer vertical={this.props.main.width > 520}>
           <SidebarItem
             icon={<AiOutlineHome />}
             destination={`${match.url}`}
@@ -52,7 +43,7 @@ class Children extends Component {
             label="Card"
           />
           <SidebarItem
-            icon={<GoSignOut />}
+            icon={<RiArrowGoBackFill />}
             destination="/room"
             label="Leave"
             bottom
@@ -84,7 +75,7 @@ class Children extends Component {
 
 const mapStateToProps = (state) => ({
   room: state.room,
-  session: state.session,
+  main: state.main,
 });
 
 const mapDispatchToProps = { c_getChosenPrize };

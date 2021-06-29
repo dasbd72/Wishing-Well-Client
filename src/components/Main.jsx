@@ -11,18 +11,26 @@ import AppDescription from "Components/AppDescription";
 import RoomEntrance from "Components/RoomEntrance";
 import { reloadUser } from "Api/amplify";
 import { getUserInfo } from "States/session-actions";
+import { setWidth } from "States/main-actions";
 
 import "./Main.css";
 
 export class Main extends Component {
   componentDidMount() {
     reloadUser();
+    this.loadWindowWidth();
+    window.addEventListener("resize", this.loadWindowWidth);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.session.userId != this.props.session.userId) {
       this.props.getUserInfo(this.props.session.userId);
     }
   }
+  loadWindowWidth = () => {
+    const { innerWidth: width } = window;
+    this.props.setWidth(width);
+  };
+
   render() {
     return (
       <Router>
@@ -51,6 +59,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getUserInfo,
+  setWidth,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
