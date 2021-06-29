@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 .Parent {
   font-size: 1rem;
   height: 100%;
@@ -21,10 +23,12 @@
 }
 .ParentSpy .slidePage {
   background-color: rgba(80, 80, 80, 0.623);
+  overflow: hidden;
 }
 
 .ParentSpy .carousel-caption {
-  font-family: "Shadows Into Light", cursive;
+  /* font-family: "Shadows Into Light", cursive; */
+  font-family: "Roboto", cursive;
   color: rgb(255, 200, 129);
   text-shadow: 0px 0 8.5px rgb(255, 237, 224);
   z-index: 1;
@@ -37,6 +41,8 @@
 .ParentSpy .slidePageContent {
   overflow-y: auto;
   z-index: 2;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box;
 }
 
 .ParentCreateTask {

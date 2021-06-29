@@ -35,4 +35,5 @@
 .PrizeItem .title {
   font-size: 2em;
   font-family: "Roboto", cursive;
+  overflow-x: auto;
 }

@@ -158,7 +158,7 @@ export class ParentSpy extends Component {
             {this.state.currentUserPrize && (
               <div className="p-3 d-flex w-100 flex-column align-items-center">
                 <div>
-                  <h2 style={{ color: "white" }}>Chosen Prize</h2>
+                  <h2 style={{ color: "white" }}>Current Prize</h2>
                 </div>
                 <div className="">
                   <PrizeItem {...this.state.currentUserPrize}></PrizeItem>
