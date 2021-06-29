@@ -137,21 +137,8 @@ export class ParentSpy extends Component {
         onExited={() => this.setState({ animating: false })}
         key={shortid.generate()}
       >
-        <div
-          className="slidePage h-100 d-flex justify-content-center"
-          style={{ overflowY: "auto" }}
-        >
+        <div className="slidePage h-100 d-flex justify-content-center">
           <div className="slidePageContent w-75 ">
-            {this.state.currentUserPrize && (
-              <div className="p-3 d-flex flex-row w-100 justify-content-between">
-                <div>
-                  <h2>Chosen Prize</h2>
-                </div>
-                <div className="">
-                  <PrizeItem {...this.state.currentUserPrize}></PrizeItem>
-                </div>
-              </div>
-            )}
             <TaskGroup
               tasks={this.state.acceptedTasks}
               label={"Accepted"}
@@ -168,6 +155,16 @@ export class ParentSpy extends Component {
               min={2}
             />
             <TaskGroup tasks={this.state.doneTasks} label={"Done"} min={2} />
+            {this.state.currentUserPrize && (
+              <div className="p-3 d-flex w-100 flex-column align-items-center">
+                <div>
+                  <h2 style={{ color: "white" }}>Chosen Prize</h2>
+                </div>
+                <div className="">
+                  <PrizeItem {...this.state.currentUserPrize}></PrizeItem>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <CarouselCaption captionHeader={user.userName} captionText={""} />

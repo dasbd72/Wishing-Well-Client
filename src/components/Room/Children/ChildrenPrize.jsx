@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import { Container } from "reactstrap";
 import PrizeList from "Components/Room/Prizes/PrizeList";
 import { c_listPrizes } from "States/room-actions";
 
@@ -18,9 +18,9 @@ export class ChildrenPrize extends Component {
 
   render() {
     return (
-      <div className="ChildrenPrize align-items-center justify-content-center">
+      <Container className="ChildrenPrize d-flex justify-content-center">
         {this.props.room.c_prizeList.length == 0 ? (
-          <div className="d-flex align-items-center justify-content-center h-100">
+          <div className="d-flex justify-content-center h-100">
             <h1 className="m-3 custom-title">Go make some wish.</h1>
           </div>
         ) : (
@@ -30,7 +30,7 @@ export class ChildrenPrize extends Component {
             )}
           />
         )}
-      </div>
+      </Container>
     );
   }
 }

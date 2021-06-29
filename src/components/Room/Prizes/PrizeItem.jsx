@@ -65,15 +65,6 @@ export class PrizeItem extends Component {
           <div className={classNames("PrizeItem")}>
             <div className="container d-flex h-100 flex-column py-4">
               <div className="title">{this.props.prizeName}</div>
-{/* <<<<<<< HEAD
-              <div className="mt-auto">
-                <Progress
-                  barStyle={{ backgroundColor: "rgba(63, 50, 23, 0.753)" }}
-                  value={percentage}
-                  hidden={this.props.isAccepted != 1}
-                ></Progress>
-              </div>
-======= */}
               <div className="mt-auto"></div>
             </div>
           </div>

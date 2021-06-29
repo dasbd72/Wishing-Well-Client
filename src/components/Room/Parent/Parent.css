@@ -27,10 +27,16 @@
   font-family: "Shadows Into Light", cursive;
   color: rgb(255, 200, 129);
   text-shadow: 0px 0 8.5px rgb(255, 237, 224);
+  z-index: 1;
+}
+
+.ParentSpy .carousel-indicators {
+  z-index: 1;
 }
 
 .ParentSpy .slidePageContent {
   overflow-y: auto;
+  z-index: 2;
 }
 
 .ParentCreateTask {
