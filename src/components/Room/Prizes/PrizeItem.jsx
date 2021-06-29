@@ -37,7 +37,7 @@ export class PrizeItem extends Component {
     let percentage = (this.props.curPoints / this.props.targetPoints) * 100;
     const barStyle =
       this.props.room.role === "children"
-        ? { backgroundColor: "rgba(255, 171, 103, 0.87)" }
+        ? { backgroundColor: "rgba(63, 50, 23, 0.753)" }
         : { backgroundColor: "rgba(120, 101, 103, 0.87)" };
     if (this.props.isAccepted == 1) {
       return (

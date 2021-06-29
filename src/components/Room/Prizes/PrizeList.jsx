@@ -20,7 +20,7 @@ export class PrizeList extends Component {
       );
     });
     return (
-      <div className="PrizeList p-4">
+      <div className="PrizeList p-4 w-90">
         <div type="unstyled" className="container">
           <div className="row">{prizelist}</div>
         </div>

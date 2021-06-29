@@ -14,7 +14,7 @@ export class Request extends Component {
   }
   render() {
     return (
-      <Container className="Request">
+      <Container className="Request d-flex flex-column align-items-center">
         <h1 className="mt-5 custom-title" style={{ display: "inline-block" }}>
           New Requests.
         </h1>
