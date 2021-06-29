@@ -39,6 +39,7 @@ export class RoomUserDisplay extends Component {
         >
           <BiUserCircle size={200} className="mt-3" />
           <h1>{this.props.session.userName}</h1>
+          <h5>{`${this.props.room.roomId}`}</h5>
           <Clock format="HH:mm:ss dddd" interval={1000} ticking={true} />
           <div className="mb-auto"></div>
           {this.props.room.role === "children" &&
