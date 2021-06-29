@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  Switch,
-} from "react-router-dom";
-import * as IconBs from "react-icons/bs";
-
 import MainNavbar from "Components/MainNavbar";
 
 import "./AppDescription.css";
