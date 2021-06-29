@@ -50,18 +50,22 @@ export class LobbyRoomList extends Component {
     };
   };
   createRoom = () => {
-    this.props.userCreateRoom(
-      this.inputRoomName.value.toString(),
-      this.props.session.userId,
-      this.state.chosenRole
-    );
+    this.props
+      .userCreateRoom(
+        this.inputRoomName.value.toString(),
+        this.props.session.userId,
+        this.state.chosenRole
+      )
+      .then(this.toggleModal());
   };
   joinRoom = () => {
-    this.props.userJoinRoom(
-      this.inputRoomId.value.toString(),
-      this.props.session.userId,
-      this.state.chosenRole
-    );
+    this.props
+      .userJoinRoom(
+        this.inputRoomId.value.toString(),
+        this.props.session.userId,
+        this.state.chosenRole
+      )
+      .then(this.toggleModal());
   };
 
   render() {

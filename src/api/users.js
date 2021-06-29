@@ -16,7 +16,7 @@ export function userJoinRoom(roomId, userId, role) {
     })
     .then((res) => {
       if (res.status !== 200)
-        throw new Error(`Unexpected response code: ${res.status}`)
+        throw new Error(`Unexpected response code: ${res.status}`);
       return res.data;
     });
 }
@@ -60,12 +60,17 @@ export function getChosenPrize(roomId, userId) {
 
   console.log(`Making GET request to: ${url}`);
 
-  return axios.get(url).then((res) => {
-    if (res.status !== 200)
-      throw new Error(`Unexpected response code: ${res.status}`);
+  return axios
+    .get(url)
+    .then((res) => {
+      if (res.status !== 200)
+        throw new Error(`Unexpected response code: ${res.status}`);
 
-    return res.data;
-  });
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 export function registerUserName(userId, userName) {
