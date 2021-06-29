@@ -18,11 +18,15 @@ export class RoomUserDisplay extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.c_getChosenPrize(
-      this.props.room.roomId,
-      this.props.session.userId
-    );
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.room.roomId != this.props.room.roomId) {
+      this.props.c_getChosenPrize(
+        this.props.room.roomId,
+        this.props.session.userId
+      );
+    }
   }
 
   render() {
@@ -38,6 +42,7 @@ export class RoomUserDisplay extends Component {
           <Clock format="HH:mm:ss dddd" interval={1000} ticking={true} />
           <div className="mb-auto"></div>
           {this.props.room.role === "children" &&
+            this.props.room.c_currentPrize &&
             this.props.room.c_currentPrize.prizeId && (
               <div className="pb-3">
                 <PrizeItem {...this.props.room.c_currentPrize} />

@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap);
 .MainNavbar {
   width: 100%;
 }
@@ -51,12 +52,14 @@
   border-right: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: auto;
   z-index: 500;
+  position: sticky;
 }
 .SidebarContainer > .sidebar {
   min-width: 1.5rem;
   max-width: 320px;
   font-size: 1.2rem;
   transition: all 0.5s;
+  position: sticky;
 }
 .SidebarContainer > .sidebar svg {
   font-size: 2.5rem;
@@ -95,21 +98,27 @@
 .PrizeItem {
   font-size: 1rem;
   height: 12em;
-  width: 22em;
+  max-width: 22em;
   border: white solid 0.3rem;
   border-radius: 1rem;
   box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.418);
   color: white;
-  background: rgb(104, 101, 148);
+  background: rgba(0, 0, 0, 0.521);
 }
 
 .ChildrenPrize .PrizeItem {
-  background: rgba(143, 140, 194, 0.521);
+  background: rgba(0, 0, 0, 0.288);
+  width: 100%;
 }
 
 .ChildrenPrize .PrizeItem.accepted {
-  background: rgba(221, 215, 130, 0.76);
+  background: rgb(209, 199, 110);
   cursor: pointer;
+}
+
+.ParentSpy .PrizeItem {
+  height: 9em;
+  width: 18em;
 }
 
 .RoomUserDisplay .PrizeItem {
@@ -120,7 +129,7 @@
 
 .PrizeItem .title {
   font-size: 2em;
-  font-family: "Dancing Script", cursive;
+  font-family: "Roboto", cursive;
 }
 
 .TaskGroup {
@@ -194,16 +203,49 @@
   background-color: rgba(80, 80, 80, 0.623);
 }
 
+.ParentSpy .carousel-caption {
+  font-family: "Shadows Into Light", cursive;
+  color: rgb(255, 200, 129);
+  text-shadow: 0px 0 8.5px rgb(255, 237, 224);
+}
+
+.ParentSpy .slidePageContent {
+  overflow-y: auto;
+}
+
 .ParentCreateTask {
   height: 100%;
   width: 100%;
 }
 
+.ParentCreateTask h1 {
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .ParentCreateTask .CreateTaskForm {
   padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.432);
   width: 80%;
   max-width: 800px;
+}
+
+.ParentCreateTask .btn-outline-secondary {
+  background-color: rgba(222, 184, 135, 0.534);
+}
+.ParentCreateTask .btn-secondary {
+  background-color: rgba(243, 180, 97, 0.884);
+}
+
+.ParentCreateTask .CreateTaskForm label {
+  text-align: center;
+  display: inline-flex;
+  font-weight: 600;
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .ParentCreateTask .loading {
@@ -219,6 +261,8 @@
 .Request {
   height: 100%;
   width: 100%;
+  text-align: center;
+  overflow-y: auto;
 }
 
 .Request .RequestForm {
@@ -282,16 +326,15 @@
 
 .ChildrenWish label {
   font-size: 2em;
+  margin-bottom: 0;
 }
 
-.wishBlur-bg {
-  width: 23%;
-  height: 27%;
-  position: fixed;
-  z-index: -1;
-  border: white solid 0.5rem;
-  border-radius: 1rem;
-  background: rgba(200, 200, 200, 0.6);
+.ChildrenPrize > h1 {
+  display: inline-flex;
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .Lobby .create-room:hover {
