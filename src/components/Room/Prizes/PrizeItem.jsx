@@ -19,7 +19,8 @@ export class PrizeItem extends Component {
     ts: PropTypes.string,
   };
 
-  responsePrize = (accept) => {
+  p_responsePrize = (accept) => {
+    if (this.props.room.role !== "parent") return;
     return () => {
       responsePrize(this.props.prizeId, accept).then(() => {
         this.props.p_listPrizes(this.props.room.roomId);
@@ -27,24 +28,44 @@ export class PrizeItem extends Component {
     };
   };
 
+  c_choosePrize = () => {
+    if (this.props.room.role !== "children") return;
+    this.props.c_choosePrize(this.props.prizeId, this.props.room.roomId);
+  };
+
   render() {
     let percentage = (this.props.curPoints / this.props.targetPoints) * 100;
-    if (this.props.room.role === "children") {
-      if (this.props.isAccepted == 1) {
+    const barStyle =
+      this.props.room.role === "children"
+        ? { backgroundColor: "rgba(63, 50, 23, 0.753)" }
+        : { backgroundColor: "rgba(120, 101, 103, 0.87)" };
+    if (this.props.isAccepted == 1) {
+      return (
+        <div
+          className={classNames("PrizeItem", {
+            accepted: this.props.isAccepted == 1,
+          })}
+          onClick={this.c_choosePrize}
+        >
+          <div className="container d-flex h-100 flex-column py-3">
+            <div className="title">{this.props.prizeName}</div>
+            <div className="mt-auto">
+              <Progress
+                barStyle={barStyle}
+                value={percentage}
+                hidden={this.props.isAccepted != 1}
+              ></Progress>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      if (this.props.room.role === "children") {
         return (
-          <div
-            className={classNames("PrizeItem", {
-              accepted: this.props.isAccepted == 1,
-            })}
-            onClick={() => {
-              this.props.c_choosePrize(
-                this.props.prizeId,
-                this.props.room.roomId
-              );
-            }}
-          >
+          <div className={classNames("PrizeItem")}>
             <div className="container d-flex h-100 flex-column py-4">
               <div className="title">{this.props.prizeName}</div>
+{/* <<<<<<< HEAD
               <div className="mt-auto">
                 <Progress
                   barStyle={{ backgroundColor: "rgba(63, 50, 23, 0.753)" }}
@@ -52,37 +73,30 @@ export class PrizeItem extends Component {
                   hidden={this.props.isAccepted != 1}
                 ></Progress>
               </div>
+======= */}
+              <div className="mt-auto"></div>
             </div>
           </div>
         );
       } else {
         return (
-          <div className={classNames("PrizeItem")}>
+          <div
+            className={classNames("PrizeItem", {
+              accepted: this.props.isAccepted == 1,
+            })}
+          >
             <div className="container d-flex h-100 flex-column py-4">
               <div className="title">{this.props.prizeName}</div>
-              <div className="mt-auto"></div>
+              <div className="mt-auto">
+                <ButtonGroup>
+                  <Button onClick={this.p_responsePrize(true)}>Accept</Button>
+                  <Button onClick={this.p_responsePrize(false)}>Reject</Button>
+                </ButtonGroup>
+              </div>
             </div>
           </div>
         );
       }
-    } else {
-      return (
-        <div
-          className={classNames("PrizeItem", {
-            accepted: this.props.isAccepted == 1,
-          })}
-        >
-          <div className="container d-flex h-100 flex-column py -4">
-            <div className="title">{this.props.prizeName}</div>
-            <div className="mt-auto">
-              <ButtonGroup>
-                <Button onClick={this.responsePrize(true)}>Accept</Button>
-                <Button onClick={this.responsePrize(false)}>Reject</Button>
-              </ButtonGroup>
-            </div>
-          </div>
-        </div>
-      );
     }
   }
 }

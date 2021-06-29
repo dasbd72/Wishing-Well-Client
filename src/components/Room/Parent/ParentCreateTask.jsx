@@ -25,7 +25,7 @@ export class ParentCreateTask extends Component {
       sending: false,
       success: false,
       failed: false,
-      chosenType: "",
+      chosenType: "normal",
       childrenList: [],
     };
   }
@@ -63,11 +63,10 @@ export class ParentCreateTask extends Component {
   };
 
   render() {
-    console.log(this.state.childrenList);
     let optionList = this.state.childrenList.map((el) => {
       return (
         <option value={el.userId} key={shortid.generate()}>
-          {el.userId}
+          {el.userName}
         </option>
       );
     });
@@ -80,7 +79,7 @@ export class ParentCreateTask extends Component {
               <ButtonGroup>
                 <Button
                   type="button"
-                  className="btn-light"
+                  color="secondary"
                   outline={this.state.chosenType !== "normal"}
                   onClick={() => {
                     this.setState({ chosenType: "normal" });
@@ -90,7 +89,7 @@ export class ParentCreateTask extends Component {
                 </Button>
                 <Button
                   type="button"
-                  className="btn-light"
+                  color="secondary"
                   outline={this.state.chosenType !== "forced"}
                   onClick={() => {
                     this.setState({ chosenType: "forced" });
@@ -110,7 +109,11 @@ export class ParentCreateTask extends Component {
               <Label for="taskDescription" sm={3}>
                 Description
               </Label>
-              <Input id="taskDescription" name="taskDescription" type="text" />
+              <Input
+                id="taskDescription"
+                name="taskDescription"
+                type="textarea"
+              />
             </FormGroup>
             <FormGroup>
               <Label for="deadLine" sm={3}>
@@ -137,7 +140,9 @@ export class ParentCreateTask extends Component {
                 {optionList}
               </Input>
             </FormGroup>
-            <Button type="submit">Create</Button>
+            <Button type="submit" color="info">
+              Create
+            </Button>
           </Form>
         </div>
         <Alert className="loading" color="warning" hidden={!this.state.sending}>
@@ -147,7 +152,7 @@ export class ParentCreateTask extends Component {
           Success!
         </Alert>
         <Alert className="loading" color="danger" hidden={!this.state.failed}>
-          Failed!
+          Not Enough Input!
         </Alert>
       </div>
     );

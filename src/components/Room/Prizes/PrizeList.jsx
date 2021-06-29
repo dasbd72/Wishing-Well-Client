@@ -14,7 +14,7 @@ export class PrizeList extends Component {
   render() {
     let prizelist = this.props.prizes.map((el) => {
       return (
-        <div className="col-md-6 p-4" key={shortid.generate()}>
+        <div className="col-md-6 p-2" key={shortid.generate()}>
           <PrizeItem {...el} />
         </div>
       );

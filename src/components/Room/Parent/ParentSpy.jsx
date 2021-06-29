@@ -13,7 +13,8 @@ import shortid from "shortid";
 
 import { p_listChild, p_spyTasks } from "States/room-actions";
 import TaskGroup from "Components/Room/Tasks/TaskGroup";
-import { getUserInfo } from "Api/users";
+import { getChosenPrize, getUserInfo } from "Api/users";
+import PrizeItem from "../Prizes/PrizeItem";
 
 export class ParentSpy extends Component {
   static propTypes = {};
@@ -25,14 +26,15 @@ export class ParentSpy extends Component {
       rejectedTasks: [],
       unacceptedTasks: [],
       doneTasks: [],
-      activeIndex: 0,
+      activeIndex: -1,
       animating: false,
+      currentUserPrize: {},
     };
   }
   componentDidMount() {
-    this.props
-      .p_listChild(this.props.room.roomId)
-      .then(() => this.setActiveIndex(0));
+    this.props.p_listChild(this.props.room.roomId).then(() => {
+      this.setActiveIndex(0);
+    });
   }
   componentDidUpdate(prevProps, prevStates) {
     if (prevProps.room.p_spy_tasks != this.props.room.p_spy_tasks) {
@@ -51,10 +53,25 @@ export class ParentSpy extends Component {
         ),
       });
     }
+
+    if (prevStates.activeIndex != this.state.activeIndex) {
+      this.props.p_spyTasks(
+        this.props.room.roomId,
+        this.props.room.p_childList[this.state.activeIndex].userId
+      );
+      getChosenPrize(
+        this.props.room.roomId,
+        this.props.room.p_childList[this.state.activeIndex].userId
+      ).then((prize) => {
+        this.setState({ currentUserPrize: prize });
+      });
+    }
   }
   nextCarousel = () => {
     const nextIndex =
-      this.state.activeIndex === 0 ? 0 : this.state.activeIndex + 1;
+      this.state.activeIndex === this.props.room.p_childList.length - 1
+        ? 0
+        : this.state.activeIndex + 1;
     this.setActiveIndex(nextIndex);
   };
   prevCarousel = () => {
@@ -67,51 +84,10 @@ export class ParentSpy extends Component {
   setActiveIndex = (index) => {
     if (this.state.animating || this.props.room.p_childList.length == 0) return;
     this.setState({ activeIndex: index });
-    this.props.p_spyTasks(
-      this.props.room.roomId,
-      this.props.room.p_childList[index].userId
-    );
   };
 
   render() {
-    console.log(this.props.room);
-    const slides = this.props.room.p_childList.map((user) => {
-      return (
-        <CarouselItem
-          onExiting={() => this.setState({ animating: true })}
-          onExited={() => this.setState({ animating: false })}
-          key={shortid.generate()}
-        >
-          <div
-            className="slidePage h-100 d-flex justify-content-center pt-3 pb-5"
-            style={{ overflowY: "auto" }}
-          >
-            <div className="slidePageContent w-75">
-              <TaskGroup
-                tasks={this.state.acceptedTasks}
-                label={"Accepted"}
-                min={2}
-              />
-              <TaskGroup
-                tasks={this.state.unacceptedTasks}
-                label={"Unaccepted"}
-                min={2}
-              />
-              <TaskGroup
-                tasks={this.state.rejectedTasks}
-                label={"Rejected"}
-                min={2}
-              />
-              <TaskGroup tasks={this.state.doneTasks} label={"Done"} min={2} />
-            </div>
-          </div>
-          <CarouselCaption
-            captionText={user.userName}
-            captionHeader={user.userName}
-          />
-        </CarouselItem>
-      );
-    });
+    const slides = this.props.room.p_childList.map(this.generateSlide);
     return (
       <div className="ParentSpy d-flex align-items-center justify-content-center">
         {this.props.room.p_childList.length == 0 ? (
@@ -130,6 +106,7 @@ export class ParentSpy extends Component {
             next={this.nextCarousel}
             previous={this.prevCarousel}
             activeIndex={this.state.activeIndex}
+            interval={false}
           >
             <CarouselIndicators
               items={this.props.room.p_childList}
@@ -152,6 +129,51 @@ export class ParentSpy extends Component {
       </div>
     );
   }
+
+  generateSlide = (user) => {
+    return (
+      <CarouselItem
+        onExiting={() => this.setState({ animating: true })}
+        onExited={() => this.setState({ animating: false })}
+        key={shortid.generate()}
+      >
+        <div
+          className="slidePage h-100 d-flex justify-content-center"
+          style={{ overflowY: "auto" }}
+        >
+          <div className="slidePageContent w-75 ">
+            {this.state.currentUserPrize && (
+              <div className="p-3 d-flex flex-row w-100 justify-content-between">
+                <div>
+                  <h2>Chosen Prize</h2>
+                </div>
+                <div className="">
+                  <PrizeItem {...this.state.currentUserPrize}></PrizeItem>
+                </div>
+              </div>
+            )}
+            <TaskGroup
+              tasks={this.state.acceptedTasks}
+              label={"Accepted"}
+              min={2}
+            />
+            <TaskGroup
+              tasks={this.state.unacceptedTasks}
+              label={"Unaccepted"}
+              min={2}
+            />
+            <TaskGroup
+              tasks={this.state.rejectedTasks}
+              label={"Rejected"}
+              min={2}
+            />
+            <TaskGroup tasks={this.state.doneTasks} label={"Done"} min={2} />
+          </div>
+        </div>
+        <CarouselCaption captionHeader={user.userName} captionText={""} />
+      </CarouselItem>
+    );
+  };
 }
 
 const mapStateToProps = (state) => ({
