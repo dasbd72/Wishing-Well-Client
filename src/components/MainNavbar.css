@@ -1,5 +1,6 @@
 .MainNavbar {
   width: 100%;
+  position: sticky;
 }
 .MainNavbar .login {
   position: fixed;

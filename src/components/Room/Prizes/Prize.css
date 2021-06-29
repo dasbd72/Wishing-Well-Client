@@ -19,14 +19,14 @@
 }
 
 .ChildrenPrize .PrizeItem.accepted {
-  background: rgb(209, 199, 110);
+  background: rgb(204, 206, 109);
   cursor: pointer;
 }
 
 .RoomUserDisplay .PrizeItem {
   height: 10em;
   width: 18em;
-  background: rgba(221, 215, 130, 0.76);
+  background: rgb(204, 206, 109);
 }
 
 .PrizeItem .title {

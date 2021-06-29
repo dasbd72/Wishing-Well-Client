@@ -47,7 +47,7 @@ export class PrizeItem extends Component {
               <div className="title">{this.props.prizeName}</div>
               <div className="mt-auto">
                 <Progress
-                  barStyle={{ backgroundColor: "rgba(255, 171, 103, 0.87)" }}
+                  barStyle={{ backgroundColor: "rgba(63, 50, 23, 0.753)" }}
                   value={percentage}
                   hidden={this.props.isAccepted != 1}
                 ></Progress>
@@ -72,7 +72,7 @@ export class PrizeItem extends Component {
             accepted: this.props.isAccepted == 1,
           })}
         >
-          <div className="container d-flex h-100 flex-column py-4">
+          <div className="container d-flex h-100 flex-column py -4">
             <div className="title">{this.props.prizeName}</div>
             <div className="mt-auto">
               <ButtonGroup>
