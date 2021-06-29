@@ -6,7 +6,7 @@ export class ParentMenu extends Component {
   static propTypes = {};
 
   render() {
-    return <div className="ParentMenu"></div>;
+    return <div className="ParentMenu d-flex justify-content-center align-items-center"><h1>Let's get start it!</h1></div>;
   }
 }
 

@@ -11,6 +11,13 @@
   width: 100%;
 }
 
+.ParentMenu > h1 {
+  color: white;
+  background: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .ParentSpy {
   width: 100%;
   height: 100%;
@@ -32,6 +39,8 @@
   color: rgb(255, 200, 129);
   text-shadow: 0px 0 8.5px rgb(255, 237, 224);
   z-index: 1;
+  text-align: left;
+
 }
 
 .ParentSpy .carousel-indicators {
@@ -40,9 +49,17 @@
 
 .ParentSpy .slidePageContent {
   overflow-y: auto;
+  
   z-index: 2;
-  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
-  box-sizing: content-box;
+}
+
+
+.slidePageContent::-webkit-scrollbar {
+  display: none;
+}
+
+.ParentSpy .currentWish {
+  padding: 1rem 3rem 6rem 3rem;
 }
 
 .ParentCreateTask {

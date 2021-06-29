@@ -37,3 +37,7 @@
   font-family: "Roboto", cursive;
   overflow-x: auto;
 }
+
+.title::-webkit-scrollbar {
+  display: none;
+}
