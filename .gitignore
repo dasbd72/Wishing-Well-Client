@@ -2,6 +2,9 @@
 package-lock.json
 node_modules
 
+!.dist/822.bundle.js
+!.dist/822.css
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
