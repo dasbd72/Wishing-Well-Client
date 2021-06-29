@@ -9,9 +9,9 @@ import {
   AiOutlineContainer,
 } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import { GoSignOut } from "react-icons/go";
 import { IoMdAdd } from "react-icons/io";
 import { signOut } from "Api/amplify";
+import { RiArrowGoBackFill } from "react-icons/ri";
 
 import SidebarContainer from "Components/Room/Sidebar/SidebarContainer";
 import SidebarItem from "Components/Room/Sidebar/SidebarItem";
@@ -24,14 +24,12 @@ import ParentSpy from "Components/Room/Parent/ParentSpy";
 import "./Parent.css";
 
 export class Parent extends Component {
-  static propTypes = {};
-
   render() {
     const { match } = this.props;
     return (
       <div className="Parent d-flex">
         <div className="Parent-bg"></div>
-        <SidebarContainer>
+        <SidebarContainer vertical={this.props.main.width > 520}>
           <SidebarItem
             icon={<AiOutlineHome />}
             destination={`${match.url}`}
@@ -53,7 +51,7 @@ export class Parent extends Component {
             label="Request"
           />
           <SidebarItem
-            icon={<GoSignOut />}
+            icon={<RiArrowGoBackFill />}
             destination="/room"
             label="Leave"
             bottom
@@ -86,7 +84,9 @@ export class Parent extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  main: state.main,
+});
 
 const mapDispatchToProps = {};
 

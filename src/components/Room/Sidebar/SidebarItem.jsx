@@ -11,6 +11,7 @@ export default class SidebarItem extends Component {
     clickFunc: PropTypes.func,
     destination: PropTypes.string,
     bottom: PropTypes.bool,
+    vertical: PropTypes.bool,
   };
 
   constructor(props) {
@@ -22,17 +23,27 @@ export default class SidebarItem extends Component {
     if (this.props.clickFunc) newProps["onClick"] = this.props.clickFunc;
     if (this.props.destination)
       (newProps["tag"] = Link), (newProps["to"] = this.props.destination);
-    var newDiv = React.cloneElement(
-      <NavLink>
-        <div className="d-flex flex-row align-items-center justify-content-between">
-          <div>{this.props.icon}</div>
-          <div hidden={!this.props.isOpen} className="mr-auto pl-2">
-            {this.props.label}
+    if (this.props.vertical) {
+      var newDiv = React.cloneElement(
+        <NavLink>
+          <div className="sidebar-content d-flex flex-row align-items-center justify-content-between">
+            <div>{this.props.icon}</div>
+            <div hidden={!this.props.isOpen} className="mr-auto pl-2">
+              {this.props.label}
+            </div>
           </div>
-        </div>
-      </NavLink>,
-      newProps
-    );
-    return <NavItem className="SidebarItem">{newDiv}</NavItem>;
+        </NavLink>,
+        newProps
+      );
+      return <NavItem className="SidebarItem">{newDiv}</NavItem>;
+    } else {
+      var newDiv = React.cloneElement(
+        <NavLink>
+          <div>{this.props.icon}</div>
+        </NavLink>,
+        newProps
+      );
+      return <NavItem>{newDiv}</NavItem>;
+    }
   }
 }

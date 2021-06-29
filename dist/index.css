@@ -75,10 +75,8 @@
   display: none;
 }
 
-@media only screen and (max-width: 415px) {
-  .SidebarContainer > .sidebar {
-    display: none;
-  }
+.NavbarContainer {
+  width: 100%;
 }
 
 .RoomUserDisplay {
