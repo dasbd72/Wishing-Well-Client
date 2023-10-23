@@ -1,2 +1,0 @@
-(self.webpackChunk=self.webpackChunk||[]).push([[782],{48782:(n,t,e)=>{"use strict";e.r(t),e.d(t,{amplify_auth_container:()=>r});var u=e(26293),r=function(){function n(n){(0,u.r)(this,n)}return n.prototype.render=function(){return(0,u.h)(u.H,null,(0,u.h)("form",{autoComplete:"on",hidden:!0},(0,u.h)("input",{name:"username"}),(0,u.h)("input",{name:"password",type:"password"}),(0,u.h)("input",{type:"submit"})),(0,u.h)("slot",null))},n}()}}]);
-//# sourceMappingURL=782.bundle.js.map
